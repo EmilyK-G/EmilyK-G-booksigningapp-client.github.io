@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import './index.css';
 import App from './App';
-import Welcome from './components/Welcome/Welcome';
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
 
@@ -16,7 +15,6 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="welcome" element={<Welcome />} />
         <Route path="users" element={<Users />} />
         <Route path="books" element={<Books />} />
         <Route

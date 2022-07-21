@@ -1,4 +1,11 @@
 .welcome_content{
-    color: black;
-    font-size: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 5px 15px;
+    transform: translate(-50%, -50%);
+    background: rgb(231, 214, 206);
+    color: white;
+    border-radius: 20px;
+    font-size: 50px;
 }
