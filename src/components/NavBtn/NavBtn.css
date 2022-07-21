@@ -1,4 +1,14 @@
-.btn_style {
+.prev_btn_style {
+  position: absolute;
+  top: 90%;
+  right: 70%;
+  padding: 5px 15px;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.next_btn_style {
     position: absolute;
     top: 90%;
     left: 70%;
