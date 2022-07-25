@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# Booksigning App
+
+## User stories:
+
+*I recently went to a online course, I want a way to communicate my thaughts and best wishes to my classmates so I can let them know that I valued my time with them.
+*I used a digital book in one of my classes, I want a way for the friends I made to sign it so I remember every one of them and their amazing personality.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
