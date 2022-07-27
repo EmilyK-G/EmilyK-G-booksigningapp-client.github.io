@@ -2,13 +2,20 @@
   display: grid;
 }
 .content {
-  height: 100vh;
+  height: 350vh;
+}
+
+ol, ul {
+  padding-left: 0;
+}
+
+.btn:hover {
+  background-color: transparent;
 }
 
 .content_bgr {
   background: rgba(181, 181, 181, 0.476);
-  margin: 150px;
-  padding: 30px;
+  padding: 20px;
 }
 
 .text_content {

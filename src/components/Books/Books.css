@@ -1,0 +1,32 @@
+.books_container{
+  display: flex;
+  height: fit-content;
+}
+.books_title{
+  font-size: 3rem;
+  color: white;
+  padding: 20px;
+  border-radius: 25px;
+}
+.book_header {
+  position: fixed;
+  top: 1%;
+}
+.books_separator {
+  margin-top: 100px;
+}
+.book_list {
+  list-style-type: none;
+  font-size: 1.5rem;
+}
+div.d-flex > ul.book_list > li.book_list_item {
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px gray;
+  min-width: 276px;
+  padding: 10px;
+  margin: 10px 2px;
+}
+.book_list_item:hover {
+  transform: translateY(-1px);
+  cursor: pointer;
+}

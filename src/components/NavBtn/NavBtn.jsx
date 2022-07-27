@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { FcPrevious, FcNext } from 'react-icons/fc';
@@ -7,20 +8,35 @@ import './NavBtn.css';
 function NavBtn() {
   const [pageCount, setPageCount] = useState(1);
 
+  const location = useLocation();
+
+  const pageRef = useRef(location.pathname);
+
   useEffect(() => {
-    if(localStorage.getItem('pageNumber') !== null){
-      setPageCount(JSON.parse(localStorage.getItem('pageNumber')))
+    if(localStorage.getItem('pageName') !== null){
+      pageRef.current = JSON.parse(localStorage.getItem('pageName'));
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('pageNumber', JSON.stringify(pageCount))
-  }, [pageCount])
+    localStorage.setItem('pageName', JSON.stringify(location.pathname))
+  }, [location.pathname])
     
-  
+  useEffect(()=>{
+    if(pageRef.current === '/'){
+      setPageCount(1)
+    }
+    if(pageRef.current === '/users'){
+      setPageCount(2)
+    }
+    if(pageRef.current === '/books'){
+      setPageCount(3)
+    }
+    console.log(pageRef)
+  }, [pageRef])
+
   function handlePrevClick() {
     setPageCount(pageCount - 1);
-    console.log(pageCount)
   }
 
   function handleNextClick() {

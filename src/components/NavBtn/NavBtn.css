@@ -1,8 +1,8 @@
 .prev_btn_style {
-  position: absolute;
-  top: 90%;
-  right: 70%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 5%;
+  z-index: 50;
   font-size: 4rem;
   padding: 0;
   background-color: transparent;
@@ -10,16 +10,16 @@
 }
 
 .next_btn_style {
-    position: absolute;
-    top: 90%;
-    left: 70%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    right: 5%;
+    z-index: 50;
     font-size: 4rem;
     padding: 0;
     background-color: transparent;
     border: none;
   }
-  
-  .btn_dissapear {
-    display: none;
-  }
+
+.btn_dissapear {
+  display: none;
+}

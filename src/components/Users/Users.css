@@ -7,3 +7,34 @@
     border-radius: 50px;
     font-size: 1rem;
   }
+  .users_header {
+    position: fixed;
+    top: 1%;
+  }
+
+  .users_title{
+    font-size: 3rem;
+    color: white;
+    padding: 20px;
+    border-radius: 25px;
+  }
+  .users_list {
+    list-style-type: none;
+    font-size: 1.5rem;
+  }
+
+  .users_separator {
+    margin-top: 100px;
+  }
+
+  div.d-flex > ul.users_list > li.users_list_item {
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px gray;
+    min-width: 276px;
+    padding: 10px;
+    margin: 10px 2px;
+  }
+  .users_list_item:hover {
+    transform: translateY(-1px);
+    cursor: pointer;
+  }
