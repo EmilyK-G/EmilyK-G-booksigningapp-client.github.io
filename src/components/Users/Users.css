@@ -10,6 +10,7 @@
   .users_header {
     position: fixed;
     top: 1%;
+    width: 100%;
   }
 
   .users_title{
@@ -17,6 +18,9 @@
     color: white;
     padding: 20px;
     border-radius: 25px;
+    background: rgba(0, 113, 133, 0.621);
+    text-shadow: 2px 2px 2px grey;
+    box-shadow: 2px 2px 2px #7e7d7d4a;
   }
   .users_list {
     list-style-type: none;

@@ -4,7 +4,7 @@ import './Welcome.css';
 function Welcome() {
   return (
     <>
-      <h2 className='welcome_content'>Welcome to the class of 2022!</h2>
+      <h2 className='welcome_content'>Welcome class of 2022!</h2>
     </>
   )
 }
