@@ -9,10 +9,6 @@ ol, ul {
   padding-left: 0;
 }
 
-.btn:hover {
-  background-color: transparent;
-}
-
 .content_bgr {
   padding: 20px;
 }

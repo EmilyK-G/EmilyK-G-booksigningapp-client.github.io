@@ -1,3 +1,7 @@
+.btn:hover {
+  background-color: transparent;
+}
+
 .prev_btn_style {
   position: fixed;
   top: 50%;
