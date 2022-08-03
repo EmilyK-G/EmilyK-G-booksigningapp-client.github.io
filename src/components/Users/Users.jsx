@@ -9,7 +9,7 @@ function Users() {
         <h1 className='users_title mb-0'>Users</h1>
       </header>
       <hr className="mb-4 users_separator"></hr>
-      <ul className='users_list'>
+      <ul className='users_list d-flex'>
         <li className='users_list_item'><FaUser/></li>
         <li className='users_list_item'><FaUser/></li>
         <li className='users_list_item'><FaUser/></li>

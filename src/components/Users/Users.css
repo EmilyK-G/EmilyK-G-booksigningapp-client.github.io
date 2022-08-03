@@ -24,7 +24,9 @@
   }
   .users_list {
     list-style-type: none;
-    font-size: 1.5rem;
+    font-size: 1.5rem;    
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .users_separator {
@@ -34,7 +36,7 @@
   div.d-flex > ul.users_list > li.users_list_item {
     border-radius: 5px;
     box-shadow: 2px 2px 2px 1px gray;
-    min-width: 276px;
+    width: 30%;
     padding: 10px;
     margin: 10px 2px;
   }
