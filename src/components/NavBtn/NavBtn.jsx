@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import { FcPrevious, FcNext } from 'react-icons/fc';
+import { GrPrevious, GrNext } from 'react-icons/gr';
 import './NavBtn.css';
 
 function NavBtn() {
@@ -47,8 +47,8 @@ function NavBtn() {
   
   return (
     <>  
-        <Button className={'prev_btn_style' + (pageCount === 1 ? ' btn_dissapear' : '') } onClick={()=>{handlePrevClick()}}><Link to={pageCount === 2 ? '/' : pageCount === 3 ? '/users' : false}><FcPrevious /></Link></Button>
-        <Button className={'next_btn_style' + (pageCount === 3 ? ' btn_dissapear' : '') } onClick={()=>{handleNextClick()}}><Link to={pageCount === 1 ? '/users' : pageCount === 2 ? '/books' : false}><FcNext /></Link></Button>
+        <Button className={'prev_btn_style' + (pageCount === 1 ? ' btn_dissapear' : '') } onClick={()=>{handlePrevClick()}}><Link to={pageCount === 2 ? '/' : pageCount === 3 ? '/users' : false}><GrPrevious /></Link></Button>
+        <Button className={'next_btn_style' + (pageCount === 3 ? ' btn_dissapear' : '') } onClick={()=>{handleNextClick()}}><Link to={pageCount === 1 ? '/users' : pageCount === 2 ? '/books' : false}><GrNext /></Link></Button>
         <Outlet />
     </>
   )

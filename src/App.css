@@ -2,7 +2,7 @@
   display: grid;
 }
 .content {
-  height: 350vh;
+  min-height: 100vh;
 }
 
 ol, ul {

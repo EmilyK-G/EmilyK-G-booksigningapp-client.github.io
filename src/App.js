@@ -21,7 +21,7 @@ function App() {
   
   return (
     <div className="App">
-      <Parallax strength={-600} bgImage={background2}>
+      <Parallax strength={-600} bgImage={background2} style={ {backgroundSize: 'cover'} }>
       <div className='content content_bgr'>
       {firstPage && <Welcome />}
           <NavBtn />
