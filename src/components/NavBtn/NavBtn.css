@@ -1,10 +1,18 @@
 .btn:hover {
   background-color: transparent;
+  border-color: transparent;
 }
 
+a {
+  text-decoration: none;
+  color: #898194;
+}
+a:hover {
+  color: indigo;
+}
 .prev_btn_style {
   position: fixed;
-  top: 50%;
+  height: 95%;
   left: 5%;
   z-index: 50;
   font-size: 4rem;
@@ -15,7 +23,7 @@
 
 .next_btn_style {
     position: fixed;
-    top: 50%;
+    height: 95%;
     right: 5%;
     z-index: 50;
     font-size: 4rem;
