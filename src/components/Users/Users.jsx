@@ -12,7 +12,7 @@ function Users() {
   return (
     <div className="d-flex flex-column justify-content-center">
       <header className='users_header align-self-center'>
-        <h1 className='users_title mb-0'>Users</h1>
+        <h1 className='users_title mb-0'>Who Are You?</h1>
       </header>
       <hr className="mb-4 users_separator"></hr>
       <Modal showModal={showModal} setShowModal={setShowModal}/>
