@@ -1,8 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import './LoginModal.css';
 
 function LoginModal(props) {
+    function checkPIN(e) {
+        console.log('There are ' + e.target.value.length + ' characters in ' + e.target.value + '.');
+        props.setShowModal(false)
+    }
     return (
         <Modal
           show={props.showModal}
@@ -17,14 +21,10 @@ function LoginModal(props) {
           </Modal.Header>
           <Modal.Body>
             <h4>Please enter your PIN</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-              consectetur ac, vestibulum at eros.
-            </p>
+            <input className="form-control form-control-lg" type="number" placeholder="****" onChange={(e)=>e.target.value.length === 4 ? checkPIN(e) : null}/>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={()=>props.setShowModal(false)}>Close</Button>
+            <button className='btn btn-secondary' onClick={()=>props.setShowModal(false)}>Close</button>
           </Modal.Footer>
         </Modal>
       );
