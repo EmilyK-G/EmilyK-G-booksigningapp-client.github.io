@@ -39,8 +39,20 @@ function NavBtn() {
 
   return (
     <>  
-        <Button className='prev_btn_style d-flex align-items-end' onClick={()=>setClicked(clicked - 1)}><Link className={(pathname === '/' ? ' btn_dissapear' : '')} to={prevPage}>{`<`}</Link></Button>
-        <Button className='next_btn_style d-flex align-items-end' onClick={()=>setClicked(clicked + 1)}><Link to={nextPage} className={(pathname === '/books' ? ' btn_dissapear' : '')}>{`>`}</Link></Button>
+        <Button 
+          className='prev_btn_style d-flex align-items-end' 
+          onClick={()=>setClicked(clicked - 1)}>
+            <Link  
+              to={prevPage}
+              className={(pathname === '/' ? ' btn_dissapear' : '')}>{`<`}</Link>
+        </Button>
+        <Button 
+          className='next_btn_style d-flex align-items-end' 
+          onClick={()=>setClicked(clicked + 1)}>
+            <Link 
+              to={nextPage} 
+              className={(pathname === '/books' ? ' btn_dissapear' : '')}>{`>`}</Link>
+        </Button>
         <Outlet />
     </>
   )
