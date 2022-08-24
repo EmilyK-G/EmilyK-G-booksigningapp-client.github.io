@@ -11,17 +11,6 @@ function NavBtn() {
 
   const location = useLocation();
   const pathname = location.pathname;
-  // const pageRef = useRef(pathname);
-
-  // useEffect(() => {
-  //   if(localStorage.getItem('pageName') !== null){
-  //     pageRef.current = JSON.parse(localStorage.getItem('pageName'));
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-  //   localStorage.setItem('pageName', JSON.stringify(location.pathname))
-  // }, [location.pathname])
   
   useEffect(() => {
     if(pathname === '/'){

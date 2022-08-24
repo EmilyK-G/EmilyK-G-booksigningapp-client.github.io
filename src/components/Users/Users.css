@@ -34,11 +34,13 @@
   }
 
   div.d-flex > ul.users_list > li.users_list_item {
-    border-radius: 5px;
+    border-radius: 50px;
     box-shadow: 2px 2px 2px 1px gray;
     width: 30%;
+    height: 80px;
     padding: 10px;
     margin: 10px 2px;
+    background-size: cover;
   }
   .users_list_item:hover {
     transform: translateY(-1px);

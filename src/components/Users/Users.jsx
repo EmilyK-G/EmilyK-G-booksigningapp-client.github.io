@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import { FaUser } from 'react-icons/fa';
-import Modal from './LoginModal';
+import LoginModal from './LoginModal';
 import './Users.css';
 
 function Users() {
+  const {usersArr} = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
 
   function handleListItemClick() {
@@ -15,10 +17,12 @@ function Users() {
         <h1 className='users_title mb-0'>Who Are You?</h1>
       </header>
       <hr className="mb-4 users_separator"></hr>
-      <Modal showModal={showModal} setShowModal={setShowModal}/>
+      <LoginModal showModal={showModal} setShowModal={setShowModal}/>
       <ul className='users_list d-flex' onClick={(e)=>handleListItemClick(e)}>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
+        {usersArr.map((user)=>{
+          return <li className='users_list_item' style={{backgroundImage: `url(${user.Picture})`}} onClick={(e)=>handleListItemClick(e)}></li>   
+        })}
+
         <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
         <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
         <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>

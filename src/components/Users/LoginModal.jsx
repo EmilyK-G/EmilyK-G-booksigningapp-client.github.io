@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
+import { useContext } from 'react';
 
 function LoginModal(props) {
+    const {usersArr} = useContext(UserContext);
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);
-    const myPIN = "5678";
+  
     function checkPIN(e) {
         setIsInvalid(false);
-        if(e.target.value === myPIN){
+        if(e.target.value === usersArr[0].PIN){
             setIsCorrect(true)
         } else {
             setIsCorrect(false)
