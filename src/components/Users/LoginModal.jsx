@@ -6,13 +6,14 @@ import './LoginModal.css';
 import { useContext } from 'react';
 
 function LoginModal(props) {
-    const {usersArr} = useContext(UserContext);
+    const {setLoggedIn} = useContext(UserContext);
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);
   
     function checkPIN(e) {
         setIsInvalid(false);
         if(e.target.value === props.userPIN){
+            setLoggedIn(true);
             setIsCorrect(true)
         } else {
             setIsCorrect(false)

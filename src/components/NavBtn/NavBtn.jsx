@@ -45,7 +45,7 @@ function NavBtn() {
             onClick={()=>setClicked(clicked + 1)}>
               <Link 
                 to={nextPage} 
-                className={(pathname === '/books' ? ' btn_dissapear' : '')}>{`>`}</Link>
+                className={(pathname === '/books' ? ' btn_dissapear' : pathname === '/users' && !loggedIn ? ' btn_dissapear' : '')}>{`>`}</Link>
           </Button>
         </div>
     

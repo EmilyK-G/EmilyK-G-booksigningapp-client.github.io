@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 import duckPic from '../images/duck.jpg';
 import pandaPic from '../images/panda.png';
 import erizoPic from '../images/erizo.jpg';
+import chihuahuaPic from '../images/chihuahua.jpg';
 
 
 const UserContext = createContext();
@@ -32,6 +33,14 @@ const ContextProvider = ({children}) => {
       Class_month:"July",
       Class_year:"2022",
       Picture: `${erizoPic}`
+    },
+    {
+      Id:"4",
+      Name:"Pinky",
+      PIN:"1999",
+      Class_month:"July",
+      Class_year:"2022",
+      Picture: `${chihuahuaPic}`
     }
   ]
   return(

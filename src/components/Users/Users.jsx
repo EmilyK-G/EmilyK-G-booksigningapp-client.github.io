@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import { FaUser } from 'react-icons/fa';
 import LoginModal from './LoginModal';
 import './Users.css';
 
