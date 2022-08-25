@@ -21,16 +21,25 @@
 }
 .book_list {
   list-style-type: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 div.d-flex > ul.book_list > li.book_list_item {
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px gray;
-  min-width: 276px;
+  width: 133px;
   padding: 10px;
   margin: 10px 2px;
 }
 .book_list_item:hover {
   transform: translateY(-1px);
   cursor: pointer;
+}
+.span_img {
+  border-radius: 50px;
+  box-shadow: 2px 2px 2px 1px gray;
+  width: 25%;
+  height: 30px;
+  padding: 10px;
+  margin: 0;
+  background-size: cover;
 }

@@ -6,12 +6,10 @@ import './Users.css';
 function Users() {
   const {usersArr} = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [userPIN, setUserPIN] = useState('');
+  const [userSelected, setUserSelected] = useState({})
 
-  function handleListItemClick(name, PIN) {
-    setUserName(name);
-    setUserPIN(PIN)
+  function handleListItemClick(user) {
+    setUserSelected(user);
     setShowModal(true)
   }
   return (
@@ -20,13 +18,13 @@ function Users() {
         <h1 className='users_title mb-0'>Who Are You?</h1>
       </header>
       <hr className="mb-4 users_separator"></hr>
-      <LoginModal showModal={showModal} setShowModal={setShowModal} userName={userName} userPIN={userPIN}/>
+      <LoginModal showModal={showModal} setShowModal={setShowModal} userSelected={userSelected}/>
       <ul className='users_list d-flex'>
         {usersArr.map((user)=>{
           return <li key={user.Id} 
                      className='users_list_item' 
                      style={{backgroundImage: `url(${user.Picture})`}} 
-                     onClick={()=>handleListItemClick(user.Name, user.PIN)}></li>   
+                     onClick={()=>handleListItemClick(user)}></li>   
         })}
       </ul>
     </div>

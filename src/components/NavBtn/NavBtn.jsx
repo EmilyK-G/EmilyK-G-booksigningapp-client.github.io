@@ -32,6 +32,7 @@ function NavBtn() {
     <>  
         <div className='prev_btn_container_style d-flex align-items-end' >
           <Button 
+            variant='default'
             className='nav_btn_style' 
             onClick={()=>setClicked(clicked - 1)}>
               <Link  
@@ -41,6 +42,7 @@ function NavBtn() {
         </div>
         <div className='next_btn_container_style d-flex align-items-end' >
           <Button 
+            variant='default'
             className='nav_btn_style' 
             onClick={()=>setClicked(clicked + 1)}>
               <Link 

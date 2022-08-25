@@ -6,15 +6,20 @@ import './LoginModal.css';
 import { useContext } from 'react';
 
 function LoginModal(props) {
-    const {setLoggedIn} = useContext(UserContext);
+    const {setLoggedIn, setLoggedUser} = useContext(UserContext);
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);
-  
+    const thisUser = props.userSelected;
+
     function checkPIN(e) {
         setIsInvalid(false);
-        if(e.target.value === props.userPIN){
+        if(e.target.value === thisUser.PIN){
             setLoggedIn(true);
-            setIsCorrect(true)
+            setLoggedUser(props.userSelected);
+            setIsCorrect(true);
+            setTimeout(()=>{
+              props.setShowModal(false)
+            }, 500)
         } else {
             setIsCorrect(false)
         }
@@ -29,7 +34,7 @@ function LoginModal(props) {
         >
           <Modal.Header>
             <Modal.Title id="contained-modal-title-vcenter">
-              Hi {props.userName}!
+              Hi {thisUser.Name}!
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
