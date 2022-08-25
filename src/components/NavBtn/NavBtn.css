@@ -2,7 +2,6 @@
   background-color: transparent;
   border-color: transparent;
 }
-
 a {
   text-decoration: none;
   color: #898194;
@@ -10,26 +9,25 @@ a {
 a:hover {
   color: indigo;
 }
-.prev_btn_style {
+.prev_btn_container_style {
   position: fixed;
   height: 95%;
   left: 5%;
   z-index: 50;
-  font-size: 4rem;
   padding: 0;
+}
+.nav_btn_style {
   background-color: transparent;
   border: none;
+  font-size: 4rem;
 }
 
-.next_btn_style {
+.next_btn_container_style {
     position: fixed;
     height: 95%;
     right: 5%;
     z-index: 50;
-    font-size: 4rem;
     padding: 0;
-    background-color: transparent;
-    border: none;
   }
 
 .btn_dissapear {

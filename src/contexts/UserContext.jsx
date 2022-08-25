@@ -10,6 +10,7 @@ const ContextProvider = ({children}) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const usersArr = [
     {
+      Id:"1",
       Name:"Perry",
       PIN:"5678",
       Class_month:"July",
@@ -17,6 +18,7 @@ const ContextProvider = ({children}) => {
       Picture: `${duckPic}`
     },
     {
+      Id:"2",
       Name:"Peter",
       PIN:"1234",
       Class_month:"July",
@@ -24,6 +26,7 @@ const ContextProvider = ({children}) => {
       Picture: `${pandaPic}`
     },
     {
+      Id:"3",
       Name:"Herman",
       PIN:"4321",
       Class_month:"July",

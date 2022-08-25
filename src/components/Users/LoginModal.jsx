@@ -12,7 +12,7 @@ function LoginModal(props) {
   
     function checkPIN(e) {
         setIsInvalid(false);
-        if(e.target.value === usersArr[0].PIN){
+        if(e.target.value === props.userPIN){
             setIsCorrect(true)
         } else {
             setIsCorrect(false)
@@ -28,7 +28,7 @@ function LoginModal(props) {
         >
           <Modal.Header>
             <Modal.Title id="contained-modal-title-vcenter">
-              Hi Perry!
+              Hi {props.userName}!
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>

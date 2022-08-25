@@ -7,8 +7,12 @@ import './Users.css';
 function Users() {
   const {usersArr} = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [userPIN, setUserPIN] = useState('');
 
-  function handleListItemClick() {
+  function handleListItemClick(name, PIN) {
+    setUserName(name);
+    setUserPIN(PIN)
     setShowModal(true)
   }
   return (
@@ -17,50 +21,14 @@ function Users() {
         <h1 className='users_title mb-0'>Who Are You?</h1>
       </header>
       <hr className="mb-4 users_separator"></hr>
-      <LoginModal showModal={showModal} setShowModal={setShowModal}/>
-      <ul className='users_list d-flex' onClick={(e)=>handleListItemClick(e)}>
+      <LoginModal showModal={showModal} setShowModal={setShowModal} userName={userName} userPIN={userPIN}/>
+      <ul className='users_list d-flex'>
         {usersArr.map((user)=>{
-          return <li className='users_list_item' style={{backgroundImage: `url(${user.Picture})`}} onClick={(e)=>handleListItemClick(e)}></li>   
+          return <li key={user.Id} 
+                     className='users_list_item' 
+                     style={{backgroundImage: `url(${user.Picture})`}} 
+                     onClick={()=>handleListItemClick(user.Name, user.PIN)}></li>   
         })}
-
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
-        <li className='users_list_item' onClick={(e)=>handleListItemClick(e)}><FaUser/></li>
       </ul>
     </div>
   )
