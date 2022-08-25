@@ -27,8 +27,10 @@ div.d-flex > ul.book_list > li.book_list_item {
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px gray;
   width: 133px;
-  padding: 10px;
-  margin: 10px 2px;
+  height: 60px;
+  padding: 0 10px 0 5px;
+  margin: 4px 2px;
+  background-color: rgba(245, 245, 245, 0.76);
 }
 .book_list_item:hover {
   transform: translateY(-1px);
@@ -37,8 +39,8 @@ div.d-flex > ul.book_list > li.book_list_item {
 .span_img {
   border-radius: 50px;
   box-shadow: 2px 2px 2px 1px gray;
-  width: 25%;
-  height: 30px;
+  width: 40%;
+  height: 49px;
   padding: 10px;
   margin: 0;
   background-size: cover;

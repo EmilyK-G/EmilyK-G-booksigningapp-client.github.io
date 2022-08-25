@@ -52,7 +52,7 @@ const ContextProvider = ({children}) => {
       Id:"5",
       Name:"Newton",
       LastName:"Ñu",
-      PIN:"1999",
+      PIN:"1998",
       Class_month:"July",
       Class_year:"2022",
       Picture: `${ÑuPic}`

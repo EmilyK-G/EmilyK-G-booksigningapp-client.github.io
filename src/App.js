@@ -1,32 +1,39 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom";
-import Welcome from './components/Welcome/Welcome';
+import { useContext } from "react";
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+import { UserContext } from './contexts/UserContext';
+import Users from './components/Users/Users';
+import Books from './components/Books/Books';
+import Messages from './components/Messages/Messages';
+import MyBook from './components/MyBook/MyBook';
 import NavBtn from './components/NavBtn/NavBtn';
-import {Parallax} from 'react-parallax';
-import background2 from './images/background2.png'
 import './App.css';
 
 function App() {
-  const [firstPage, setFirstPage] = useState(true);
-  const location = useLocation();
+  //const {loggedIn} = useContext(UserContext);
 
-  useEffect(() => {
-    if(location.pathname === '/'){
-      setFirstPage(true)
-    } else {
-      setFirstPage(false)
-    }
-    console.log(location.pathname)
-  }, [location])
-  
   return (
     <div className="App">
-      <Parallax strength={-600} bgImage={background2} style={ {backgroundSize: 'cover'} }>
       <div className='content content_bgr'>
-      {firstPage && <Welcome />}
-          <NavBtn />
+      <Routes>
+          <Route path="/" element={<NavBtn/>}>
+            <Route path="users" element={<Users />} />
+            <Route path="books" element={<Books />} />
+            <Route path="messages" element={<Messages/>}/>
+            <Route path="my-book" element={<MyBook/>}/>
+            <Route
+                path="*"
+                element={
+                  <main style={{ padding: "1rem" }}>
+                    <p>There's nothing here!</p>
+                  </main>
+                }
+              />
+          </Route>
+      </Routes>
       </div>
-      </Parallax>
     </div>
   );
 }
