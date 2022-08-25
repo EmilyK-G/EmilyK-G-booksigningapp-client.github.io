@@ -10,7 +10,8 @@ import App from './App';
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
 import Messages from './components/Messages/Messages';
-import { ContextProvider, UserContext } from './contexts/UserContext';
+import MyBook from './components/MyBook/MyBook';
+import { ContextProvider } from './contexts/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
           <Route path="users" element={<Users />} />
           <Route path="books" element={<Books />} />
           <Route path="messages" element={<Messages/>}/>
+          <Route path="my-book" element={<MyBook/>}/>
           <Route
               path="*"
               element={

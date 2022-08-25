@@ -16,17 +16,20 @@ function NavBtn() {
   
   useEffect(() => {
     if(pathname === '/'){
-      setNextPage('/users')
+      loggedIn ? setNextPage('/my-book') : setNextPage('/users')
     }
     if(pathname === '/users'){
       setNextPage('/books')
       setPrevPage('/')
     }
     if(pathname === '/books'){
-      setPrevPage('/users')
+      setPrevPage('/my-book')
+    }
+    if(pathname === '/my-book'){
+      setPrevPage('/')
     }
     console.log(pathname)
-  }, [pathname, clicked])
+  }, [pathname, clicked, loggedIn])
 
   return (
     <>  
