@@ -4,14 +4,23 @@ import pandaPic from '../images/panda.png';
 import erizoPic from '../images/erizo.jpg';
 import chihuahuaPic from '../images/chihuahua.jpg';
 import ÑuPic from '../images/Ñu.jpg';
+import { useEffect } from 'react';
 
 
 const UserContext = createContext();
 
 const ContextProvider = ({children}) => {
-  const [loggedUser, setLoggedUser] = useState('');
+  const [loggedUser, setLoggedUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userSelected, setUserSelected] = useState('');
+  const [userSelected, setUserSelected] = useState({});
+
+  useEffect(()=>{
+    if(!loggedIn){
+      setLoggedUser({})
+    } else {
+      setUserSelected({})
+    }
+  }, [loggedIn])
   
   const usersArr = [
     {

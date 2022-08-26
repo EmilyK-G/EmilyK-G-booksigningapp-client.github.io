@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+//import { useContext } from "react";
 import {
   Routes,
-  Route
+  Route,
 } from "react-router-dom";
-import { UserContext } from './contexts/UserContext';
+//import { UserContext } from './contexts/UserContext';
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
 import Messages from './components/Messages/Messages';
@@ -14,16 +13,8 @@ import MyBook from './components/MyBook/MyBook';
 import './App.css';
 
 function App() {
-  const [myPath, setMyPath] = useState('');
-  const {loggedUser} = useContext(UserContext);
-  // const location = useLocation();
-  // const pathname = location.pathname;
-
-  // useEffect(() => {
-  //   setMyPath(`books/${loggedUser.Id}`)
-  // }, [loggedUser.Id])
+  //const {loggedUser} = useContext(UserContext);
   
-
   return (
     <div className="App">
       <div className='content content_bgr'>

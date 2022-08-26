@@ -34,6 +34,7 @@ function Books() {
           }
         })}
       </ul>
+      <Outlet />
     </div>
     
   )

@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { UserContext } from '../../contexts/UserContext';
 import { Outlet, Link } from "react-router-dom";
 import Welcome from '../Welcome/Welcome';
-import UserWelcome from '../UserWelcome/UserWelcome';
 import LoginModal from './LoginModal';
 import Button from 'react-bootstrap/Button';
 import './NavBtn.css';
@@ -36,7 +35,7 @@ function NavBtn() {
   return (
     <>  
         <div className='prev_btn_container_style d-flex align-items-end' >
-          {pathname === '/' ? !loggedIn ? <Welcome /> : <UserWelcome /> : null}
+          {pathname === '/' && <Welcome />}
           <LoginModal userSelected={userSelected}/>
           <Button 
             variant='default'
