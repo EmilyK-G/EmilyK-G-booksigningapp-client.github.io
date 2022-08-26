@@ -1,16 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import LoginModal from './LoginModal';
 import './Users.css';
 
 function Users() {
-  const {usersArr} = useContext(UserContext);
-  const [showModal, setShowModal] = useState(false);
-  const [userSelected, setUserSelected] = useState({})
+  const {usersArr, setUserSelected} = useContext(UserContext);
 
   function handleListItemClick(user) {
-    setUserSelected(user);
-    setShowModal(true)
+    setUserSelected(user)
   }
   return (
     <div className="d-flex flex-column justify-content-center">
@@ -18,7 +14,6 @@ function Users() {
         <h1 className='users_title mb-0'>Who Are You?</h1>
       </header>
       <hr className="mb-4 users_separator"></hr>
-      <LoginModal showModal={showModal} setShowModal={setShowModal} userSelected={userSelected}/>
       <ul className='users_list d-flex'>
         {usersArr.map((user)=>{
           return <li key={user.Id} 

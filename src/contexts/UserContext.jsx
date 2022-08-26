@@ -11,6 +11,8 @@ const UserContext = createContext();
 const ContextProvider = ({children}) => {
   const [loggedUser, setLoggedUser] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userSelected, setUserSelected] = useState('');
+  
   const usersArr = [
     {
       Id:"1",
@@ -59,7 +61,7 @@ const ContextProvider = ({children}) => {
     }
   ]
   return(
-    <UserContext.Provider value={{usersArr, loggedIn, setLoggedIn, loggedUser, setLoggedUser}}>
+    <UserContext.Provider value={{usersArr, loggedIn, setLoggedIn, loggedUser, setLoggedUser, userSelected, setUserSelected}}>
       {children}
     </UserContext.Provider>
   )
