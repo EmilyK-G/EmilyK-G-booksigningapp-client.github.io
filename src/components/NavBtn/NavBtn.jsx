@@ -18,14 +18,14 @@ function NavBtn() {
   
   useEffect(() => {
     if(pathname === '/'){
-      loggedIn ? setNextPage('/my-book') : setNextPage('/users')
+      loggedIn ? setNextPage('/dashboard') : setNextPage('/users')
     }
-    if(pathname === '/users' || pathname === '/my-book'){
+    if(pathname === '/users' || pathname === '/dashboard'){
       setNextPage('/books')
       setPrevPage('/')
     }
     if(pathname === '/books'){
-      setPrevPage('/my-book')
+      setPrevPage('/dashboard')
     }
     console.log(pathname)
   }, [pathname, loggedIn])
@@ -43,7 +43,7 @@ function NavBtn() {
             className='nav_btn_style' >
               <Link  
                 to={prevPage}
-                className={ 'nav_link_style' + (pathname === '/' ? ' btn_dissapear' : '')}>{`<`}</Link>
+                className={ 'nav_link_style' + (pathname === '/' ? ' btn_dissapear' : '') + (pathname === '/dashboard' ? ' btn_dissapear' : '' )}>{`<`}</Link>
           </Button>
         </div>
         <div className='next_btn_container_style d-flex align-items-end' >

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Outlet, Link } from "react-router-dom";
 import { UserContext } from '../../contexts/UserContext';
 import './Books.css'
 
@@ -22,10 +23,14 @@ function Books() {
                     onClick={()=>{handleBookClick(book)}}>
                       <div 
                         className='span_img' 
-                        style={{backgroundImage: `url(${book.Picture})`}}></div>My Book</li>
+                        style={{backgroundImage: `url(${book.Picture})`}}></div>
+                      <Link to={'/my-book'}>My Book</Link>
+                    </li>
           } else {
               return <li key={book.Id} 
-              className='book_list_item d-flex align-items-center justify-content-between'><div className='span_img' style={{backgroundImage: `url(${book.Picture})`}}></div>{book.Name}'s</li>  
+              className='book_list_item d-flex align-items-center justify-content-between'>
+                <div className='span_img' style={{backgroundImage: `url(${book.Picture})`}}></div>
+                <Link to={`${book.Id}`}>{book.Name}'s</Link></li>  
           }
         })}
       </ul>

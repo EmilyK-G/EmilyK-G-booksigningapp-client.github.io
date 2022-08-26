@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useLocation } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
 import {
   Routes,
   Route
@@ -7,12 +8,21 @@ import { UserContext } from './contexts/UserContext';
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
 import Messages from './components/Messages/Messages';
-import MyBook from './components/MyBook/MyBook';
+import Dashboard from './components/Dashboard/Dashboard';
 import NavBtn from './components/NavBtn/NavBtn';
+import MyBook from './components/MyBook/MyBook';
 import './App.css';
 
 function App() {
-  //const {loggedIn} = useContext(UserContext);
+  const [myPath, setMyPath] = useState('');
+  const {loggedUser} = useContext(UserContext);
+  // const location = useLocation();
+  // const pathname = location.pathname;
+
+  // useEffect(() => {
+  //   setMyPath(`books/${loggedUser.Id}`)
+  // }, [loggedUser.Id])
+  
 
   return (
     <div className="App">
@@ -21,7 +31,8 @@ function App() {
           <Route path="/" element={<NavBtn/>}>
             <Route path="users" element={<Users />} />
             <Route path="books" element={<Books />} />
-            <Route path="messages" element={<Messages/>}/>
+            <Route path="books/:id" element={<Messages/>}/>
+            <Route path="dashboard" element={<Dashboard/>}/>
             <Route path="my-book" element={<MyBook/>}/>
             <Route
                 path="*"
