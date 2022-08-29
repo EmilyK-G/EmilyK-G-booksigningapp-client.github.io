@@ -13,16 +13,17 @@ function Dashboard() {
   }
 
   return (
-    <>
-      <div className='d-flex' >
-          <button 
-            variant='outline'
-            className='btn btn-outline-danger' 
-            onClick={()=>{userLogout()}}>
-            Log Out
-          </button>
-        </div>
-    </>
+    
+    <div className='d-flex' >
+        <button 
+          variant='outline'
+          className='btn btn-outline-danger mr-0 align-self-start' 
+          onClick={()=>{userLogout()}}>
+          Log Out
+        </button>
+        <div></div>
+      </div>
+    
   )
 }
 

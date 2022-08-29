@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { UserContext } from '../../contexts/UserContext';
+import { SignatureContext } from '../../contexts/SignatureContext';
 import './Books.css'
 
 function Books() {
   const {usersArr, loggedUser} = useContext(UserContext);
+  const { setSigning } = useContext(SignatureContext);
 
-  function handleBookClick () {
-    
+  function handleBookClick (mate) {
+    setSigning(mate);
+    console.log(mate)
   }
   return (
     <div className='d-flex flex-column justify-content-center'>
@@ -30,7 +33,7 @@ function Books() {
               return <li key={book.Id} 
               className='book_list_item d-flex align-items-center justify-content-between'>
                 <div className='span_img' style={{backgroundImage: `url(${book.Picture})`}}></div>
-                <Link to={`${book.Id}`}>{book.Name}'s</Link></li>  
+                <Link to={`${book.Id}`} onClick={()=>handleBookClick(book)}>{book.Name}'s</Link></li>  
           }
         })}
       </ul>
