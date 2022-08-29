@@ -29,7 +29,8 @@ const UserContextProvider = ({children}) => {
       PIN:"5678",
       Class_month:"July",
       Class_year:"2022",
-      Picture: `${platypusPic}`
+      Picture: `${platypusPic}`,
+      Signature: "Perry el ornitorrinco"
     },
     {
       Id:"2",
@@ -38,7 +39,8 @@ const UserContextProvider = ({children}) => {
       PIN:"1234",
       Class_month:"July",
       Class_year:"2022",
-      Picture: `${pandaPic}`
+      Picture: `${pandaPic}`,
+      Signature: "Peter el panda"
     },
     {
       Id:"3",
@@ -47,7 +49,8 @@ const UserContextProvider = ({children}) => {
       PIN:"4321",
       Class_month:"July",
       Class_year:"2022",
-      Picture: `${erizoPic}`
+      Picture: `${erizoPic}`,
+      Signature: "Herman el erizo"
     },
     {
       Id:"4",
@@ -56,7 +59,8 @@ const UserContextProvider = ({children}) => {
       PIN:"1999",
       Class_month:"July",
       Class_year:"2022",
-      Picture: `${chihuahuaPic}`
+      Picture: `${chihuahuaPic}`,
+      Signature: "Pinky el chihuahua"
     },
     {
       Id:"5",
@@ -65,7 +69,8 @@ const UserContextProvider = ({children}) => {
       PIN:"1998",
       Class_month:"July",
       Class_year:"2022",
-      Picture: `${ÑuPic}`
+      Picture: `${ÑuPic}`,
+      Signature: "Newton el ñu"
     }
   ]
   return(

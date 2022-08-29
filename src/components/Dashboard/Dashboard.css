@@ -1,3 +1,36 @@
-.profile_pic{
+.logout_btn{
+    z-index: 10;
+}
+.profile_pic_div{
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
     background-size: cover ;
+}
+.profile_name{
+    margin-top: -20px;
+}
+.profile_div_1{
+    background-color: aliceblue;
+    margin: 50px -20px;
+}
+.profile_div_2{
+    background-color: aliceblue;
+    margin: 50px -20px;
+}
+.profile_div_3{
+    background-color: aliceblue;
+    margin: 50px -20px;
+}
+.books_left_num{
+    background-color: aquamarine;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+}
+.div_2_text_1{
+    margin-left: 30px;
+}
+.div_2_text_2{
+    margin-right: 30px;
 }
