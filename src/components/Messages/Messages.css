@@ -3,7 +3,22 @@
     text-align: -webkit-auto;
 }
 .message_footer {
-    font-size: .6em;
+    font-size: .7rem;
     font-style: italic;
     color: #6c757d;
 }
+.bk_owner_title{
+    margin-bottom: -12px;
+    z-index: 5;
+    color: rgb(0, 113, 133);
+    font-size: 1.5 rem;
+}
+textarea.msg_txt_area{
+    font-style: italic;
+}
+textarea.msg_txt_area:focus{
+    outline:0px;
+    -webkit-appearance:none;
+    box-shadow: none;
+    border: none;
+   }

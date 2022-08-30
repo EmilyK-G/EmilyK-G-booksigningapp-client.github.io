@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { UserContext } from '../../contexts/UserContext';
 import { SignatureContext } from '../../contexts/SignatureContext';
@@ -6,7 +6,11 @@ import './Books.css'
 
 function Books() {
   const {usersArr, loggedUser} = useContext(UserContext);
-  const { setSigning } = useContext(SignatureContext);
+  const { setSigning, mySignaturesCount } = useContext(SignatureContext);
+  const messagesSent = ()=> mySignaturesCount(loggedUser.Id);
+  useEffect(()=>{
+    messagesSent()
+  }, [])
 
   function handleBookClick (mate) {
     setSigning(mate);

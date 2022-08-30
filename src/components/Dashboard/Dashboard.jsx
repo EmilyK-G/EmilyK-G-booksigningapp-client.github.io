@@ -10,17 +10,18 @@ import { useEffect } from 'react';
 function Dashboard() {
   const{loggedUser, setLoggedIn, usersArr} = useContext(UserContext);
   const{booksSigned, setBooksSigned} = useContext(SignatureContext);
-  const [booksToSign, setBooksToSign] = useState(4);
+  const [booksToSign, setBooksToSign] = useState(0);
   const navigate = useNavigate();
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
-    if(booksSigned >= 1){
-      const toSign = usrs - booksSigned;
+    if(booksSigned.length >= 1){
+      const toSign = usrs - booksSigned.length;
       setBooksToSign(toSign)
     } else{
         setBooksToSign(usrs)
     }
+    console.log(booksSigned.length)
   }, [usersArr.length, booksSigned])
 
   function userLogout() {
