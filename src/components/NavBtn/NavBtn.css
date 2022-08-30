@@ -14,6 +14,7 @@ a:hover {
   height: 95%;
   left: 5%;
   padding: 0;
+  z-index: 1;
 }
 .nav_btn_style {
   background-color: transparent;
@@ -25,6 +26,7 @@ a:hover {
     height: 95%;
     right: 5%;
     padding: 0;
+    z-index: 1;
   }
 
 .btn_dissapear {

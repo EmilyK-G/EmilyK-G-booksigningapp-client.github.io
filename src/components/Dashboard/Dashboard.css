@@ -1,36 +1,80 @@
+.dshbrd_container{
+    height: 150vh;
+}
 .logout_btn{
     z-index: 10;
+    color: red;
+    font-size: 2rem;
 }
 .profile_pic_div{
-    height: 150px;
-    width: 150px;
-    border-radius: 75px;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
     background-size: cover ;
 }
 .profile_name{
     margin-top: -20px;
+    color: black;
+    font-size: 2rem;
 }
 .profile_div_1{
-    background-color: aliceblue;
-    margin: 50px -20px;
+    background-color: #d0cccb;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    width: -webkit-fill-available;
 }
 .profile_div_2{
-    background-color: aliceblue;
-    margin: 50px -20px;
+    background-color: #225691;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    height: 300px;
+    width: -webkit-fill-available;
+    font-size: 2rem;
 }
 .profile_div_3{
-    background-color: aliceblue;
-    margin: 50px -20px;
+    background-color: #b6d6e0;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    height: 84px;
+    width: -webkit-fill-available;
 }
 .books_left_num{
-    background-color: aquamarine;
-    height: 40px;
-    width: 40px;
+    background-color: #ecd7c8;
+    height: 120px;
+    width: 120px;
     margin-right: 20px;
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 5px;
+    font-size: 4rem;
 }
 .div_2_text_1{
-    margin-left: 30px;
+    margin: 10px 30px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 5px black;
 }
 .div_2_text_2{
-    margin-right: 30px;
+    margin: 10px 30px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 5px black;
+}
+.div_3_text_1{
+    font-size: 2rem;
+    font-style: italic;
+    color: #084298;
+    margin-top: -50px;
+}
+.div_3_text_signature{
+    font-size: 2rem;
+    font-style: italic;
+    color: #842029;
+}
+.btn_edit_signature{
+    z-index: 5;
+}
+.btn_edit_signature:hover{
+    cursor: pointer;
 }
