@@ -28,7 +28,7 @@
 .profile_div_2{
     background-color: #225691;
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 0;
     height: 300px;
     width: -webkit-fill-available;
@@ -37,7 +37,7 @@
 .profile_div_3{
     background-color: #b6d6e0;
     position: absolute;
-    bottom: 5%;
+    bottom: 8%;
     left: 0;
     height: 84px;
     width: -webkit-fill-available;
@@ -62,18 +62,24 @@
     text-shadow: 1px 1px 5px black;
 }
 .div_3_text_1{
+    position: absolute;
+    top: -42%;
     font-size: 2rem;
     font-style: italic;
     color: #084298;
-    margin-top: -50px;
 }
 .div_3_text_signature{
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-style: italic;
     color: #842029;
 }
 .btn_edit_signature{
+    color: #842029;
     z-index: 5;
+}
+svg {
+    stroke: #842029;
+    fill: #842029;
 }
 .btn_edit_signature:hover{
     cursor: pointer;
