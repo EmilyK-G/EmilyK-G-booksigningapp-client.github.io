@@ -23,7 +23,17 @@ function Messages() {
 
   function handleSubmitMessage(){
 
-    //add Message to Messages Database HERE
+    //add Message to Messages array (Database) HERE ex:
+    messagesArr.push({
+      message_id: `${Math.floor(Math.random() * 100) + 1}`, //use default _id value instead
+      message: message,
+      recipient: `${signing.Name} ${signing.LastName}`,
+      recipient_id: signing.Id,
+      sender: `${loggedUser.Name} ${loggedUser.LastName}`,
+      sender_id: loggedUser.Id,
+      sent_date: "Sep 30th, 2022",
+      signature: loggedUser.Signature
+    })
 
     setMessage('');
     console.log(messagesArr)
@@ -37,15 +47,15 @@ function Messages() {
         </div>
         <figcaption className='message_footer mx-3 mt-1'>From: {loggedUser.Signature}</figcaption>
         <button type='submit' className='btn btn-success align-self-end' onClick={()=>handleSubmitMessage()}>Send</button>
-        <div className='prevMsg_container p-3'>
+        <div className='prevMsg_container d-flex  flex-column align-items-center p-3'>
             <header className='my-5'>
                 <h2>Previous Messages</h2>
                 <hr />
             </header>
             {
               palMsgs.length >= 1 ? palMsgs.map(mes => {
-                return <PrevMessages mes={mes}/>
-              }) : <h4>No previous messages</h4>
+                return <PrevMessages mes={mes} key={mes.message_id}/>
+              }) : <small class="text-muted">No messages sent</small>
             }
             
         </div>

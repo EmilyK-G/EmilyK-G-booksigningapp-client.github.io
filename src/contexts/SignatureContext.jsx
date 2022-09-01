@@ -5,6 +5,7 @@ const SignatureContext = createContext();
 const SignatureContextProvider = ({children})=> {
     const [signing, setSigning] = useState({});
     const [booksSigned, setBooksSigned] = useState([]);
+    const [myBookPage, setMyBookPage] = useState([]);
 
     const messagesArr = [
         {
@@ -176,6 +177,16 @@ const SignatureContextProvider = ({children})=> {
             sender_id: "5",
             sent_date: "Sep 30th, 2022",
             signature: "Newton el ñu"
+        },
+        {
+            message: "Dear Herman, \nIt was a great pleasure to meet you. Your spikes are what some may call 'the bomb'. I hope to see you again soon.\nSincerely,",
+            message_id: "18",
+            recipient: "Herman Erizo",
+            recipient_id: "3",
+            sender: "Newton Ñu",
+            sender_id: "5",
+            sent_date: "Sep 30th, 2022",
+            signature: "Newton el ñu"
         }
     ];
 
@@ -190,8 +201,19 @@ const SignatureContextProvider = ({children})=> {
         console.log(mySignaturesArr)
     }
     
+    function myMessages(myId){
+        const myMessagesArr = []
+        messagesArr.forEach(mes=>{
+            if (mes.recipient_id === myId){
+                myMessagesArr.push(mes)
+            }
+        })
+        setMyBookPage(myMessagesArr)
+        console.log(myMessagesArr)
+    }
+
     return (
-        <SignatureContext.Provider value={{signing, setSigning, booksSigned, setBooksSigned, messagesArr, mySignaturesCount}}>
+        <SignatureContext.Provider value={{signing, setSigning, booksSigned, setBooksSigned, messagesArr, mySignaturesCount, myBookPage, myMessages}}>
             {children}
         </SignatureContext.Provider>
         )

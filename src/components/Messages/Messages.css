@@ -24,4 +24,5 @@ textarea.msg_txt_area:focus{
    }
 .prevMsg_container {
     margin-top: 50px;
+    width: -webkit-fill-available;
 }
