@@ -8,6 +8,7 @@ const SignatureContextProvider = ({children})=> {
 
     const messagesArr = [
         {
+            message_id: "1",
             message: "Hope to see you soon!",
             recipient: "Perry",
             recipient_id: "1",
@@ -17,6 +18,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Peter el panda"
         },
         {
+            message_id: "2",
             message: "Nice to be with you in class!!",
             recipient: "Herman",
             recipient_id: "3",
@@ -26,6 +28,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Peter el panda"
         },
         {
+            message_id: "3",
             message: "Have a safe trip home!",
             recipient: "Newton",
             recipient_id: "5",
@@ -35,6 +38,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Peter el panda"
         },
         {
+            message_id: "4",
             message: "Take care of Issa for me!",
             recipient: "Pinky",
             recipient_id: "4",
@@ -44,6 +48,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Peter el panda"
         },
         {
+            message_id: "5",
             message: "You rock Peter! See you at Doofs!",
             recipient: "Peter",
             recipient_id: "2",
@@ -53,6 +58,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Perry el ornitorrinco"
         },
         {
+            message_id: "6",
             message: "See you at the slider dude!",
             recipient: "Herman",
             recipient_id: "3",
@@ -62,6 +68,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Perry el ornitorrinco"
         },
         {
+            message_id: "7",
             message: "Nice to have you here neighbor!",
             recipient: "Pinky",
             recipient_id: "4",
@@ -71,6 +78,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Perry el ornitorrinco"
         },
         {
+            message_id: "8",
             message: "See you on vacations Newton!",
             recipient: "Newton",
             recipient_id: "5",
@@ -80,6 +88,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Perry el ornitorrinco"
         },
         {
+            message_id: "9",
             message: "See you at the slider pal!",
             recipient: "Perry",
             recipient_id: "1",
@@ -89,6 +98,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Herman el erizo"
         },
         {
+            message_id: "10",
             message: "Good punch bro!",
             recipient: "Peter",
             recipient_id: "2",
@@ -98,6 +108,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Herman el erizo"
         },
         {
+            message_id: "11",
             message: "You'll bring the tacos next time!",
             recipient: "Pinky",
             recipient_id: "4",
@@ -107,6 +118,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Herman el erizo"
         },
         {
+            message_id: "12",
             message: "I'll work out every day to be like you!",
             recipient: "Newton",
             recipient_id: "5",
@@ -116,6 +128,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Herman el erizo"
         },
         {
+            message_id: "13",
             message: "See you later pal! Say hi to Phineas from Issa:)",
             recipient: "Perry",
             recipient_id: "1",
@@ -125,6 +138,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Pinky el chihuahua"
         }, 
         {
+            message_id: "14",
             message: "Bye Peter! see you next round...",
             recipient: "Peter",
             recipient_id: "2",
@@ -134,6 +148,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Pinky el chihuahua"
         },
         {
+            message_id: "15",
             message: "Take care, Herman! (even though not necessary to even be so conscious about it)",
             recipient: "Herman",
             recipient_id: "3",
@@ -143,6 +158,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Pinky el chihuahua"
         },
         {
+            message_id: "16",
             message: "I'll bring tacos next time bro!",
             recipient: "Newton",
             recipient_id: "5",
@@ -152,6 +168,7 @@ const SignatureContextProvider = ({children})=> {
             signature: "Pinky el chihuahua"
         },
         {
+            message_id: "17",
             message: "Dear Perry el Ornitorrinco, it has been a pleasure to meet you. I'll see you next time.\nSincerely, ",
             recipient: "Perry",
             recipient_id: "1",
@@ -170,9 +187,9 @@ const SignatureContextProvider = ({children})=> {
             }
         })
         setBooksSigned(mySignaturesArr)
-
+        console.log(mySignaturesArr)
     }
-
+    
     return (
         <SignatureContext.Provider value={{signing, setSigning, booksSigned, setBooksSigned, messagesArr, mySignaturesCount}}>
             {children}

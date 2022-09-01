@@ -22,3 +22,6 @@ textarea.msg_txt_area:focus{
     box-shadow: none;
     border: none;
    }
+.prevMsg_container {
+    margin-top: 50px;
+}
