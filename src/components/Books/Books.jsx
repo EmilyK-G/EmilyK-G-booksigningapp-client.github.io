@@ -22,7 +22,7 @@ function Books() {
         <h1 className='books_title mb-0'>Books</h1>
       </header>
       <hr className="mb-4 books_separator"></hr>
-      <ul className='book_list d-flex flex-wrap justify-content-between'>
+      <ul className='book_list d-flex flex-wrap justify-content-between p-1'>
         {usersArr.map((book)=>{
           if(book.Id === loggedUser.Id){
             return <li key={loggedUser.Id} 
