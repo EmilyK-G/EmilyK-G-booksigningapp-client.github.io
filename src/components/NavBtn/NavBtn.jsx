@@ -77,7 +77,6 @@ function NavBtn() {
                 className={'nav_link_style' + (hideNextBtn ? ' btn_dissapear' : '')}>{`>`}</Link>
           </Button>
         </div>
-    
         <Outlet />
     </>
   )

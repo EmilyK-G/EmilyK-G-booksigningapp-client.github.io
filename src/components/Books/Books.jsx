@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { UserContext } from '../../contexts/UserContext';
 import { SignatureContext } from '../../contexts/SignatureContext';
-import './Books.css'
+import { motion } from 'framer-motion';
+import './Books.css';
 
 function Books() {
   const {usersArr, loggedUser} = useContext(UserContext);
@@ -17,6 +18,11 @@ function Books() {
     console.log(mate)
   }
   return (
+    <motion.div 
+      initial= {{opacity: 0, x:100}}
+      animate= {{opacity: 1, x: 0}}
+      exit= {{opacity:0, x:100}}
+      transition={{ duration: 0.2 }}>
     <div className='d-flex flex-column justify-content-center'>
       <header className='book_header align-self-center'>
         <h1 className='books_title mb-0'>Books</h1>
@@ -43,7 +49,7 @@ function Books() {
       </ul>
       <Outlet />
     </div>
-    
+    </motion.div>
   )
 }
 
