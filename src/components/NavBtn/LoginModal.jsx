@@ -42,6 +42,7 @@ function LoginModal() {
                 className={"form-control form-control-lg " + (isCorrect ? "input_correct" : isInvalid ? "input_invalid" : "input_incorrect")} 
                 type="number" 
                 placeholder="****" 
+                autoFocus
                 onChange={(e)=>e.target.value.length === 4 ? checkPIN(e) : setIsInvalid(true)} />
             <Alert variant='danger' show={!isCorrect && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>

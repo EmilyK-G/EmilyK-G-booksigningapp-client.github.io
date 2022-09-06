@@ -11,7 +11,7 @@ a:hover {
 }
 .prev_btn_container_style {
   position: fixed;
-  top: 85%;
+  top: 80%;
   left: 5%;
   padding: 0;
   z-index: 1;
@@ -23,7 +23,7 @@ a:hover {
 }
 .next_btn_container_style {
     position: fixed;
-    top: 85%;
+    top: 80%;
     right: 5%;
     padding: 0;
     z-index: 1;

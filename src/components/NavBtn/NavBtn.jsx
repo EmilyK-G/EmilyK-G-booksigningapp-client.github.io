@@ -65,7 +65,9 @@ function NavBtn() {
               <Link  
                 to={prevPage}
                 className={ 'nav_link_style' + (hidePrevBtn ? ' btn_dissapear' : '')}
-                onClick={()=>{setSigning(false)}}>{`<`}</Link>
+                onClick={()=>{setTimeout(()=>{
+                  setSigning(false)
+                }, 1000)}}>{`<`}</Link>
           </Button>
         </div>
         <div className='next_btn_container_style d-flex align-items-end' >

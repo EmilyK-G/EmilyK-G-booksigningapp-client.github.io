@@ -14,7 +14,7 @@ function Dashboard() {
   const{booksSigned} = useContext(SignatureContext);
   const [booksToSign, setBooksToSign] = useState(0);
   const navigate = useNavigate();
-  const parallaxRef = useRef()
+  const parallaxRef = useRef();
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
@@ -33,7 +33,7 @@ function Dashboard() {
   }
 
   return (
-    <Parallax pages={3}>
+    <Parallax ref={parallaxRef} pages={3}>
       <motion.div 
         initial= {{opacity: 0, x:-100}}
         animate= {{opacity: 1, x: 0}}
