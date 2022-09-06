@@ -61,7 +61,7 @@ function Messages() {
               {
                 palMsgs.length >= 1 ? palMsgs.map(mes => {
                   return <PrevMessages mes={mes} key={mes.message_id}/>
-                }) : <small class="text-muted">No messages sent</small>
+                }) : <small className="text-muted">No messages sent</small>
               }
           </div>
       </div>

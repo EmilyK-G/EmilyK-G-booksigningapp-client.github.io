@@ -16,9 +16,7 @@ function LoginModal() {
         if(e.target.value === userSelected.PIN){
             setLoggedUser(userSelected);
             setIsCorrect(true);
-            setTimeout(()=>{
-              setLoggedIn(true);
-            }, 700);
+            setLoggedIn(true);
             navigate('/books')
         } else {
             setIsCorrect(false)
