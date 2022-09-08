@@ -4,6 +4,7 @@ import {
   useLocation
 } from "react-router-dom";
 import { SignatureContextProvider } from './contexts/SignatureContext';
+import { NavigationContextProvider } from "./contexts/NavigationContext";
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
 import Messages from './components/Messages/Messages';
@@ -19,25 +20,27 @@ function App() {
     <div className="App">
       <div className='content content_bgr'>
       <SignatureContextProvider>
-        <AnimatePresence mode="wait">
-          <Routes key={location.pathname} location={location}>
-              <Route path="/" element={<NavBtn/>}>
-                <Route path="users" element={<Users />} />
-                <Route path="books" element={<Books />} />
-                <Route path="books/:id" element={<Messages/>}/>
-                <Route path="dashboard" element={<Dashboard/>}/>
-                <Route path="my-book" element={<MyBook/>}/>
-                <Route
-                    path="*"
-                    element={
-                      <main style={{ padding: "1rem" }}>
-                        <p>There's nothing here!</p>
-                      </main>
-                    }
-                  />
-              </Route>
-          </Routes>
-        </AnimatePresence>
+        <NavigationContextProvider>
+          <AnimatePresence mode="wait">
+            <Routes key={location.pathname} location={location}>
+                <Route path="/" element={<NavBtn/>}>
+                  <Route path="users" element={<Users />} />
+                  <Route path="books" element={<Books />} />
+                  <Route path="books/:id" element={<Messages/>}/>
+                  <Route path="dashboard" element={<Dashboard/>}/>
+                  <Route path="my-book" element={<MyBook/>}/>
+                  <Route
+                      path="*"
+                      element={
+                        <main style={{ padding: "1rem" }}>
+                          <p>There's nothing here!</p>
+                        </main>
+                      }
+                    />
+                </Route>
+            </Routes>
+          </AnimatePresence>
+        </NavigationContextProvider>
       </SignatureContextProvider>
       </div>
     </div>

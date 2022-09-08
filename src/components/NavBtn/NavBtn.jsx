@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useLocation } from "react-router-dom";
+import React, { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import { SignatureContext } from '../../contexts/SignatureContext';
+import { NavigationContext } from '../../contexts/NavigationContext';
 import { Outlet, Link } from "react-router-dom";
 import Welcome from '../Welcome/Welcome';
 import LoginModal from './LoginModal';
@@ -10,49 +9,7 @@ import './NavBtn.css';
 
 function NavBtn() {
   const { userSelected } = useContext( UserContext );
-  const { signing, setSigning } = useContext( SignatureContext );
-  const [nextPage, setNextPage] = useState('/');
-  const [prevPage, setPrevPage] = useState('/');
-  const [hidePrevBtn, setHidePrevBtn] = useState(false);
-  const [hideNextBtn, setHideNextBtn] = useState(false);
- 
-  const location = useLocation();
-  const pathname = location.pathname;
-  const matesBook = signing.Name;
-  
-  useEffect(() => {
-    if (matesBook){
-      setHideNextBtn(true);
-      setHidePrevBtn(false);
-      setPrevPage('/books')
-    } else {
-      if(pathname === '/'){
-        setHidePrevBtn(true);
-        setHideNextBtn(false);
-        setNextPage('/users')
-      }
-      if(pathname === '/users' || pathname === '/dashboard'){
-        setHidePrevBtn(false);
-        setHideNextBtn(true);
-        setNextPage('/books');
-        setPrevPage('/')
-      }
-      if(pathname === '/dashboard'){
-        setHidePrevBtn(true);
-        setHideNextBtn(false);
-        setNextPage('/books')
-      }
-      if(pathname === '/books'){
-        setHideNextBtn(true);
-        setHidePrevBtn(false);
-        setPrevPage('/dashboard');
-      }
-    }
-    console.log(pathname)
-  }, [pathname, matesBook])
-
- 
-
+  const {hideNextBtn, hidePrevBtn, nextPage, prevPage, pathname} = useContext( NavigationContext );
 
   return (
     <>  
@@ -64,10 +21,12 @@ function NavBtn() {
             className='nav_btn_style' >
               <Link  
                 to={prevPage}
-                className={ 'nav_link_style' + (hidePrevBtn ? ' btn_dissapear' : '')}
-                onClick={()=>{setTimeout(()=>{
-                  setSigning(false)
-                }, 1000)}}>{`<`}</Link>
+                className={ 
+                  'nav_link_style' + (hidePrevBtn ? ' btn_dissapear' : '')
+                }
+                onClick={
+                  console.log('on ', pathname, 'going to ', prevPage)
+                }>{`<`}</Link>
           </Button>
         </div>
         <div className='next_btn_container_style d-flex align-items-end' >

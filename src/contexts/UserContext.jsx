@@ -13,19 +13,6 @@ const UserContextProvider = ({children}) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userSelected, setUserSelected] = useState({});
 
-  // useEffect(()=>{
-  //   if(loggedUser.Name){
-  //     localStorage.setItem('loggedUser', JSON.stringify(loggedUser))
-  //   }
-  // },[loggedUser])
-
-  // useEffect(()=>{
-  //     const isLoggedIn = JSON.parse(localStorage.getItem('loggedUser'));
-  //     if (isLoggedIn) {
-  //         setLoggedUser(isLoggedIn);
-  //     }
-  // },[])
-
   useEffect(()=>{
     if(!loggedIn){
       setLoggedUser({})
