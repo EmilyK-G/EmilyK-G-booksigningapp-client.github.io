@@ -9,7 +9,7 @@ export class MyBookPage extends React.PureComponent {
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
                     </blockquote>
                     <figcaption className="blockquote-footer text-end">
-                        <cite title="Sent date">{mes.signature}</cite>
+                        <cite title="Sent date">{mes.sender_signature}</cite>
                     </figcaption>
                 </figure>
         } )}

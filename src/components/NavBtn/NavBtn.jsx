@@ -16,27 +16,25 @@ function NavBtn() {
         <div className='prev_btn_container_style d-flex align-items-end' >
           {pathname === '/' && <Welcome />}
           <LoginModal userSelected={userSelected}/>
-          <Button 
+          {!hidePrevBtn && <Button 
             variant='default'
             className='nav_btn_style' >
               <Link  
                 to={prevPage}
-                className={ 
-                  'nav_link_style' + (hidePrevBtn ? ' btn_dissapear' : '')
-                }
+                className='nav_link_style'
                 onClick={
-                  console.log('on ', pathname, 'going to ', prevPage)
+                  console.log('on ', pathname, 'coming from ', prevPage, 'and going to ', nextPage)
                 }>{`<`}</Link>
-          </Button>
+          </Button>}
         </div>
         <div className='next_btn_container_style d-flex align-items-end' >
-          <Button 
+          {!hideNextBtn && <Button 
             variant='default'
             className='nav_btn_style' >
               <Link 
                 to={nextPage} 
-                className={'nav_link_style' + (hideNextBtn ? ' btn_dissapear' : '')}>{`>`}</Link>
-          </Button>
+                className='nav_link_style'>{`>`}</Link>
+          </Button>}
         </div>
         <Outlet />
     </>

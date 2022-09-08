@@ -21,10 +21,9 @@ const NavigationContextProvider = ({children})=> {
             setHideNextBtn(false);
             setNextPage('/users')
         }
-        if(pathname === '/users' || pathname === '/dashboard'){
+        if(pathname === '/users'){
             setHidePrevBtn(false);
             setHideNextBtn(true);
-            setNextPage('/books');
             setPrevPage('/')
         }
         if(pathname === '/dashboard'){
@@ -46,6 +45,7 @@ const NavigationContextProvider = ({children})=> {
         if(onPalsBook) {
             setPrevPage('/books');
         }
+        console.log("this is one nav-context render")
 
     }, [pathname, setSigning, onPalsBook])
 

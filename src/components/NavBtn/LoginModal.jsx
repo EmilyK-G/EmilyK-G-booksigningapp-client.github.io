@@ -21,7 +21,6 @@ function LoginModal() {
         } else {
             setIsCorrect(false)
         }
-        console.log(isCorrect)
     }
 
     return (

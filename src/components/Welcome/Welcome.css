@@ -1,4 +1,5 @@
 .welcome_content{
+    position: absolute;
     padding: 40px;
     background: #a29fab;
     text-shadow: 2px 2px 2px grey;
