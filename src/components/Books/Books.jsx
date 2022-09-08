@@ -14,6 +14,7 @@ function Books() {
   }, [])
 
   function handleBookClick (mate) {
+    //The user they clicked becomes the 'signing' object from SignatureContext
     setSigning(mate);
     console.log(mate)
   }

@@ -26,14 +26,13 @@ function Messages() {
 
     //add Message to Messages array (Database) HERE ex:
     messagesArr.push({
-      message_id: `${Math.floor(Math.random() * 100) + 1}`, //use default _id value instead
       message: message,
       recipient: `${signing.Name} ${signing.LastName}`,
       recipient_id: signing.Id,
       sender: `${loggedUser.Name} ${loggedUser.LastName}`,
       sender_id: loggedUser.Id,
       sent_date: "Sep 30th, 2022",
-      signature: loggedUser.Signature
+      sender_signature: loggedUser.Signature
     })
 
     setMessage('');
@@ -60,7 +59,7 @@ function Messages() {
               </header>
               {
                 palMsgs.length >= 1 ? palMsgs.map(mes => {
-                  return <PrevMessages mes={mes} key={mes.message_id}/>
+                  return <PrevMessages mes={mes} key={mes._id}/>
                 }) : <small className="text-muted">No messages sent</small>
               }
           </div>

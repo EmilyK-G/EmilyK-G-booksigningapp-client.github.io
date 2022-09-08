@@ -4,7 +4,7 @@ export class MyBookPage extends React.PureComponent {
     render() {
       return ( <div className='myBook_page px-2 py-4'>
           {this.props.myBookPage.map((mes)=>{
-          return <figure key={mes.message_id} className="text-end">
+          return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
                     </blockquote>

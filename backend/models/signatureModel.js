@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const signatureSchema = new Schema({
-    //disregarded message_id for testing purposes
     message: {
         type: String,
         required: true
