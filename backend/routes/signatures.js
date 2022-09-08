@@ -1,40 +1,29 @@
 const express = require('express')
-const Signature = require('../models/signatureModel')
+const {
+    createSignature, 
+    getSignature, 
+    getSignatures,
+    deleteSignature,
+    updateSignature
+} = require('../controllers/signatureController')
 
 const router = express.Router()
 
 // GET all signatures
-router.get('/', (req, res)=>{
-    res.json({mssg: 'GET all signatures'})
-})
+router.get('/', getSignatures)
 
 //GET a single signature
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single signature'})
-})
+router.get('/:id', getSignature)
 
 //POST a new signature 
-router.post('/', async (req, res)=> {
-    const {message, recipient, recipient_id, sender, sender_id, sender_signature} = req.body
-
-    try{
-        const signature = await Signature.create({message, recipient, recipient_id, sender, sender_id, sender_signature})
-        res.status(200).json(signature)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
+router.post('/', createSignature)
 
 //DELETE a signature
 
-router.delete('/:id', (req, res)=> {
-    res.json({mssg: 'DELETE a signature'})
-})
+router.delete('/:id', deleteSignature)
 
 //UPDATE a signature
 
-router.patch('/:id', (req, res)=> {
-    res.json({mssg: 'UPDATE a signature'})
-})
+router.patch('/:id', updateSignature)
 
 module.exports = router
