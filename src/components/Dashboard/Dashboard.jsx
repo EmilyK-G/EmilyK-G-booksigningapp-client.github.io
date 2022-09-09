@@ -75,7 +75,7 @@ function Dashboard() {
                 alignItems: 'center',
                 justifyContent: 'end'
               }}>
-                <div className='books_left_num d-flex justify-content-center align-items-center'>{booksToSign}</div>
+                <div className='books_left_num d-flex justify-content-center align-items-center'>{booksToSign >= 0 ? booksToSign : '0'}</div>
             </ParallaxLayer>
             <ParallaxLayer
               offset={1}
@@ -85,11 +85,13 @@ function Dashboard() {
                 display: 'flex',
                 flexDirection:'column',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'space-evenly',
                 fontSize: '2rem'
               }}>
-                <p className='align-self-start div_2_text_1'>You still have</p>
-                <p className='align-self-end div_2_text_2 '>book{booksToSign >= 1 ? 's':''} to sign</p>
+                {booksToSign >= 1 ? <><p className='align-self-start div_2_text_1'>You still have</p>
+                <p className='align-self-end div_2_text_2 '>book{booksToSign >= 1 ? 's':''} to sign</p></> 
+                : <><p className='align-self-start div_2_text_3 m-3'>All Books</p>
+                <p className='align-self-end div_2_text_4 m-3'>signed!</p></>}
             </ParallaxLayer>
             <ParallaxLayer
               offset={2}

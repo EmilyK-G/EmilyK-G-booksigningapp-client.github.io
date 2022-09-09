@@ -36,6 +36,14 @@
     border-radius: 50px;
     font-size: 12rem;
 }
+.books_left_txt{
+    color: #ecd7c8;
+    margin: 20px;
+    width: -webkit-fill-available;
+    box-shadow: 2px 2px 15px grey;
+    border-radius: 50px;
+    font-size: 2rem;
+}
 .div_2_text_1{
     margin: 10px 30px;
     color: whitesmoke;
@@ -45,6 +53,16 @@
     margin: 10px 30px;
     color: whitesmoke;
     text-shadow: 1px 1px 5px black;
+}
+.div_2_text_3{
+    color: #f8f9fa;
+    text-shadow: 1px 1px 5px #00000024;
+    font-size: xxx-large;
+}
+.div_2_text_4{
+    color: #f8f9fa;
+    text-shadow: 1px 1px 5px #00000024;
+    font-size: xxx-large;
 }
 .div_3_text_1{
     font-size: 2rem;
