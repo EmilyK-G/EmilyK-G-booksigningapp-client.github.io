@@ -29,13 +29,12 @@
     background-color: transparent;
 }
 .books_left_num{
-    background-color: #ecd7c8;
-    height: 120px;
-    width: 120px;
-    margin-right: 20px;
-    box-shadow: 2px 2px 2px grey;
-    border-radius: 5px;
-    font-size: 4rem;
+    color: #ecd7c8;
+    margin: 20px;
+    width: -webkit-fill-available;
+    box-shadow: 2px 2px 15px grey;
+    border-radius: 50px;
+    font-size: 12rem;
 }
 .div_2_text_1{
     margin: 10px 30px;
@@ -57,14 +56,7 @@
     font-style: italic;
     color: #000000;
 }
-.btn_edit_signature{
-    color: #842029;
-    z-index: 5;
-}
 svg {
     stroke: #ced4da;
     fill: #ced4da;
-}
-.btn_edit_signature:hover{
-    cursor: pointer;
 }

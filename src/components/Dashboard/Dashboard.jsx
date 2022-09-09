@@ -2,17 +2,19 @@ import React, { useState, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { SignatureContext } from '../../contexts/SignatureContext';
+import UserSignature from './UserSignature';
+import UpdateSignatureModal from './UpdateSignatureModal';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { motion } from 'framer-motion';
 import { IoIosLogOut } from 'react-icons/io';
-import { GrEdit } from 'react-icons/gr';
 import './Dashboard.css';
 import { useEffect } from 'react';
 
 function Dashboard() {
-  const{loggedUser, setLoggedIn, usersArr} = useContext(UserContext);
-  const{booksSigned} = useContext(SignatureContext);
+  const {loggedUser, setLoggedIn, usersArr} = useContext(UserContext);
+  const {booksSigned} = useContext(SignatureContext);
   const [booksToSign, setBooksToSign] = useState(0);
+  const [show, setShow] = useState(false)
   const navigate = useNavigate();
   const parallaxRef = useRef();
 
@@ -47,9 +49,9 @@ function Dashboard() {
               <IoIosLogOut />
             </button>
           </header>
-          <ParallaxLayer speed={0.5} style={{backgroundColor:'#d0cccb'}}/>
-          <ParallaxLayer offset={1} speed={0.5} factor={1.2} style={{backgroundColor:'#225691'}}/>
-          <ParallaxLayer offset={2} speed={0.5} style={{backgroundColor:'#d0cccb'}}/>
+          <ParallaxLayer speed={0.2} style={{backgroundColor:'#d0cccb'}}/>
+          <ParallaxLayer offset={1} speed={0.2} factor={1} style={{backgroundColor:'#225691'}}/>
+          <ParallaxLayer offset={2} speed={0.2} style={{backgroundColor:'#d0cccb'}}/>
           <ParallaxLayer
               offset={0}
               speed={1}
@@ -97,18 +99,13 @@ function Dashboard() {
                 flexDirection:'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-              onClick={() => parallaxRef.current.scrollTo(0)}>
-                <p className="div_3_text_1 d-flex align-content-start mx-4">Signing as: </p>
-                <div className="div_3_signature_container mx-4 mb-0 d-flex align-items-end justify-content-end">
-                  <div className="div_3_text_signature d-flex justify-content-end">{loggedUser.Signature}</div>
-                  <div className='btn_edit_signature'><GrEdit/></div>
-                </div>
+              }}>
+                <UserSignature currentSignature={loggedUser.Signature} setShow={setShow}/>
             </ParallaxLayer>
+            <UpdateSignatureModal show={show} setShow={setShow} loggedUser={loggedUser}/>
         </div>
       </motion.div>
     </Parallax>
-    
   )
 }
 
