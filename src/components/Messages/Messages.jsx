@@ -3,13 +3,21 @@ import { UserContext } from '../../contexts/UserContext';
 import { SignatureContext } from '../../contexts/SignatureContext';
 import PrevMessages from './PrevMessages/PrevMessages';
 import { motion } from 'framer-motion';
+import Alert from 'react-bootstrap/Alert';
 import './Messages.css';
 
 function Messages() {
   const {booksSigned, signing, messagesArr} = useContext(SignatureContext);
   const {loggedUser} = useContext(UserContext);
-  const [message, setMessage] = useState('');
+  const [myMessage, setMyMessage] = useState('');
   const[palMsgs, setPalMsgs] = useState([]);
+  const [error, setError] = useState(null);
+  // const message = myMessage;
+  // const recipient = `${signing.Name} ${signing.LastName}`;
+  // const recipient_id = signing.Id;
+  // const sender = `${loggedUser.Name} ${loggedUser.LastName}`;
+  // const sender_id = loggedUser.Id;
+  // const sender_signature = loggedUser.Signature;
 
   useEffect(()=>{
     const thisPal = [];
@@ -22,20 +30,35 @@ function Messages() {
   }, [booksSigned, signing])
 
 
-  function handleSubmitMessage(){
-
+  const handleSubmitMessage = async (e) => {
+    e.preventDefault()
     //add Message to Messages array (Database) HERE ex:
-    messagesArr.push({
-      message: message,
+    const mssg = {
+      message: myMessage,
       recipient: `${signing.Name} ${signing.LastName}`,
       recipient_id: signing.Id,
       sender: `${loggedUser.Name} ${loggedUser.LastName}`,
       sender_id: loggedUser.Id,
-      sent_date: "Sep 30th, 2022",
       sender_signature: loggedUser.Signature
-    })
+    }
 
-    setMessage('');
+    const response = await fetch('/api/signatures', {
+      method: 'POST',
+      body: JSON.stringify(mssg),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const json = await response.json()
+
+    if(!response.ok){
+      setError(json.error)
+    }
+    if (response.ok) {
+      setMyMessage('');
+      setError(null);
+      console.log('new message sent!')
+    }
     console.log(messagesArr)
   }
 
@@ -48,11 +71,12 @@ function Messages() {
       <div className="d-flex flex-column align-items-start p-1 pt-4">
           <h1 className='align-self-center bk_owner_title'>{signing.Name}<small className="text-muted">'s Book</small></h1>
           <div className="input-group">
-              <textarea value={message} className="form-control txtArea pt-4 ps-2 msg_txt_area" autoFocus onChange={(e)=>setMessage(e.target.value)} placeholder={'Dear ' + signing.Name + ' ' + signing.LastName + '...'}></textarea>
+              <textarea value={myMessage} className="form-control txtArea pt-4 ps-2 msg_txt_area" autoFocus onChange={(e)=>setMyMessage(e.target.value)} placeholder={'Dear ' + signing.Name + ' ' + signing.LastName + '...'}></textarea>
           </div>
           <figcaption className='message_footer mx-3 mt-1'>From: {loggedUser.Signature}</figcaption>
-          <button type='submit' className='btn btn-success align-self-end' onClick={()=>handleSubmitMessage()}>Send</button>
-          <div className='prevMsg_container d-flex  flex-column align-items-center p-3'>
+          <button type='submit' className='btn btn-success align-self-end' onClick={(e)=>handleSubmitMessage(e)}>Send</button>
+          {error && <Alert variant='danger' className='m-3'>{error}</Alert>}
+          <div className='prevMsg_container d-flex flex-column align-items-center p-3'>
               <header className='my-5'>
                   <h2>Previous Messages</h2>
                   <hr />

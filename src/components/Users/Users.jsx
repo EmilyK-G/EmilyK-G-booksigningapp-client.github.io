@@ -20,7 +20,7 @@ function Users() {
             <h1 className='users_title mb-0'>Who Are You?</h1>
           </header>
           <hr className="mb-4 users_separator"></hr>
-          <ul className='users_list d-flex'>
+          <ul className='users_list d-flex p-2'>
             {usersArr.map((user)=>{
               return <li key={user.Id} 
                         className='users_list_item' 
