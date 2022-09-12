@@ -1,27 +1,28 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-import { SignatureContext } from '../../contexts/SignatureContext';
+import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 import PrevMessages from './PrevMessages/PrevMessages';
 import { motion } from 'framer-motion';
 import Alert from 'react-bootstrap/Alert';
 import './Messages.css';
 
 function Messages() {
-  const {booksSigned, signing, messagesArr} = useContext(SignatureContext);
+  const {getMessages, signing, dispatch} = useSignatureContext();
   const {loggedUser} = useContext(UserContext);
+
   const [myMessage, setMyMessage] = useState('');
-  const[palMsgs, setPalMsgs] = useState([]);
+  const [palMsgs, setPalMsgs] = useState([]);
   const [error, setError] = useState(null);
-  
+
   useEffect(()=>{
     const thisPal = [];
-    booksSigned.forEach(mes => {
+    getMessages.forEach(mes => {
         if(mes.recipient_id === signing.Id){
             thisPal.push(mes)
         }
     })
     setPalMsgs(thisPal)
-  }, [booksSigned, signing])
+  }, [getMessages, signing])
 
 
   const handleSubmitMessage = async (e) => {
@@ -51,9 +52,9 @@ function Messages() {
     if (response.ok) {
       setMyMessage('');
       setError(null);
-      console.log('new message sent!')
+      console.log('new message sent!', json);
+      dispatch({type: 'CREATE_SIGNATURE', payload: json})
     }
-    console.log(messagesArr)
   }
 
   return (
@@ -70,15 +71,14 @@ function Messages() {
           <figcaption className='message_footer mx-3 mt-1'>From: {loggedUser.Signature}</figcaption>
           <button type='submit' className='btn btn-success align-self-end' onClick={(e)=>handleSubmitMessage(e)}>Send</button>
           {error && <Alert variant='danger' className='m-3'>{error}</Alert>}
-          <div className='prevMsg_container d-flex flex-column align-items-center p-3'>
+          <div className='prevMsg_container d-flex flex-column align-items-center p-3 mb-5'>
               <header className='my-5'>
                   <h2>Previous Messages</h2>
                   <hr />
               </header>
               {
-                palMsgs.length >= 1 ? palMsgs.map(mes => {
-                  return <PrevMessages mes={mes} key={mes._id}/>
-                }) : <small className="text-muted">No messages sent</small>
+                palMsgs.length >= 1 ? <PrevMessages palMsgs={palMsgs}/>
+                 : <small className="text-muted">No messages sent</small>
               }
           </div>
       </div>

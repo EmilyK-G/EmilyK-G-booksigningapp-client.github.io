@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 
 function Dashboard() {
   const {loggedUser, setLoggedIn, usersArr} = useContext(UserContext);
-  const {booksSigned} = useContext(SignatureContext);
+  const {getMessages} = useContext(SignatureContext);
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ function Dashboard() {
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
-    if(booksSigned.length >= 1){
-      const toSign = usrs - booksSigned.length;
+    if(getMessages.length >= 1){
+      const toSign = usrs - getMessages.length;
       setBooksToSign(toSign)
     } else{
         setBooksToSign(usrs)
     }
-    console.log(booksSigned.length)
-  }, [usersArr.length, booksSigned])
+    console.log(getMessages.length)
+  }, [usersArr.length, getMessages])
 
   function userLogout() {
     setLoggedIn(false);

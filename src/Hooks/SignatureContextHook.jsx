@@ -1,7 +1,7 @@
 import { SignatureContext } from "../contexts/SignatureContext";
 import { useContext } from 'react';
 
-export const useSignaturesContext = () => {
+export const useSignatureContext = () => {
     const context = useContext(SignatureContext)
 
     if (!context) {

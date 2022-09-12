@@ -9,11 +9,11 @@ import { useEffect } from 'react';
 
 function MyBook() {
     const {loggedUser} = useContext(UserContext);
-    const {myBookPage, myMessages} = useContext(SignatureContext);
+    const {getMessages, getMySignatures} = useContext(SignatureContext);
     const componentRef = useRef();
 
     useEffect(()=>{
-      myMessages(loggedUser.Id)
+      getMySignatures(loggedUser.Id, 'TO_ME')
     },[loggedUser.Id])
 
   return (
@@ -24,7 +24,7 @@ function MyBook() {
       transition={{ duration: 0.2 }}>
         <div className='d-flex flex-column mt-5 mb-3 myBook_container'>
             <h1 className='myBook_title'>My Book <small className="text-muted">-signatures</small></h1>
-            <MyBookPage ref={componentRef} myBookPage={myBookPage}/>
+            <MyBookPage ref={componentRef} myBookPage={getMessages}/>
             <ReactToPrint
               trigger={() => {
                 return <button type='submit' className='btn btn-secondary m-4 align-self-center myBook_print_btn'>Print!</button>;

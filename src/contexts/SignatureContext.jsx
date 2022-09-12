@@ -3,7 +3,7 @@ import { useEffect, useState, createContext, useReducer } from 'react';
 const SignatureContext = createContext();
 
 
-const signaturesReducer = (state, action) => {
+const signaturesReducer = (mssgState, action) => {
     switch (action.type) {
         case 'SET_SIGNATURES':
             return {
@@ -11,20 +11,21 @@ const signaturesReducer = (state, action) => {
             }
         case 'CREATE_SIGNATURE':
             return {
-                signatures: [action.payload, ...state.signatures]
+                signatures: [action.payload, ...mssgState.signatures]
             }
         default:
-            return state
+            return mssgState
     }
 }
 
+
 const SignatureContextProvider = ({children})=> {
+    //Testing state
+    const [getMessages, setGetMessages] = useState([]);
+
     const [signing, setSigning] = useState({});
-    const [booksSigned, setBooksSigned] = useState([]);
-    const [myBookPage, setMyBookPage] = useState([]);
-    const [messagesArr, setMessagesArr] = useState([]);
-    const [state, dispatch] = useReducer(signaturesReducer, {
-        workouts: null
+    const [mssgState, dispatch] = useReducer(signaturesReducer, {
+        signatures: null
     });
 
     useEffect(()=>{
@@ -33,38 +34,44 @@ const SignatureContextProvider = ({children})=> {
             const json = await response.json()
 
             if (response.ok) {
-                setMessagesArr(json)
+                dispatch({type: 'SET_SIGNATURES', payload: json})
             }
-            console.log(json)
         }
-        console.log('this is one fetch')
+        console.log('this is one signatures fetch')
         fetchSignatures()
     },[])
 
-    function mySignaturesCount(myId){
-        const mySignaturesArr = []
-        messagesArr.forEach(mes=>{
-            if (mes.sender_id === myId){
-                mySignaturesArr.push(mes)
-            }
-        })
-        setBooksSigned(mySignaturesArr)
-        console.log(mySignaturesArr)
-    }
-    
-    function myMessages(myId){
-        const myMessagesArr = []
-        messagesArr.forEach(mes=>{
-            if (mes.recipient_id === myId){
-                myMessagesArr.push(mes)
-            }
-        })
-        setMyBookPage(myMessagesArr)
-        console.log(myMessagesArr)
-    }
 
+    const getMySignatures = (myId, type) => {
+        
+        const myMessages = () => {
+            const mySignaturesArr = []
+            mssgState.signatures.forEach(mes=>{
+                switch(type) {
+                    case 'TO_ME':
+                        if (mes.recipient_id === myId){
+                            mySignaturesArr.push(mes)
+                        }
+                        break;
+
+                    case 'FROM_ME':
+                        if (mes.sender_id === myId){
+                            mySignaturesArr.push(mes)
+                        } 
+                        break;
+
+                    default: 
+                        console.log('Default')
+                    }
+                
+            })
+            setGetMessages(mySignaturesArr)
+        }
+        return myMessages();
+        }
+    
     return (
-        <SignatureContext.Provider value={{signing, setSigning, booksSigned, setBooksSigned, messagesArr, mySignaturesCount, myBookPage, myMessages, ...state, dispatch}}>
+        <SignatureContext.Provider value={{signing, setSigning, getMySignatures, ...mssgState, dispatch, getMessages}}>
             {children}
         </SignatureContext.Provider>
         )

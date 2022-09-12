@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './Welcome.css';
+//import { useEffect } from 'react';
+//import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 
 function Welcome() {
+
   return (
     <>
     <motion.div 
