@@ -1,13 +1,31 @@
-import { useEffect } from 'react';
-import { useState, createContext } from 'react';
+import { useEffect, useState, createContext, useReducer } from 'react';
 
 const SignatureContext = createContext();
+
+
+const signaturesReducer = (state, action) => {
+    switch (action.type) {
+        case 'SET_SIGNATURES':
+            return {
+                signatures: action.payload
+            }
+        case 'CREATE_SIGNATURE':
+            return {
+                signatures: [action.payload, ...state.signatures]
+            }
+        default:
+            return state
+    }
+}
 
 const SignatureContextProvider = ({children})=> {
     const [signing, setSigning] = useState({});
     const [booksSigned, setBooksSigned] = useState([]);
     const [myBookPage, setMyBookPage] = useState([]);
     const [messagesArr, setMessagesArr] = useState([]);
+    const [state, dispatch] = useReducer(signaturesReducer, {
+        workouts: null
+    });
 
     useEffect(()=>{
         const fetchSignatures = async() => {
@@ -19,7 +37,7 @@ const SignatureContextProvider = ({children})=> {
             }
             console.log(json)
         }
-
+        console.log('this is one fetch')
         fetchSignatures()
     },[])
 
@@ -46,10 +64,10 @@ const SignatureContextProvider = ({children})=> {
     }
 
     return (
-        <SignatureContext.Provider value={{signing, setSigning, booksSigned, setBooksSigned, messagesArr, mySignaturesCount, myBookPage, myMessages}}>
+        <SignatureContext.Provider value={{signing, setSigning, booksSigned, setBooksSigned, messagesArr, mySignaturesCount, myBookPage, myMessages, ...state, dispatch}}>
             {children}
         </SignatureContext.Provider>
         )
 }
 
-export {SignatureContextProvider, SignatureContext};
+export {SignatureContextProvider, SignatureContext, signaturesReducer};

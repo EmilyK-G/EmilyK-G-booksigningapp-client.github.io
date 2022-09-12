@@ -12,13 +12,7 @@ function Messages() {
   const [myMessage, setMyMessage] = useState('');
   const[palMsgs, setPalMsgs] = useState([]);
   const [error, setError] = useState(null);
-  // const message = myMessage;
-  // const recipient = `${signing.Name} ${signing.LastName}`;
-  // const recipient_id = signing.Id;
-  // const sender = `${loggedUser.Name} ${loggedUser.LastName}`;
-  // const sender_id = loggedUser.Id;
-  // const sender_signature = loggedUser.Signature;
-
+  
   useEffect(()=>{
     const thisPal = [];
     booksSigned.forEach(mes => {
