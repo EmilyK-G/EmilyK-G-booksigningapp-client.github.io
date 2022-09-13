@@ -68,8 +68,8 @@ function Messages() {
           <figcaption className='message_footer mx-3 mt-1'>From: {loggedUser.Signature}</figcaption>
           <button type='submit' className='btn btn-success align-self-end' onClick={(e)=>handleSubmitMessage(e)}>Send</button>
           {error && <Alert variant='danger' className='m-3'>{error}</Alert>}
-          <div className='prevMsg_container d-flex flex-column align-items-center p-3 mb-5'>
-              <header className='my-5'>
+          <div className='prevMsg_container d-flex flex-column align-items-end p-3 mb-5'>
+              <header className='my-5 align-self-center'>
                   <h2>Previous Messages</h2>
                   <hr />
               </header>

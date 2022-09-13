@@ -13,6 +13,10 @@ const signaturesReducer = (mssgState, action) => {
             return {
                 signatures: [action.payload, ...mssgState.signatures]
             }
+        case 'DELETE_SIGNATURE':
+            return {
+                signatures: mssgState.signatures.filter((s) => s._id !== action.payload._id)
+            }
         default:
             return mssgState
     }
