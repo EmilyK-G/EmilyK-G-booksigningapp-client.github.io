@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 import PrevMessages from './PrevMessages/PrevMessages';
@@ -7,22 +7,17 @@ import Alert from 'react-bootstrap/Alert';
 import './Messages.css';
 
 function Messages() {
-  const {getMessages, signing, dispatch} = useSignatureContext();
+  const {signing, dispatch, getMySignatures} = useSignatureContext();
   const {loggedUser} = useContext(UserContext);
 
   const [myMessage, setMyMessage] = useState('');
-  const [palMsgs, setPalMsgs] = useState([]);
   const [error, setError] = useState(null);
+  const getSignaturesRef = useRef (getMySignatures);
+
 
   useEffect(()=>{
-    const thisPal = [];
-    getMessages.forEach(mes => {
-        if(mes.recipient_id === signing.Id){
-            thisPal.push(mes)
-        }
-    })
-    setPalMsgs(thisPal)
-  }, [getMessages, signing])
+    getSignaturesRef.current(loggedUser.Id, 'FROM_ME')
+  }, [loggedUser.Id])
 
 
   const handleSubmitMessage = async (e) => {
@@ -76,10 +71,7 @@ function Messages() {
                   <h2>Previous Messages</h2>
                   <hr />
               </header>
-              {
-                palMsgs.length >= 1 ? <PrevMessages palMsgs={palMsgs}/>
-                 : <small className="text-muted">No messages sent</small>
-              }
+             <PrevMessages />
           </div>
       </div>
     </motion.div>

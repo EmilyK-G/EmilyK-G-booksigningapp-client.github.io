@@ -20,7 +20,7 @@ const signaturesReducer = (mssgState, action) => {
 
 
 const SignatureContextProvider = ({children})=> {
-    //Testing state
+    
     const [getMessages, setGetMessages] = useState([]);
 
     const [signing, setSigning] = useState({});
@@ -48,27 +48,47 @@ const SignatureContextProvider = ({children})=> {
             const mySignaturesArr = []
             mssgState.signatures.forEach(mes=>{
                 switch(type) {
+                    case 'FROM_ME':
+                        if (mes.sender_id === myId){
+                            mySignaturesArr.push(mes)
+                        }
+                        const thisPal = [];
+
+                        mySignaturesArr.forEach(mes => {
+                            if(mes.recipient_id === signing.Id){
+                                thisPal.push(mes)
+                            }
+                        })
+                        setGetMessages(thisPal)
+
+                        break;
+
                     case 'TO_ME':
                         if (mes.recipient_id === myId){
                             mySignaturesArr.push(mes)
                         }
+                        setGetMessages(mySignaturesArr)
+                        
                         break;
 
-                    case 'FROM_ME':
+                    case 'ALL_FROM_ME':
                         if (mes.sender_id === myId){
                             mySignaturesArr.push(mes)
-                        } 
+                        }
+                        setGetMessages(mySignaturesArr)
+                        
                         break;
 
                     default: 
-                        console.log('Default')
+                        setGetMessages(mySignaturesArr)
                     }
-                
             })
-            setGetMessages(mySignaturesArr)
         }
+
+        console.log(getMessages, mssgState.signatures);
+        
         return myMessages();
-        }
+    }
     
     return (
         <SignatureContext.Provider value={{signing, setSigning, getMySignatures, ...mssgState, dispatch, getMessages}}>

@@ -6,7 +6,9 @@ import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
 function LoginModal() {
+
     const {setLoggedIn, loggedIn, setLoggedUser, userSelected, setUserSelected} = useContext(UserContext);
+
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);
     const navigate = useNavigate();
@@ -17,7 +19,7 @@ function LoginModal() {
             setLoggedUser(userSelected);
             setIsCorrect(true);
             setLoggedIn(true);
-            navigate('/books')
+            navigate('/books');
         } else {
             setIsCorrect(false)
         }

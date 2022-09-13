@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Outlet, Link } from "react-router-dom";
 import { UserContext } from '../../contexts/UserContext';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
@@ -7,13 +7,11 @@ import './Books.css';
 
 function Books() {
   const {usersArr, loggedUser} = useContext(UserContext);
-  const { setSigning, getMySignatures } = useSignatureContext();
+  const { setSigning } = useSignatureContext();
   
   function handleBookClick (mate) {
     //The user they clicked becomes the 'signing' object from SignatureContext
     setSigning(mate);
-
-    getMySignatures(loggedUser.Id, 'FROM_ME')
   }
   return (
     <motion.div 

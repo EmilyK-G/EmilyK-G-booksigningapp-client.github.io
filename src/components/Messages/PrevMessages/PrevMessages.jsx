@@ -1,9 +1,11 @@
-import React from 'react';
+import { useSignatureContext } from "../../../Hooks/SignatureContextHook";
 import './PrevMessages.css';
 
-function PrevMessages({palMsgs}) {
+function PrevMessages() {
+
+    const {getMessages} = useSignatureContext();
     
-    const myMessages = palMsgs.map(mes => {
+    const myMessages = getMessages.map(mes => {
         return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
@@ -14,7 +16,8 @@ function PrevMessages({palMsgs}) {
                 </figure>
       })
 
-    return myMessages
+    
+    return getMessages.length >= 1 ? myMessages : <small className="text-muted">No messages sent</small>
 }
 
 export default PrevMessages
