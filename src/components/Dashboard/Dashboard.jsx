@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
-import { SignatureContext } from '../../contexts/SignatureContext';
+import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 import UserSignature from './UserSignature';
 import UpdateSignatureModal from './UpdateSignatureModal';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
@@ -12,11 +12,12 @@ import { useEffect } from 'react';
 
 function Dashboard() {
   const {loggedUser, setLoggedIn, usersArr} = useContext(UserContext);
-  const {getMessages} = useContext(SignatureContext);
+  const {getMessages, getMySignatures} = useSignatureContext();
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
   const navigate = useNavigate();
   const parallaxRef = useRef();
+  const getSignaturesRef = useRef (getMySignatures);
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
@@ -28,6 +29,10 @@ function Dashboard() {
     }
     console.log(getMessages.length)
   }, [usersArr.length, getMessages])
+
+  useEffect(()=>{
+    getSignaturesRef.current(loggedUser.Id, 'ALL_FROM_ME')
+  }, [loggedUser.Id])
 
   function userLogout() {
     setLoggedIn(false);

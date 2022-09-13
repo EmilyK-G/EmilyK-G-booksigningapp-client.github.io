@@ -17,6 +17,7 @@ function Messages() {
 
   useEffect(()=>{
     getSignaturesRef.current(loggedUser.Id, 'FROM_ME')
+    //getMessages is not updating
   }, [loggedUser.Id])
 
 
@@ -39,6 +40,7 @@ function Messages() {
         'Content-Type': 'application/json'
       }
     })
+    
     const json = await response.json()
 
     if(!response.ok){
@@ -48,7 +50,7 @@ function Messages() {
       setMyMessage('');
       setError(null);
       console.log('new message sent!', json);
-      dispatch({type: 'CREATE_SIGNATURE', payload: json})
+      dispatch({type: 'CREATE_SIGNATURE', payload: json});
     }
   }
 

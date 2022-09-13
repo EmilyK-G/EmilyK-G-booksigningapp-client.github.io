@@ -45,9 +45,13 @@ const SignatureContextProvider = ({children})=> {
     const getMySignatures = (myId, type) => {
         
         const myMessages = () => {
-            const mySignaturesArr = []
+
+            const mySignaturesArr = [];
+
             mssgState.signatures.forEach(mes=>{
+
                 switch(type) {
+
                     case 'FROM_ME':
                         if (mes.sender_id === myId){
                             mySignaturesArr.push(mes)
@@ -68,7 +72,7 @@ const SignatureContextProvider = ({children})=> {
                             mySignaturesArr.push(mes)
                         }
                         setGetMessages(mySignaturesArr)
-                        
+
                         break;
 
                     case 'ALL_FROM_ME':
@@ -83,9 +87,7 @@ const SignatureContextProvider = ({children})=> {
                         setGetMessages(mySignaturesArr)
                     }
             })
-        }
-
-        console.log(getMessages, mssgState.signatures);
+        };
         
         return myMessages();
     }
