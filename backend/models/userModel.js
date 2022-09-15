@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose')
-const bcrypt = require('bcrypt')
+//const validator = require('validator')
 
 const Schema = mongoose.Schema
 
@@ -35,21 +35,19 @@ const userSchema = new Schema({
     }
 })
 
-// static signup method
-// userSchema.statics.signup = async function(email, pin) {
+// static validation method
+// userSchema.statics.validate = async function(email, pin) {
 
-//     const exists = await this.findOne({ email })
-
-//     if(exists) {
-//         throw Error('Email already in use')
-//     }
-
-//     const salt = await bcrypt.genSalt(10)
-//     const hash = await bcrypt.hash(pin, salt)
-
-//     const user = await this.create({ email, pin: hash })
-
-//     return user
+//    //validation
+//    if(!email || !pin) {
+//     throw Error('All required fields must be filled')
+//    }
+//    if (!validator.isEmail(email)){
+//     throw Error('Email is not valid')
+//    }
+//    if(!validator.isNumeric(pin)){
+//     throw Error('Try another PIN')
+//    }
 
 // }
 
