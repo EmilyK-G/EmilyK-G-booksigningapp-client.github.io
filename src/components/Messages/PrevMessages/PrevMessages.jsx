@@ -1,4 +1,7 @@
 import { useSignatureContext } from "../../../Hooks/SignatureContextHook";
+import { IconContext } from "react-icons";
+import { formatRelative } from 'date-fns';
+import { RiChatDeleteFill } from 'react-icons/ri';
 import './PrevMessages.css';
 
 function PrevMessages() {
@@ -23,9 +26,11 @@ function PrevMessages() {
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
                     </blockquote>
                     <figcaption className="blockquote-footer text-end">
-                        Sent <cite title="Sent date">{mes.updatedAt}</cite>
+                        <cite title="Sent date">{formatRelative (new Date(mes.updatedAt), new Date())}</cite>
                     </figcaption>
-                    <span className="text-end delete_msg_btn" onClick={() => handleDeleteMsg(mes._id)}>Delete</span>
+                    <IconContext.Provider value={{ color: '#ea1537', className: "delete_icon" }}>
+                        <span className="text-end delete_msg_btn" onClick={() => handleDeleteMsg(mes._id)}><RiChatDeleteFill/></span>
+                    </IconContext.Provider>
                 </figure>
       })
 

@@ -33,6 +33,15 @@ const getSignature = async(req, res)=> {
 const createSignature = async(req, res) =>{
     const {message, recipient, recipient_id, sender, sender_id, sender_signature} = req.body
     
+    let emptyFields = [];
+
+    if(!message) {
+        emptyFields.push('message')
+    }
+    if(emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Your message is empty', emptyFields })
+    }
+
     // add doc to db
     try{
         const signature = await Signature.create({message, recipient, recipient_id, sender, sender_id, sender_signature})

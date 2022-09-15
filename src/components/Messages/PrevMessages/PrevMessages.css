@@ -14,3 +14,6 @@
 .delete_msg_btn:hover{
     cursor: pointer;
 }
+.delete_icon {
+    fill: #ea1537;
+}

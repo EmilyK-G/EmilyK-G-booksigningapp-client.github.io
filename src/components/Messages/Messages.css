@@ -22,7 +22,14 @@ textarea.msg_txt_area:focus{
     box-shadow: none;
     border: none;
    }
+textarea.message_error{
+    border: 1px solid red
+}
 .prevMsg_container {
     margin-top: 50px;
     width: -webkit-fill-available;
+}
+.alert-danger.alert_message {
+    --bs-alert-bg: #f8d7da96;
+    padding: 2px 20px;
 }

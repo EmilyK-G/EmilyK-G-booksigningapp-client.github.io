@@ -13,6 +13,7 @@ function Messages() {
   const [myMessage, setMyMessage] = useState('');
   const [error, setError] = useState(null);
   const getSignaturesRef = useRef (getMySignatures);
+  const [emptyFields, setEmptyFields] = useState([]);
 
 
   useEffect(()=>{
@@ -45,10 +46,12 @@ function Messages() {
 
     if(!response.ok){
       setError(json.error)
+      setEmptyFields(json.emptyFields)
     }
     if (response.ok) {
       setMyMessage('');
       setError(null);
+      setEmptyFields([]);
       console.log('new message sent!', json);
       dispatch({type: 'CREATE_SIGNATURE', payload: json});
     }
@@ -63,11 +66,11 @@ function Messages() {
       <div className="d-flex flex-column align-items-start p-1 pt-4">
           <h1 className='align-self-center bk_owner_title'>{signing.Name}<small className="text-muted">'s Book</small></h1>
           <div className="input-group">
-              <textarea value={myMessage} className="form-control txtArea pt-4 ps-2 msg_txt_area" autoFocus onChange={(e)=>setMyMessage(e.target.value)} placeholder={'Dear ' + signing.Name + ' ' + signing.LastName + '...'}></textarea>
+              <textarea value={myMessage} className={"form-control txtArea pt-4 ps-2 msg_txt_area " + (emptyFields.includes('message') ? ' message_error' : '')} autoFocus onChange={(e)=>setMyMessage(e.target.value)} placeholder={'Dear ' + signing.Name + ' ' + signing.LastName + '...'}></textarea>
           </div>
           <figcaption className='message_footer mx-3 mt-1'>From: {loggedUser.Signature}</figcaption>
           <button type='submit' className='btn btn-success align-self-end' onClick={(e)=>handleSubmitMessage(e)}>Send</button>
-          {error && <Alert variant='danger' className='m-3'>{error}</Alert>}
+          {error && <Alert variant='danger' className='mt-3 align-self-center alert_message'>{error}</Alert>}
           <div className='prevMsg_container d-flex flex-column align-items-end p-3 mb-5'>
               <header className='my-5 align-self-center'>
                   <h2>Previous Messages</h2>

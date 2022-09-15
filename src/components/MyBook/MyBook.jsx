@@ -11,9 +11,10 @@ function MyBook() {
     const {loggedUser} = useContext(UserContext);
     const {getMessages, getMySignatures} = useContext(SignatureContext);
     const componentRef = useRef();
+    const getSignaturesRef = useRef(getMySignatures);
 
     useEffect(()=>{
-      getMySignatures(loggedUser.Id, 'TO_ME')
+      getSignaturesRef.current(loggedUser.Id, 'TO_ME')
     },[loggedUser.Id])
 
   return (
