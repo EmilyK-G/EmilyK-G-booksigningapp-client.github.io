@@ -1,10 +1,9 @@
 .welcome_content{
-    position: absolute;
+    position: relative;
     padding: 40px;
+    margin: 30px 2px 0 2px;
     background: #a29fab;
     text-shadow: 2px 2px 2px grey;
     color: white;
     border-radius: 20px;
-    margin-top: -375px;
-    font-size: 50px;
 }

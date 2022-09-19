@@ -12,9 +12,8 @@ function NavBtn() {
   const {hideNextBtn, hidePrevBtn, nextPage, prevPage, pathname} = useContext( NavigationContext );
 
   return (
-    <>  
+    <>  {pathname === '/' && <Welcome />}
         <div className='prev_btn_container_style d-flex align-items-end' >
-          {pathname === '/' && <Welcome />}
           <LoginModal userSelected={userSelected}/>
           {!hidePrevBtn && <Button 
             variant='default'

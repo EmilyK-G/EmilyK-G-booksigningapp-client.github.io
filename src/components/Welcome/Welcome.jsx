@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Signup from '../Signup/Signup';
 import './Welcome.css';
-//import { useEffect } from 'react';
-//import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 
 function Welcome() {
 
@@ -13,7 +12,10 @@ function Welcome() {
         animate= {{opacity: 1, x: 0}}
         exit= {{opacity:0, x:-100}}
         transition={{ duration: 0.2 }}>
-      <h2 className='welcome_content'>Welcome class of 2022!</h2>  
+      <div className='welcome_content'>
+        <h2>Welcome class of 2022!</h2>
+        <Signup />
+      </div> 
     </motion.div>
     </>
   )
