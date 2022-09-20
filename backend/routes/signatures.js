@@ -6,8 +6,12 @@ const {
     deleteSignature,
     updateSignature
 } = require('../controllers/signatureController')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
+
+//require auth for all signature routes
+router.use(requireAuth)
 
 // GET all signatures
 router.get('/', getSignatures)

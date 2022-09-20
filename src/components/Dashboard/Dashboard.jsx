@@ -1,17 +1,18 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserContext';
+import { useUserContext } from '../../Hooks/UserContextHook';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
+import { useLogout } from '../../Hooks/useLogoutHook';
 import UserSignature from './UserSignature';
 import UpdateSignatureModal from './UpdateSignatureModal';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { motion } from 'framer-motion';
 import { IoIosLogOut } from 'react-icons/io';
 import './Dashboard.css';
-import { useEffect } from 'react';
 
 function Dashboard() {
-  const {loggedUser, setLoggedIn, usersArr} = useContext(UserContext);
+  const {loggedUser, setLoggedIn, usersArr} = useUserContext();
+  const {logout} = useLogout();
   const {getMessages, getMySignatures} = useSignatureContext();
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
@@ -35,6 +36,7 @@ function Dashboard() {
   }, [loggedUser.Id])
 
   function userLogout() {
+    logout();
     setLoggedIn(false);
     navigate('/')
   }
