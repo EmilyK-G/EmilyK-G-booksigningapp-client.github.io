@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
 import { Outlet, Link } from "react-router-dom";
-import { UserContext } from '../../contexts/UserContext';
+import { useUserContext } from '../../Hooks/UserContextHook';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 import { motion } from 'framer-motion';
 import './Books.css';
 
 function Books() {
-  const {usersArr, loggedUser} = useContext(UserContext);
+  const { usersArr, user } = useUserContext();
   const { setSigning } = useSignatureContext();
   
   function handleBookClick (mate) {
@@ -26,20 +25,20 @@ function Books() {
       <hr className="mb-4 books_separator"></hr>
       <ul className='book_list d-flex flex-wrap justify-content-between p-1'>
         {usersArr.map((book)=>{
-          if(book.Id === loggedUser.Id){
-            return <li key={loggedUser.Id} 
+          if(book._id === user._id){
+            return <li key={user._id} 
                     className='book_list_item d-flex align-items-center justify-content-between'
                     onClick={()=>{handleBookClick(book)}}>
                       <div 
                         className='span_img' 
-                        style={{backgroundImage: `url(${book.Picture})`}}></div>
+                        style={{backgroundImage: `url(${book.img})`}}></div>
                       <Link to={'/my-book'}>My Book</Link>
                     </li>
           } else {
-              return <li key={book.Id} 
+              return <li key={book._id} 
               className='book_list_item d-flex align-items-center justify-content-between'>
-                <div className='span_img' style={{backgroundImage: `url(${book.Picture})`}}></div>
-                <Link to={`${book.Id}`} onClick={()=>handleBookClick(book)}>{book.Name}'s</Link></li>  
+                <div className='span_img' style={{backgroundImage: `url(${book.img})`}}></div>
+                <Link to={`${book._id}`} onClick={()=>handleBookClick(book)}>{book.name}'s</Link></li>  
           }
         })}
       </ul>

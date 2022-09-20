@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../Hooks/UserContextHook';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 import { useLogout } from '../../Hooks/useLogoutHook';
@@ -11,12 +10,11 @@ import { IoIosLogOut } from 'react-icons/io';
 import './Dashboard.css';
 
 function Dashboard() {
-  const {loggedUser, setLoggedIn, usersArr} = useUserContext();
+  const {user, usersArr} = useUserContext();
   const {logout} = useLogout();
   const {getMessages, getMySignatures} = useSignatureContext();
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
-  const navigate = useNavigate();
   const parallaxRef = useRef();
   const getSignaturesRef = useRef (getMySignatures);
 
@@ -32,14 +30,8 @@ function Dashboard() {
   }, [usersArr.length, getMessages])
 
   useEffect(()=>{
-    getSignaturesRef.current(loggedUser.Id, 'ALL_FROM_ME')
-  }, [loggedUser.Id])
-
-  function userLogout() {
-    logout();
-    setLoggedIn(false);
-    navigate('/')
-  }
+    getSignaturesRef.current(user._id, 'ALL_FROM_ME')
+  }, [user._id])
 
   return (
     <Parallax ref={parallaxRef} pages={3}>
@@ -52,7 +44,7 @@ function Dashboard() {
           <header className='profile_header d-flex justify-content-end'>
             <button 
               className='btn d-flex align-items-center logout_btn' 
-              onClick={()=>{userLogout()}}>
+              onClick={()=>{logout()}}>
               <IoIosLogOut />
             </button>
           </header>
@@ -69,8 +61,8 @@ function Dashboard() {
                 justifyContent: 'center',
               }}>
               <div className='d-flex flex-column justify-content-center align-items-center profile_div_1 py-4'>
-                <div className='profile_pic_div m-4' style={{backgroundImage: `url(${loggedUser.Picture})`}}></div>
-                <h3 className='profile_name'>Hi {loggedUser.Name}!</h3>
+                <div className='profile_pic_div m-4' style={{backgroundImage: `url(${user.img})`}}></div>
+                <h3 className='profile_name'>Hi {user.name}!</h3>
               </div>
             </ParallaxLayer>
             <ParallaxLayer 
@@ -109,9 +101,9 @@ function Dashboard() {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <UserSignature currentSignature={loggedUser.Signature} setShow={setShow}/>
+                <UserSignature currentSignature={user.signature} setShow={setShow}/>
             </ParallaxLayer>
-            <UpdateSignatureModal show={show} setShow={setShow} loggedUser={loggedUser}/>
+            <UpdateSignatureModal show={show} setShow={setShow} user={user}/>
         </div>
       </motion.div>
     </Parallax>

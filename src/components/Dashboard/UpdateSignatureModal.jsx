@@ -25,7 +25,7 @@ function UpdateSignatureModal(props) {
         <Modal.Body>
             <InputGroup className="mb-3">
                 <Form.Control
-                placeholder={props.loggedUser.Signature}
+                placeholder={props.user.signature}
                 value={newSignature}
                 onChange={(e)=>setNewSignature(e.target.value)}
                 aria-label="Recipient's username"

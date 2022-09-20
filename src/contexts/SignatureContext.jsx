@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useEffect, useState, createContext, useReducer } from 'react';
 import { useUserContext } from '../Hooks/UserContextHook';
 

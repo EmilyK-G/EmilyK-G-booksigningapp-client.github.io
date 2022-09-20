@@ -8,7 +8,7 @@ import './Messages.css';
 
 function Messages() {
   const {signing, dispatch, getMySignatures} = useSignatureContext();
-  const {loggedUser, user} = useUserContext()
+  const {user} = useUserContext()
 
   const [myMessage, setMyMessage] = useState('');
   const [error, setError] = useState(null);
@@ -17,9 +17,9 @@ function Messages() {
 
 
   useEffect(()=>{
-    getSignaturesRef.current(loggedUser.Id, 'FROM_ME')
+    getSignaturesRef.current(user._id, 'FROM_ME')
     //getMessages is not updating
-  }, [loggedUser.Id])
+  }, [user._id])
 
 
   const handleSubmitMessage = async (e) => {
@@ -34,9 +34,9 @@ function Messages() {
       message: myMessage,
       recipient: `${signing.Name} ${signing.LastName}`,
       recipient_id: signing.Id,
-      sender: `${loggedUser.Name} ${loggedUser.LastName}`,
-      sender_id: loggedUser.Id,
-      sender_signature: loggedUser.Signature
+      sender: `${user.name} ${user.last_name}`,
+      sender_id: user._id,
+      sender_signature: user.signature
     }
 
     const response = await fetch('/api/signatures', {
@@ -74,7 +74,7 @@ function Messages() {
           <div className="input-group">
               <textarea value={myMessage} className={"form-control txtArea pt-4 ps-2 msg_txt_area " + (emptyFields.includes('message') ? ' message_error' : '')} autoFocus onChange={(e)=>setMyMessage(e.target.value)} placeholder={'Dear ' + signing.Name + ' ' + signing.LastName + '...'}></textarea>
           </div>
-          <figcaption className='message_footer mx-3 mt-1'>From: {loggedUser.Signature}</figcaption>
+          <figcaption className='message_footer mx-3 mt-1'>From: {user.signature}</figcaption>
           <button type='submit' className='btn btn-success align-self-end' onClick={(e)=>handleSubmitMessage(e)}>Send</button>
           {error && <Alert variant='danger' className='mt-3 align-self-center alert_message'>{error}</Alert>}
           <div className='prevMsg_container d-flex flex-column align-items-end p-3 mb-5'>

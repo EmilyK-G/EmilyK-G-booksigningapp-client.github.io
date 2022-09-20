@@ -1,45 +1,36 @@
 import React, { useState } from 'react';
 import { useLogin } from '../../Hooks/useLoginHook';
-import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../Hooks/UserContextHook'; 
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
-const LoginModal = async() => {
+const LoginModal = () => {
 
-    const {setLoggedIn, loggedIn, setLoggedUser, userSelected, setUserSelected} = useUserContext();
+    const {userSelected, setUserSelected} = useUserContext();
     const {login, error, isLoading} = useLogin()
 
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);
     
-    const navigate = useNavigate();
 
     const checkPIN = async(e) => {
         e.preventDefault();
-        setIsInvalid(false);
-        if(e.target.value === userSelected.PIN){
-            setLoggedUser(userSelected);
-            setIsCorrect(true);
-            setLoggedIn(true);
-            navigate('/books');
-            await login(email, pin)
-        } else {
-            setIsCorrect(false)
-        }
+
+        await login(userSelected.email, e.target.value)
+        setUserSelected([])
     }
 
     return (
         <Modal
-          show={!loggedIn && userSelected.Name}
+          show={userSelected.name}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
           <Modal.Header>
             <Modal.Title id="contained-modal-title-vcenter">
-              Hi {userSelected.Name}!
+              Hi {userSelected.name}!
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>

@@ -1,12 +1,29 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import { useEffect, useRef } from 'react';
+import { useUserContext } from '../../Hooks/UserContextHook';
 import { motion } from 'framer-motion';
 import './Users.css';
 
 function Users() {
-  const {usersArr, setUserSelected} = useContext(UserContext);
+  const { setUserSelected, usersArr, setUsersArr } = useUserContext();
+
+  const setUsersArrRef = useRef(setUsersArr);
+
+  useEffect(()=>{
+    const fetchUsers = async() => {
+        const response = await fetch('/api/user')
+        const json = await response.json()
+
+        if (response.ok) {
+            setUsersArrRef.current(json)
+        }
+    }
+
+    fetchUsers()
+    
+  }, [])
 
   function handleListItemClick(user) {
+    console.log(usersArr, user)
     setUserSelected(user)
   }
   return (
@@ -22,9 +39,9 @@ function Users() {
           <hr className="mb-4 users_separator"></hr>
           <ul className='users_list d-flex p-2'>
             {usersArr.map((user)=>{
-              return <li key={user.Id} 
+              return <li key={user._id} 
                         className='users_list_item' 
-                        style={{backgroundImage: `url(${user.Picture})`}} 
+                        style={{backgroundImage: `url(${user.img})`}} 
                         onClick={()=>handleListItemClick(user)}></li>   
             })}
           </ul>
