@@ -1,4 +1,5 @@
 import { useSignatureContext } from "../../../Hooks/SignatureContextHook";
+import { useUserContext } from "../../../Hooks/UserContextHook";
 import { IconContext } from "react-icons";
 import { formatRelative } from 'date-fns';
 import { RiChatDeleteFill } from 'react-icons/ri';
@@ -7,10 +8,18 @@ import './PrevMessages.css';
 function PrevMessages() {
 
     const {getMessages, dispatch} = useSignatureContext();
-    
+    const {user} = useUserContext();
+
     const handleDeleteMsg = async(msgId) => {
+        if (!user) {
+            return
+        }
+
         const response = await fetch('/api/signatures/' + msgId, {
-            method:'DELETE'
+            method:'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
 
         const json = await response.json();

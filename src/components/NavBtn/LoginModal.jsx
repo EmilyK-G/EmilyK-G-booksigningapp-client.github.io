@@ -1,25 +1,30 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useLogin } from '../../Hooks/useLoginHook';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../contexts/UserContext';
+import { useUserContext } from '../../Hooks/UserContextHook'; 
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
-function LoginModal() {
+const LoginModal = async() => {
 
-    const {setLoggedIn, loggedIn, setLoggedUser, userSelected, setUserSelected} = useContext(UserContext);
+    const {setLoggedIn, loggedIn, setLoggedUser, userSelected, setUserSelected} = useUserContext();
+    const {login, error, isLoading} = useLogin()
 
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);
+    
     const navigate = useNavigate();
 
-    function checkPIN(e) {
+    const checkPIN = async(e) => {
+        e.preventDefault();
         setIsInvalid(false);
         if(e.target.value === userSelected.PIN){
             setLoggedUser(userSelected);
             setIsCorrect(true);
             setLoggedIn(true);
             navigate('/books');
+            await login(email, pin)
         } else {
             setIsCorrect(false)
         }
@@ -48,8 +53,9 @@ function LoginModal() {
             <Alert variant='danger' show={!isCorrect && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>
           <Modal.Footer>
-            <button className='btn btn-secondary' onClick={()=>setUserSelected({})}>Close</button>
+            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>setUserSelected({})}>Close</button>
           </Modal.Footer>
+          {error && <Alert variant='danger'>{error}</Alert>}
         </Modal>
       );
 }

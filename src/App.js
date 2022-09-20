@@ -1,10 +1,12 @@
 import {
   Routes,
   Route,
-  useLocation
+  useLocation,
+  Navigate
 } from "react-router-dom";
 import { SignatureContextProvider } from './contexts/SignatureContext';
 import { NavigationContextProvider } from "./contexts/NavigationContext";
+import { useUserContext } from "./Hooks/UserContextHook";
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
 import Messages from './components/Messages/Messages';
@@ -15,6 +17,7 @@ import {AnimatePresence} from "framer-motion";
 import './App.css';
 
 function App() {
+  const {user} = useUserContext();
   const location = useLocation();
   return (
     <div className="App">
@@ -24,11 +27,11 @@ function App() {
           <AnimatePresence mode="wait">
             <Routes key={location.pathname} location={location}>
                 <Route path="/" element={<NavBtn/>}>
-                  <Route path="users" element={<Users />} />
-                  <Route path="books" element={<Books />} />
-                  <Route path="books/:id" element={<Messages/>}/>
-                  <Route path="dashboard" element={<Dashboard/>}/>
-                  <Route path="my-book" element={<MyBook/>}/>
+                  <Route path="users" element={!user ? <Users /> : <Navigate to="/books"/>} />
+                  <Route path="books" element={user ? <Books /> : <Navigate to="/"/>} />
+                  <Route path="books/:id" element={user ? <Messages/> : <Navigate to="/"/>}/>
+                  <Route path="dashboard" element={user ? <Dashboard/> : <Navigate to="/"/>}/>
+                  <Route path="my-book" element={user ? <MyBook/> : <Navigate to="/"/>}/>
                   <Route
                       path="*"
                       element={

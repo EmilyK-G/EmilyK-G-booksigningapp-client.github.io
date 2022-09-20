@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
+import { useUserContext } from '../../Hooks/UserContextHook';
 import PrevMessages from './PrevMessages/PrevMessages';
 import { motion } from 'framer-motion';
 import Alert from 'react-bootstrap/Alert';
@@ -8,7 +8,7 @@ import './Messages.css';
 
 function Messages() {
   const {signing, dispatch, getMySignatures} = useSignatureContext();
-  const {loggedUser} = useContext(UserContext);
+  const {loggedUser, user} = useUserContext()
 
   const [myMessage, setMyMessage] = useState('');
   const [error, setError] = useState(null);
@@ -24,6 +24,11 @@ function Messages() {
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
     //add Message to Messages array (Database) HERE ex:
     const mssg = {
       message: myMessage,
@@ -38,7 +43,8 @@ function Messages() {
       method: 'POST',
       body: JSON.stringify(mssg),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
     

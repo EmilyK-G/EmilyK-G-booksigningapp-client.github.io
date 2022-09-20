@@ -1,4 +1,6 @@
+import { useRef } from 'react';
 import { useEffect, useState, createContext, useReducer } from 'react';
+import { useUserContext } from '../Hooks/UserContextHook';
 
 const SignatureContext = createContext();
 
@@ -24,6 +26,8 @@ const signaturesReducer = (mssgState, action) => {
 
 
 const SignatureContextProvider = ({children})=> {
+
+    const {user} = useUserContext()
     
     const [getMessages, setGetMessages] = useState([]);
 
@@ -34,7 +38,11 @@ const SignatureContextProvider = ({children})=> {
 
     useEffect(()=>{
         const fetchSignatures = async() => {
-            const response = await fetch('/api/signatures')
+            const response = await fetch('/api/signatures', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -42,8 +50,11 @@ const SignatureContextProvider = ({children})=> {
             }
         }
         console.log('this is one signatures fetch')
-        fetchSignatures()
-    },[])
+
+        if(user) {
+            fetchSignatures()
+        }  
+    },[user])
 
 
     const getMySignatures = (myId, type) => {
