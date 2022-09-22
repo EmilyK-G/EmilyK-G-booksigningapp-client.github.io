@@ -44,7 +44,7 @@ const createSignature = async(req, res) =>{
 
     // add doc to db
     try{
-        const sender_id = request.user._id
+        const sender_id = req.user._id
         const signature = await Signature.create({message, recipient, recipient_id, sender, sender_id, sender_signature})
         res.status(200).json(signature)
     } catch (error) {
