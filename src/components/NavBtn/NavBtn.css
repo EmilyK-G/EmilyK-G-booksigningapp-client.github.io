@@ -5,6 +5,7 @@
 a {
   text-decoration: none;
   color: #898194;
+  z-index: 10;
 }
 a:hover {
   color: indigo;
@@ -14,19 +15,20 @@ a:hover {
   top: 80%;
   left: 5%;
   padding: 0;
-  z-index: 1;
+  z-index: 10;
 }
 .nav_btn_style {
   background-color: transparent;
   border: none;
   font-size: 4rem;
+  z-index: 10;
 }
 .next_btn_container_style {
     position: fixed;
     top: 80%;
     right: 5%;
     padding: 0;
-    z-index: 1;
+    z-index: 10;
   }
 
 .btn_dissapear {

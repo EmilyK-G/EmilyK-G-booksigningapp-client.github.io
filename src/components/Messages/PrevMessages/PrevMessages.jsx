@@ -25,7 +25,7 @@ function PrevMessages() {
         const json = await response.json();
 
         if (response.ok) {
-            dispatch({type: 'DLETE_SIGNATURE', payload: json})
+            dispatch({type: 'DELETE_SIGNATURE', payload: json})
         }
     }
 

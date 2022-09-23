@@ -44,7 +44,7 @@ function Dashboard() {
           <header className='profile_header d-flex justify-content-end'>
             <button 
               className='btn d-flex align-items-center logout_btn' 
-              onClick={()=>{logout()}}>
+              onClick={logout}>
               <IoIosLogOut />
             </button>
           </header>

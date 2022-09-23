@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, useReducer } from 'react';
 
-export const UserContext = createContext();
+const UserContext = createContext();
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -13,14 +13,14 @@ const authReducer = (state, action) => {
   }
 }
 
-export const UserContextProvider = ({children}) => {
+const UserContextProvider = ({children}) => {
   const [userSelected, setUserSelected] = useState([]);
   
   const [usersArr, setUsersArr] = useState([]);
 
   const [userState, dispatch] = useReducer(authReducer, {
     user: null
-  })
+  });
 
   
 
@@ -40,3 +40,5 @@ export const UserContextProvider = ({children}) => {
     </UserContext.Provider>
   )
 }
+
+export { UserContextProvider, UserContext}

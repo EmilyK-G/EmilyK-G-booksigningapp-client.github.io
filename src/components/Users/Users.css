@@ -41,7 +41,7 @@
     padding: 10px;
     margin: 10px 2px;
     background-size: cover;
-    z-index: 50;
+    z-index: 5;
   }
   .users_list_item:hover {
     transform: translateY(-1px);
