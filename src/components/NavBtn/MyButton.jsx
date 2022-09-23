@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/Button';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function MyButton(props) {
   return (
@@ -11,7 +11,6 @@ function MyButton(props) {
           to={props.linkTo}
           className='nav_link_style'>{props.sign}</Link>
     </Button>
-    <Outlet />
     </>
   )
 }

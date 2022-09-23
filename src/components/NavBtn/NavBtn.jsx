@@ -4,6 +4,7 @@ import { NavigationContext } from '../../contexts/NavigationContext';
 import Welcome from '../Welcome/Welcome';
 import LoginModal from './LoginModal';
 import MyButton from './MyButton';
+import { Outlet } from "react-router-dom";
 import './NavBtn.css';
 
 function NavBtn() {
@@ -18,6 +19,8 @@ function NavBtn() {
             <MyButton linkTo={prevPage} sign={'<'}/>
             <MyButton linkTo={nextPage} sign={'>'}/>
         </div>
+        
+        <Outlet />
     </div>
   )
 }

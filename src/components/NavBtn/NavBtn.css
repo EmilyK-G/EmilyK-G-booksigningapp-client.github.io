@@ -12,6 +12,8 @@ a:hover {
 }
 .my_btn_div{
   width: -webkit-fill-available;
+  position: absolute;
+  bottom: 1.2%;
 }
 .nav_btn_style {
   background-color: transparent;
