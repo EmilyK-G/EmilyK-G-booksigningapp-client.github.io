@@ -1,56 +1,47 @@
-import { useState, useEffect, createContext, useContext } from 'react';
-import { SignatureContext } from './SignatureContext';
+import { useState, useEffect, createContext } from 'react';
+import { useSignatureContext } from '../Hooks/SignatureContextHook';
+import { useUserContext } from '../Hooks/UserContextHook';
 import { useLocation } from "react-router-dom";
+import { set } from 'date-fns';
 
 const NavigationContext = createContext();
 
 const NavigationContextProvider = ({children})=> {
-    const { signing, setSigning } = useContext( SignatureContext );
-    const [nextPage, setNextPage] = useState('/');
+    const { user } = useUserContext();
+    const [nextPage, setNextPage] = useState('/users');
     const [prevPage, setPrevPage] = useState('/');
-    const [hidePrevBtn, setHidePrevBtn] = useState(false);
-    const [hideNextBtn, setHideNextBtn] = useState(false);
-    
+    const [exitBtn, setExitBtn] = useState(false)
+
     const location = useLocation();
     const pathname = location.pathname;
-    const onPalsBook = signing.Name;
     
-    useEffect(() => {
-        if(pathname === '/'){
-            setHidePrevBtn(true);
-            setHideNextBtn(false);
-            setNextPage('/users')
-        }
-        if(pathname === '/users'){
-            setHidePrevBtn(false);
-            setHideNextBtn(true);
-            setPrevPage('/')
-        }
-        if(pathname === '/dashboard'){
-            setHidePrevBtn(true);
-            setHideNextBtn(false);
-            setNextPage('/books')
-        }
-        if(pathname === '/books'){
-            setTimeout(()=>{
-            setSigning({}) //HERE
-            }, 300)
-            setHideNextBtn(true);
-            setHidePrevBtn(false);
-            setPrevPage('/dashboard');
-        }
-        if(pathname === '/my-book'){
-            setPrevPage('/books');
-        }
-        if(onPalsBook) {
-            setPrevPage('/books');
-        }
-        console.log("this is one nav-context render")
+    useEffect(()=>{
+        const setPages = async()=>{
+            switch(pathname){
+                case '/':
+                    setNextPage('/users')
+                    break;
 
-    }, [pathname, setSigning, onPalsBook])
+                case '/users':
+                    setPrevPage('/')
+                    break;
 
+                case '/dashboard':
+                    setNextPage('/books')
+                    break;
+
+                case '/books':
+                    setPrevPage('/dashboard')
+                    break;
+                
+                default:
+                    setExitBtn(true)
+            }
+        }
+        setPages()
+    },[pathname])
     return (
-        <NavigationContext.Provider value={{hideNextBtn, hidePrevBtn, nextPage, prevPage, pathname}}>
+        <NavigationContext.Provider value={{nextPage, prevPage, pathname}}>
             {children}
         </NavigationContext.Provider>
         )

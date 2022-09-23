@@ -10,27 +10,12 @@ a {
 a:hover {
   color: indigo;
 }
-.prev_btn_container_style {
-  position: fixed;
-  top: 80%;
-  left: 5%;
-  padding: 0;
-  z-index: 10;
+.my_btn_div{
+  width: -webkit-fill-available;
 }
 .nav_btn_style {
   background-color: transparent;
   border: none;
   font-size: 4rem;
   z-index: 10;
-}
-.next_btn_container_style {
-    position: fixed;
-    top: 80%;
-    right: 5%;
-    padding: 0;
-    z-index: 10;
-  }
-
-.btn_dissapear {
-  display: none;
 }

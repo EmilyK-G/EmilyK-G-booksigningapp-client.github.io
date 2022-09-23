@@ -8,7 +8,7 @@ import './LoginModal.css';
 const LoginModal = () => {
 
     const {userSelected, setUserSelected} = useUserContext();
-    const {login, error, isLoading} = useLogin()
+    const {login, error, isLoading} = useLogin();
 
     const [isCorrect, setIsCorrect] = useState(false);
     const [isInvalid, setIsInvalid] = useState(true);

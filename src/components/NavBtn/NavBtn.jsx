@@ -1,42 +1,24 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import { useUserContext } from '../../Hooks/UserContextHook';
 import { NavigationContext } from '../../contexts/NavigationContext';
-import { Outlet, Link } from "react-router-dom";
 import Welcome from '../Welcome/Welcome';
 import LoginModal from './LoginModal';
-import Button from 'react-bootstrap/Button';
+import MyButton from './MyButton';
 import './NavBtn.css';
 
 function NavBtn() {
-  const { userSelected } = useContext( UserContext );
-  const {hideNextBtn, hidePrevBtn, nextPage, prevPage, pathname} = useContext( NavigationContext );
-
+  const { userSelected } = useUserContext();
+  const {nextPage, prevPage, pathname} = useContext( NavigationContext );
+  
   return (
-    <>  {pathname === '/' && <Welcome />}
-        <div className='prev_btn_container_style d-flex align-items-end' >
-          <LoginModal userSelected={userSelected}/>
-          {!hidePrevBtn && <Button 
-            variant='default'
-            className='nav_btn_style' >
-              <Link  
-                to={prevPage}
-                className='nav_link_style'
-                onClick={
-                  console.log('on ', pathname, 'coming from ', prevPage, 'and going to ', nextPage)
-                }>{`<`}</Link>
-          </Button>}
+    <div className='d-flex flex-column align-items-center'>  
+        {pathname === '/' && <Welcome />}
+        <LoginModal userSelected={userSelected}/>
+        <div className='d-flex justify-content-between my_btn_div'>
+            <MyButton linkTo={prevPage} sign={'<'}/>
+            <MyButton linkTo={nextPage} sign={'>'}/>
         </div>
-        <div className='next_btn_container_style d-flex align-items-end' >
-          {!hideNextBtn && <Button 
-            variant='default'
-            className='nav_btn_style' >
-              <Link 
-                to={nextPage} 
-                className='nav_link_style'>{`>`}</Link>
-          </Button>}
-        </div>
-        <Outlet />
-    </>
+    </div>
   )
 }
 
