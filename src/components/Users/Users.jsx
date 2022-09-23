@@ -1,26 +1,9 @@
-import { useEffect, useRef } from 'react';
 import { useUserContext } from '../../Hooks/UserContextHook';
 import { motion } from 'framer-motion';
 import './Users.css';
 
 function Users() {
-  const { setUserSelected, usersArr, setUsersArr } = useUserContext();
-
-  const setUsersArrRef = useRef(setUsersArr);
-
-  useEffect(()=>{
-    const fetchUsers = async() => {
-        const response = await fetch('/api/user')
-        const json = await response.json()
-
-        if (response.ok) {
-            setUsersArrRef.current(json)
-        }
-    }
-
-    fetchUsers()
-    
-  }, [])
+  const { setUserSelected, usersArr } = useUserContext();
 
   function handleListItemClick(user) {
     console.log(usersArr, user)
@@ -34,7 +17,7 @@ function Users() {
       transition={{ duration: 0.2 }}>
         <div className="d-flex flex-column justify-content-center">
           <header className='users_header align-self-center'>
-            <h1 className='users_title mb-0'>Who Are You?</h1>
+            <h1 className='users_title'>Who Are You?</h1>
           </header>
           <hr className="mb-4 users_separator"></hr>
           <ul className='users_list d-flex p-2'>

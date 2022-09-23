@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { useSignup } from '../../Hooks/useSignupHook';
+import './Signup.css'
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ function Signup() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="signup_form_container">
             <div className="form-row">
                 <div className="form-group">
                     <select className="form-control" onChange={(e)=>setClass_of(e.target.value)} value={class_of}>

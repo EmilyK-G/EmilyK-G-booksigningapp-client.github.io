@@ -21,7 +21,6 @@ const UserContextProvider = ({children}) => {
   const [userState, dispatch] = useReducer(authReducer, {
     user: null
   });
-
   
 
   useEffect(()=>{
@@ -31,6 +30,20 @@ const UserContextProvider = ({children}) => {
       dispatch({ type: 'LOGIN', payload: user})
     }
   },[])
+
+  useEffect(()=>{
+    const fetchUsers = async() => {
+        const response = await fetch('/api/user')
+        const json = await response.json()
+
+        if (response.ok) {
+            setUsersArr(json)
+        }
+    }
+
+    fetchUsers()
+    
+  }, [])
 
   console.log('UserContext state: ', userState)
 
