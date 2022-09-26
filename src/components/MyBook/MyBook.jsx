@@ -1,21 +1,21 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import MyBookPage from './MyBookPage';
-import { UserContext } from '../../contexts/UserContext';
-import { SignatureContext } from '../../contexts/SignatureContext';
+import { useUserContext } from '../../Hooks/UserContextHook';
+import { useSignatureContext } from '../../Hooks/SignatureContextHook';
 import { motion } from 'framer-motion';
 import './MyBook.css';
 import { useEffect } from 'react';
 
 function MyBook() {
-    const {loggedUser} = useContext(UserContext);
-    const {getMessages, getMySignatures} = useContext(SignatureContext);
+    const { user } = useUserContext();
+    const {getMessages, getMySignatures} = useSignatureContext();
     const componentRef = useRef();
     const getSignaturesRef = useRef(getMySignatures);
 
     useEffect(()=>{
-      getSignaturesRef.current(loggedUser.Id, 'TO_ME')
-    },[loggedUser.Id])
+      getSignaturesRef.current(user._id, 'TO_ME')
+    },[user._id])
 
   return (
     <motion.div 

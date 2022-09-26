@@ -5,7 +5,8 @@ const UserContext = createContext();
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { user: action.payload }
+      const userObj = {...action.payload.user, token: action.payload.token}
+      return { user: userObj }
     case 'LOGOUT':
       return { user: null }
     default: 
@@ -18,7 +19,7 @@ const UserContextProvider = ({children}) => {
   
   const [usersArr, setUsersArr] = useState([]);
 
-  const [userState, dispatch] = useReducer(authReducer, {
+  const [state, dispatch] = useReducer(authReducer, {
     user: null
   });
   
@@ -45,10 +46,10 @@ const UserContextProvider = ({children}) => {
     
   }, [])
 
-  console.log('UserContext state: ', userState)
+  console.log('UserContext state: ', state)
 
   return (
-    <UserContext.Provider value={{...userState, dispatch, userSelected, setUserSelected, usersArr, setUsersArr}}>
+    <UserContext.Provider value={{...state, dispatch, userSelected, setUserSelected, usersArr, setUsersArr}}>
        {children}
     </UserContext.Provider>
   )
