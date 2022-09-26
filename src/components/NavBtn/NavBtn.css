@@ -15,10 +15,12 @@ a:hover {
   position: fixed;
   bottom: 1.2%;
   z-index: 10;
+  pointer-events: none
 }
 .nav_btn_style {
   background-color: transparent;
   border: none;
   font-size: 4rem;
   z-index: 10;
+  pointer-events: auto;
 }

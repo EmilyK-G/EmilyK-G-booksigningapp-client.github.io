@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useUserContext } from '../../Hooks/UserContextHook';
 import { NavigationContext } from '../../contexts/NavigationContext';
 import Welcome from '../Welcome/Welcome';
 import LoginModal from './LoginModal';
 import MyButton from './MyButton';
 import { Outlet } from "react-router-dom";
-import { motion } from 'framer-motion';
 import './NavBtn.css';
 
 function NavBtn() {
