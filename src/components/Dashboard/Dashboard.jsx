@@ -12,26 +12,23 @@ import './Dashboard.css';
 function Dashboard() {
   const {user, usersArr} = useUserContext();
   const {logout} = useLogout();
-  const {getMessages, getMySignatures} = useSignatureContext();
+  const {signatures} = useSignatureContext();
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
   const parallaxRef = useRef();
-  const getSignaturesRef = useRef (getMySignatures);
+  //const getSignaturesRef = useRef (getMySignatures);
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
-    if(getMessages.length >= 1){
-      const toSign = usrs - getMessages.length;
+    if(signatures){
+      const toSign = usrs - signatures.length;
       setBooksToSign(toSign)
     } else{
         setBooksToSign(usrs)
     }
-    console.log(getMessages.length)
-  }, [usersArr.length, getMessages])
+    console.log(signatures.length)
+  }, [usersArr.length, signatures])
 
-  useEffect(()=>{
-    getSignaturesRef.current(user._id, 'ALL_FROM_ME')
-  }, [user._id])
 
   return (
     <Parallax ref={parallaxRef} pages={3}>

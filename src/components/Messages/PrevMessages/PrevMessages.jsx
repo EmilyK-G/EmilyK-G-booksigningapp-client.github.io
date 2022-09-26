@@ -4,12 +4,16 @@ import { IconContext } from "react-icons";
 import { formatRelative } from 'date-fns';
 import { RiChatDeleteFill } from 'react-icons/ri';
 import './PrevMessages.css';
+import { useEffect } from "react";
 
 function PrevMessages() {
 
-    const {getMessages, dispatch} = useSignatureContext();
+    const {signatures, dispatch} = useSignatureContext();
     const {user} = useUserContext();
 
+    useEffect(()=>{
+        console.log(signatures)
+    },[signatures])
     const handleDeleteMsg = async(msgId) => {
         if (!user) {
             return
@@ -29,7 +33,7 @@ function PrevMessages() {
         }
     }
 
-    const myMessages = getMessages.map(mes => {
+    const myMessages = signatures.map(mes => {
         return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
@@ -44,7 +48,7 @@ function PrevMessages() {
       })
 
     
-    return getMessages.length >= 1 ? myMessages : <small className="text-muted">No messages sent</small>
+    return signatures ? <small className="text-muted">No messages sent</small> : myMessages  
 }
 
 export default PrevMessages

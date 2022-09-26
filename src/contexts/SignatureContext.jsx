@@ -27,8 +27,6 @@ const signaturesReducer = (mssgState, action) => {
 const SignatureContextProvider = ({children})=> {
 
     const {user} = useUserContext()
-    
-    const [getMessages, setGetMessages] = useState([]);
 
     const [signing, setSigning] = useState({});
     const [mssgState, dispatch] = useReducer(signaturesReducer, {
@@ -56,58 +54,58 @@ const SignatureContextProvider = ({children})=> {
     },[user])
 
 
-    const getMySignatures = (myId, type) => {
+    // const getMySignatures = (myId, type) => {
         
-        const myMessages = () => {
+    //     const myMessages = () => {
 
-            const mySignaturesArr = [];
+    //         const mySignaturesArr = [];
 
-            mssgState.signatures.forEach(mes=>{
+    //         mssgState.signatures.forEach(mes=>{
 
-                switch(type) {
+    //             switch(type) {
 
-                    case 'FROM_ME':
-                        if (mes.sender_id === myId){
-                            mySignaturesArr.push(mes)
-                        }
-                        const thisPal = [];
+    //                 case 'FROM_ME':
+    //                     if (mes.sender_id === myId){
+    //                         mySignaturesArr.push(mes)
+    //                     }
+    //                     const thisPal = [];
 
-                        mySignaturesArr.forEach(mes => {
-                            if(mes.recipient_id === signing.Id){
-                                thisPal.push(mes)
-                            }
-                        })
-                        setGetMessages(thisPal)
+    //                     mySignaturesArr.forEach(mes => {
+    //                         if(mes.recipient_id === signing.Id){
+    //                             thisPal.push(mes)
+    //                         }
+    //                     })
+    //                     setGetMessages(thisPal)
 
-                        break;
+    //                     break;
 
-                    case 'TO_ME':
-                        if (mes.recipient_id === myId){
-                            mySignaturesArr.push(mes)
-                        }
-                        setGetMessages(mySignaturesArr)
+    //                 case 'TO_ME':
+    //                     if (mes.recipient_id === myId){
+    //                         mySignaturesArr.push(mes)
+    //                     }
+    //                     setGetMessages(mySignaturesArr)
 
-                        break;
+    //                     break;
 
-                    case 'ALL_FROM_ME':
-                        if (mes.sender_id === myId){
-                            mySignaturesArr.push(mes)
-                        }
-                        setGetMessages(mySignaturesArr)
+    //                 case 'ALL_FROM_ME':
+    //                     if (mes.sender_id === myId){
+    //                         mySignaturesArr.push(mes)
+    //                     }
+    //                     setGetMessages(mySignaturesArr)
                         
-                        break;
+    //                     break;
 
-                    default: 
-                        setGetMessages(mySignaturesArr)
-                    }
-            })
-        };
+    //                 default: 
+    //                     setGetMessages(mySignaturesArr)
+    //                 }
+    //         })
+    //     };
         
-        return myMessages();
-    }
+    //     return myMessages();
+    // }
     
     return (
-        <SignatureContext.Provider value={{signing, setSigning, getMySignatures, ...mssgState, dispatch, getMessages}}>
+        <SignatureContext.Provider value={{signing, setSigning, ...mssgState, dispatch}}>
             {children}
         </SignatureContext.Provider>
         )

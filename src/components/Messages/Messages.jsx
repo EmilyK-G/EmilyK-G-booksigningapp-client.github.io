@@ -7,20 +7,12 @@ import Alert from 'react-bootstrap/Alert';
 import './Messages.css';
 
 function Messages() {
-  const {signing, dispatch, getMySignatures} = useSignatureContext();
-  const {user} = useUserContext()
+  const {signing, dispatch} = useSignatureContext();
+  const { user } = useUserContext()
 
   const [myMessage, setMyMessage] = useState('');
   const [error, setError] = useState(null);
-  const getSignaturesRef = useRef (getMySignatures);
   const [emptyFields, setEmptyFields] = useState([]);
-
-
-  useEffect(()=>{
-    getSignaturesRef.current(user._id, 'FROM_ME')
-    //getMessages is not updating
-  }, [user._id])
-
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault()
@@ -32,8 +24,8 @@ function Messages() {
     //add Message to Messages array (Database) HERE ex:
     const mssg = {
       message: myMessage,
-      recipient: `${signing.Name} ${signing.LastName}`,
-      recipient_id: signing.Id,
+      recipient: `${signing.name} ${signing.last_name}`,
+      recipient_id: signing._id,
       sender: `${user.name} ${user.last_name}`,
       sender_id: user._id,
       sender_signature: user.signature
@@ -65,14 +57,14 @@ function Messages() {
 
   return (
     <motion.div 
-      initial= {{opacity: 0, height:'10%', x:0}}
-      animate= {{opacity: 1, height:'100%', x:0}}
-      exit= {{opacity:0, height:'10%', x:0}}
+      initial= {{opacity: 0, height:'10%',width:'85%', x:0}}
+      animate= {{opacity: 1, height:'100%', width:'95%', x:0}}
+      exit= {{opacity:0, height:'10%',width:'85%', x:0}}
       transition={{ duration: 0.2 }}>
       <div className="d-flex flex-column align-items-start p-1 pt-4">
-          <h1 className='align-self-center bk_owner_title'>{signing.Name}<small className="text-muted">'s Book</small></h1>
+          <h1 className='align-self-center bk_owner_title'>{signing.name}<small className="text-muted">'s Book</small></h1>
           <div className="input-group">
-              <textarea value={myMessage} className={"form-control txtArea pt-4 ps-2 msg_txt_area " + (emptyFields.includes('message') ? ' message_error' : '')} autoFocus onChange={(e)=>setMyMessage(e.target.value)} placeholder={'Dear ' + signing.Name + ' ' + signing.LastName + '...'}></textarea>
+              <textarea value={myMessage} className={"form-control txtArea pt-4 ps-2 msg_txt_area " + (emptyFields.includes('message') ? ' message_error' : '')} autoFocus onChange={(e)=>setMyMessage(e.target.value)} placeholder={'Dear ' + signing.name + ' ' + signing.last_name + '...'}></textarea>
           </div>
           <figcaption className='message_footer mx-3 mt-1'>From: {user.signature}</figcaption>
           <button type='submit' className='btn btn-success align-self-end' onClick={(e)=>handleSubmitMessage(e)}>Send</button>

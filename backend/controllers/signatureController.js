@@ -4,14 +4,14 @@ const { findOneAndUpdate } = require('../models/signatureModel')
 
 //get all signatures
 const getSignatures = async(req, res) =>{
-    try{
-        const signatures = await Signature.find({}).sort({createdAt: -1})
+    const sender_id = req.sender_id
+    
+    const signatures = await Signature.find({sender_id}).sort({createdAt: -1})
 
-        res.status(200).json(signatures)
-    }catch(error){
-        console.log(error)
-    }
+    res.status(200).json(signatures)
+   
 }
+
 //get a single signature
 const getSignature = async(req, res)=> {
     const {id} = req.params
