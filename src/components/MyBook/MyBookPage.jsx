@@ -3,7 +3,7 @@ import './MyBookPage.css';
 export class MyBookPage extends React.PureComponent {
     render() {
       return ( <div className='myBook_page px-2 py-4'>
-          {this.props.myBookPage.map((mes)=>{
+          { this.props.signatures ? this.props.signatures.map((mes)=>{
           return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
@@ -12,7 +12,7 @@ export class MyBookPage extends React.PureComponent {
                         <cite title="Sent date">{mes.sender_signature}</cite>
                     </figcaption>
                 </figure>
-        } )}
+        } ): <p>You don't have any signatures</p>}
       </div>
       );
     }

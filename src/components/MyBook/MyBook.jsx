@@ -9,9 +9,28 @@ import { useEffect } from 'react';
 
 function MyBook() {
     const { user } = useUserContext();
-    const {signatures} = useSignatureContext();
+    const {signatures, dispatch} = useSignatureContext();
     const componentRef = useRef();
 
+    useEffect(()=>{
+      const fetchSignatures = async() => {
+          const response = await fetch('/api/signatures', {
+              headers: {
+                  'Authorization': `Bearer ${user.token}`
+              }
+          })
+          const json = await response.json()
+
+          if (response.ok) {
+              dispatch({type: 'SET_SIGNATURES', payload: json})
+              console.log(json)
+          }
+      }
+
+      if(user) {
+          fetchSignatures()
+      }  
+    },[user, dispatch])
   
   return (
     <motion.div 
@@ -21,7 +40,7 @@ function MyBook() {
       transition={{ duration: 0.2 }}>
         <div className='d-flex flex-column mt-5 mb-3 myBook_container'>
             <h1 className='myBook_title'>My Book <small className="text-muted">-signatures</small></h1>
-            <MyBookPage ref={componentRef} myBookPage={signatures}/>
+            <MyBookPage ref={componentRef} signatures={signatures}/>
             <ReactToPrint
               trigger={() => {
                 return <button type='submit' className='btn btn-secondary m-4 align-self-center myBook_print_btn'>Print!</button>;

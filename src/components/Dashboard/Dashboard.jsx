@@ -26,7 +26,7 @@ function Dashboard() {
     } else{
         setBooksToSign(usrs)
     }
-    console.log(signatures.length)
+    console.log(signatures)
   }, [usersArr.length, signatures])
 
 

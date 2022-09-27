@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useSignatureContext } from "../../Hooks/SignatureContextHook";
 import { useUserContext } from '../../Hooks/UserContextHook';
 import PrevMessages from './PrevMessages/PrevMessages';
@@ -21,7 +21,7 @@ function Messages() {
       setError('You must be logged in')
       return
     }
-    //add Message to Messages array (Database) HERE ex:
+    
     const mssg = {
       message: myMessage,
       recipient: `${signing.name} ${signing.last_name}`,

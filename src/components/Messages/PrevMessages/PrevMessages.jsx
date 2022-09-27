@@ -1,20 +1,21 @@
+import { useEffect, useRef } from "react";
 import { useSignatureContext } from "../../../Hooks/SignatureContextHook";
 import { useUserContext } from "../../../Hooks/UserContextHook";
 import { IconContext } from "react-icons";
 import { formatRelative } from 'date-fns';
 import { RiChatDeleteFill } from 'react-icons/ri';
 import './PrevMessages.css';
-import { useEffect } from "react";
-import { useState } from "react";
+
 
 function PrevMessages() {
 
-    const {dispatch, signing} = useSignatureContext();
+    const {dispatch, signing, signatures} = useSignatureContext();
     const {user} = useUserContext();
 
-    const [thisPal, setThisPal] = useState([])
+    const thisPalRef = useRef([]);
 
     useEffect(()=>{
+
         const fetchSignatures = async()=>{
             const response = await fetch('/api/signatures/sent', {
                 method: 'GET',
@@ -27,14 +28,13 @@ function PrevMessages() {
 
         if (response.ok) {
             json.forEach((mes)=>{
-                mes.recipient_id === signing._id && setThisPal(t => [...t, mes])
-                console.log(mes)
+                mes.recipient_id === signing._id && thisPalRef.current.push(mes)
             })
-            console.log(json)
         }
+        dispatch({type:'SET_SIGNATURES', payload: thisPalRef.current})
     }
         fetchSignatures()
-    },[signing._id, user.token])
+    },[signing._id, user.token, dispatch])
 
 
     const handleDeleteMsg = async(msgId) => {
@@ -57,7 +57,8 @@ function PrevMessages() {
     }
 
 
-    return ( thisPal.length !== 0 ? thisPal.map(mes => {
+    return ( signatures ? signatures.map(mes => {
+        console.log(signatures)
         return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
