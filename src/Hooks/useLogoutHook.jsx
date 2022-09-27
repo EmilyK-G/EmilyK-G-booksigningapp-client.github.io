@@ -1,7 +1,8 @@
-import { useUserContext } from "./UserContextHook"
+import { UserContext } from "../contexts/UserContext"
+import { useContext } from "react";
 import { useSignatureContext } from "./SignatureContextHook"
 export const useLogout = ()=>{
-    const { dispatch } = useUserContext;
+    const { dispatch } = useContext(UserContext);
     const { dispatch: signatureDispatch } = useSignatureContext()
 
     const logout = () =>{
@@ -9,7 +10,7 @@ export const useLogout = ()=>{
         localStorage.removeItem('user')
 
         //dispatch logout action
-        dispatch({type:'LOGOUT', payload:null})
+        dispatch({type:'LOGOUT'})
         signatureDispatch({type: 'SET_SIGNATURES', payload: null})
     }
 

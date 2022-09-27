@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect, useReducer } from 'react';
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
-const authReducer = (state, action) => {
+export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       const userObj = {...action.payload.user, token: action.payload.token}
@@ -14,7 +14,7 @@ const authReducer = (state, action) => {
   }
 }
 
-const UserContextProvider = ({children}) => {
+export const UserContextProvider = ({children}) => {
   const [userSelected, setUserSelected] = useState([]);
   
   const [usersArr, setUsersArr] = useState([]);
@@ -54,5 +54,3 @@ const UserContextProvider = ({children}) => {
     </UserContext.Provider>
   )
 }
-
-export { UserContextProvider, UserContext}

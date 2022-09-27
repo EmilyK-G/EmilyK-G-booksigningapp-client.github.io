@@ -16,7 +16,7 @@ function Dashboard() {
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
   const parallaxRef = useRef();
-  //const getSignaturesRef = useRef (getMySignatures);
+
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
@@ -29,7 +29,9 @@ function Dashboard() {
     console.log(signatures)
   }, [usersArr.length, signatures])
 
-
+  const handleLogoutClick = () => {
+    logout()
+  }
   return (
     <Parallax ref={parallaxRef} pages={3}>
       <motion.div 
@@ -41,7 +43,7 @@ function Dashboard() {
           <header className='profile_header d-flex justify-content-end'>
             <button 
               className='btn d-flex align-items-center logout_btn' 
-              onClick={logout}>
+              onClick={handleLogoutClick}>
               <IoIosLogOut />
             </button>
           </header>
