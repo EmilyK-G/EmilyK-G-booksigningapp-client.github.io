@@ -1,4 +1,4 @@
-import { useUserContext } from '../../Hooks/UserContextHook';
+import { useUserContext } from '../../Hooks/useUserContextHook';
 import { motion } from 'framer-motion';
 import './Users.css';
 

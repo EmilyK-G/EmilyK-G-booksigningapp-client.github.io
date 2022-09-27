@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useUserContext } from '../../Hooks/UserContextHook';
+import { useUserContext } from '../../Hooks/useUserContextHook';
 import { NavigationContext } from '../../contexts/NavigationContext';
 import Welcome from '../Welcome/Welcome';
 import LoginModal from './LoginModal';

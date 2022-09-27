@@ -1,8 +1,6 @@
 import { useState, useEffect, createContext } from 'react';
-import { useSignatureContext } from '../Hooks/SignatureContextHook';
-import { useUserContext } from '../Hooks/UserContextHook';
+import { useUserContext } from '../Hooks/useUserContextHook';
 import { useLocation } from "react-router-dom";
-import { set } from 'date-fns';
 
 const NavigationContext = createContext();
 

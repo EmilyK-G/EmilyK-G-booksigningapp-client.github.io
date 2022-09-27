@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLogin } from '../../Hooks/useLoginHook';
-import { useUserContext } from '../../Hooks/UserContextHook'; 
+import { useUserContext } from '../../Hooks/useUserContextHook'; 
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
