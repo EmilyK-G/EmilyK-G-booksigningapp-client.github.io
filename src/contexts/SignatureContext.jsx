@@ -44,9 +44,9 @@ const SignatureContextProvider = ({children})=> {
 
             if (response.ok) {
                 dispatch({type: 'SET_SIGNATURES', payload: json})
+                console.log(json)
             }
         }
-        console.log('this is one signatures fetch')
 
         if(user) {
             fetchSignatures()

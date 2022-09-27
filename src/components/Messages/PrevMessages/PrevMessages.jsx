@@ -5,15 +5,38 @@ import { formatRelative } from 'date-fns';
 import { RiChatDeleteFill } from 'react-icons/ri';
 import './PrevMessages.css';
 import { useEffect } from "react";
+import { useState } from "react";
 
 function PrevMessages() {
 
-    const {signatures, dispatch} = useSignatureContext();
+    const {dispatch, signing} = useSignatureContext();
     const {user} = useUserContext();
 
+    const [thisPal, setThisPal] = useState([])
+
     useEffect(()=>{
-        console.log(signatures)
-    },[signatures])
+        const fetchSignatures = async()=>{
+            const response = await fetch('/api/signatures/sent', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+        
+        const json = await response.json();
+
+        if (response.ok) {
+            json.forEach((mes)=>{
+                mes.recipient_id === signing._id && setThisPal(t => [...t, mes])
+                console.log(mes)
+            })
+            console.log(json)
+        }
+    }
+        fetchSignatures()
+    },[signing._id, user.token])
+
+
     const handleDeleteMsg = async(msgId) => {
         if (!user) {
             return
@@ -33,7 +56,8 @@ function PrevMessages() {
         }
     }
 
-    const myMessages = signatures.map(mes => {
+
+    return ( thisPal.length !== 0 ? thisPal.map(mes => {
         return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">
                         <p className='prevMsg_text mt-3 text-end'>{mes.message}</p>
@@ -45,10 +69,9 @@ function PrevMessages() {
                         <span className="text-end delete_msg_btn" onClick={() => handleDeleteMsg(mes._id)}><RiChatDeleteFill/></span>
                     </IconContext.Provider>
                 </figure>
-      })
+      }) : <small className="text-muted">No messages sent</small>
+    )
 
-    
-    return signatures ? <small className="text-muted">No messages sent</small> : myMessages  
 }
 
 export default PrevMessages

@@ -3,6 +3,7 @@ const {
     createSignature, 
     getSignature, 
     getSignatures,
+    getSignaturesSent,
     deleteSignature,
     updateSignature
 } = require('../controllers/signatureController')
@@ -15,6 +16,9 @@ router.use(requireAuth)
 
 // GET all signatures
 router.get('/', getSignatures)
+
+//GET signatures sent
+router.get('/sent', getSignaturesSent)
 
 //GET a single signature
 router.get('/:id', getSignature)

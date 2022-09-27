@@ -4,8 +4,18 @@ const { findOneAndUpdate } = require('../models/signatureModel')
 
 //get all signatures
 const getSignatures = async(req, res) =>{
-    const sender_id = req.sender_id
-    
+    const recipient_id = req.user._id
+    console.log(req.user._id)
+    const signatures = await Signature.find({recipient_id}).sort({createdAt: -1})
+
+    res.status(200).json(signatures)
+   
+}
+
+//get signatures sent
+const getSignaturesSent = async(req, res) =>{
+    const sender_id = req.user._id
+    console.log(req.user._id)
     const signatures = await Signature.find({sender_id}).sort({createdAt: -1})
 
     res.status(200).json(signatures)
@@ -89,6 +99,7 @@ const updateSignature = async (req, res)=>{
 module.exports = {
     getSignatures,
     getSignature,
+    getSignaturesSent,
     createSignature,
     deleteSignature,
     updateSignature
