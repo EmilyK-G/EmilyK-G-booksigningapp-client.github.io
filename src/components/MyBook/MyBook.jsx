@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 function MyBook() {
     const { user } = useUserContext();
-    const {signatures, dispatch} = useSignatureContext();
+    const {messages, myMesDispatch} = useSignatureContext();
     const componentRef = useRef();
 
     useEffect(()=>{
@@ -22,7 +22,7 @@ function MyBook() {
           const json = await response.json()
 
           if (response.ok) {
-              dispatch({type: 'SET_SIGNATURES', payload: json})
+              myMesDispatch({type: 'SET_MESSAGES', payload: json})
               console.log(json)
           }
       }
@@ -30,7 +30,7 @@ function MyBook() {
       if(user) {
           fetchSignatures()
       }  
-    },[user, dispatch])
+    },[user, myMesDispatch])
   
   return (
     <motion.div 
@@ -40,7 +40,7 @@ function MyBook() {
       transition={{ duration: 0.2 }}>
         <div className='d-flex flex-column mt-5 mb-3 myBook_container'>
             <h1 className='myBook_title'>My Book <small className="text-muted">-signatures</small></h1>
-            <MyBookPage ref={componentRef} signatures={signatures}/>
+            <MyBookPage ref={componentRef} signatures={messages}/>
             <ReactToPrint
               trigger={() => {
                 return <button type='submit' className='btn btn-secondary m-4 align-self-center myBook_print_btn'>Print!</button>;

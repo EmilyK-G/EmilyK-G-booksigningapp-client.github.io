@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useSignatureContext } from "../../../Hooks/SignatureContextHook";
 import { useUserContext } from "../../../Hooks/useUserContextHook";
 import { IconContext } from "react-icons";
@@ -9,33 +8,8 @@ import './PrevMessages.css';
 
 function PrevMessages() {
 
-    const {dispatch, signing, signatures} = useSignatureContext();
+    const {dispatch, signatures} = useSignatureContext();
     const {user} = useUserContext();
-
-    const thisPalRef = useRef([]);
-
-    useEffect(()=>{
-
-        const fetchSignatures = async()=>{
-            const response = await fetch('/api/signatures/sent', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-        
-        const json = await response.json();
-
-        if (response.ok) {
-            json.forEach((mes)=>{
-                mes.recipient_id === signing._id && thisPalRef.current.push(mes)
-            })
-        }
-        dispatch({type:'SET_SIGNATURES', payload: thisPalRef.current})
-    }
-        fetchSignatures()
-    },[signing._id, user.token, dispatch])
-
 
     const handleDeleteMsg = async(msgId) => {
         if (!user) {
@@ -50,6 +24,8 @@ function PrevMessages() {
         })
 
         const json = await response.json();
+
+        console.log(json)
 
         if (response.ok) {
             dispatch({type: 'DELETE_SIGNATURE', payload: json})
