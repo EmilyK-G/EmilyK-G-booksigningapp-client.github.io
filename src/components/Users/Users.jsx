@@ -11,10 +11,10 @@ function Users() {
   }
   return (
     <motion.div 
-      initial= {{opacity: 0, x:100}}
-      animate= {{opacity: 1, x: 0}}
-      exit= {{opacity:0, x:100}}
-      transition={{ duration: 0.2 }}>
+      initial= {{opacity: 0, width:'10%', y:0}}
+      animate= {{opacity: 1, width: '100%', y:0}}
+      exit= {{opacity:0, width:'10%', y:0}}
+      transition={{ duration: 0.5 }}>
         <div className="d-flex flex-column justify-content-center">
           <header className='users_header align-self-center'>
             <h1 className='users_title'>Who Are You?</h1>
