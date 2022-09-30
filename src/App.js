@@ -11,6 +11,7 @@ import Messages from './components/Messages/Messages';
 import Dashboard from './components/Dashboard/Dashboard';
 import NavBtn from './components/NavBtn/NavBtn';
 import MyBook from './components/MyBook/MyBook';
+import LoginPage from "./pages/LoginPage/LoginPage";
 import {AnimatePresence} from "framer-motion"; 
 import './App.css';
 
@@ -25,10 +26,10 @@ function App() {
             <Routes key={location.pathname} location={location}>
                 <Route path="/" element={<NavBtn/>}>
                   <Route path="users" element={!user ? <Users /> : <Navigate to="/books"/>} />
-                  <Route path="books" element={user ? <Books /> : <Navigate to="/users"/>} />
-                  <Route path="books/:id" element={user ? <Messages/> : <Navigate to="/users"/>}/>
-                  <Route path="dashboard" element={user ? <Dashboard/> : <Navigate to="/"/>}/>
-                  <Route path="my-book" element={user ? <MyBook/> : <Navigate to="/"/>}/>
+                  <Route path="books" element={user ? <Books /> : <LoginPage/>} />
+                  <Route path="books/:id" element={user ? <Messages/> : <LoginPage/>}/>
+                  <Route path="dashboard" element={user ? <Dashboard/> : <LoginPage/>}/>
+                  <Route path="my-book" element={user ? <MyBook/> : <LoginPage/>}/>
                   <Route
                       path="*"
                       element={
