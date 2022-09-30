@@ -36,9 +36,9 @@ function MyBook() {
   
   return (
     <motion.div 
-      initial= {{opacity: 0, height:'10%', x:0}}
-      animate= {{opacity: 1, height:'100%', x:0}}
-      exit= {{opacity:0, height:'10%', x:0}}
+      initial= {{opacity: 0, height:'10%', x:0, width:'-webkit-fill-available'}}
+      animate= {{opacity: 1, height:'100%', x:0, width:'-webkit-fill-available'}}
+      exit= {{opacity:0, height:'10%', x:0, width:'-webkit-fill-available'}}
       transition={{ duration: 0.2 }}>
         <div className='d-flex flex-column mt-5 mb-3 myBook_container'>
           <div className='align-self-start check_btn_div'>
@@ -47,7 +47,7 @@ function MyBook() {
             </IconContext.Provider>
           </div>
           <h1 className='myBook_title'>My Book <small className="text-muted">-signatures</small></h1>
-          <MyBookPage ref={componentRef} signatures={messages}/>
+          <MyBookPage ref={componentRef} messages={messages ? messages.length > 0 ? messages : null : null}/>
           <ReactToPrint
             trigger={() => {
               return <button type='submit' className='btn btn-secondary m-4 align-self-center myBook_print_btn'>Print!</button>;
