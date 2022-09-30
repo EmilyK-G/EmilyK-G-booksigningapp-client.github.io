@@ -52,7 +52,7 @@ function Messages() {
                   <hr />
               </header>
               {
-                signatures.length > 0 ? signatures.map(mes => {
+                signatures && signatures.length > 0 ? signatures.map(mes => {
                   console.log(signatures)
                   return <PrevMessages key={mes._id} mes={mes}/>
                 }) : <small className="text-muted">No messages sent</small>
