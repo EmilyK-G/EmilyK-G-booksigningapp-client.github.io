@@ -4,7 +4,6 @@ import {
   useLocation,
   Navigate
 } from "react-router-dom";
-import { NavigationContextProvider } from "./contexts/NavigationContext";
 import { useUserContext } from "./Hooks/useUserContextHook";
 import Users from './components/Users/Users';
 import Books from './components/Books/Books';
@@ -21,13 +20,13 @@ function App() {
   return (
     <div className="App">
       <div className='content content_bgr'>
-        <NavigationContextProvider>
+        
           <AnimatePresence mode="wait">
             <Routes key={location.pathname} location={location}>
                 <Route path="/" element={<NavBtn/>}>
                   <Route path="users" element={!user ? <Users /> : <Navigate to="/books"/>} />
-                  <Route path="books" element={user ? <Books /> : <Navigate to="/"/>} />
-                  <Route path="books/:id" element={user ? <Messages/> : <Navigate to="/"/>}/>
+                  <Route path="books" element={user ? <Books /> : <Navigate to="/users"/>} />
+                  <Route path="books/:id" element={user ? <Messages/> : <Navigate to="/users"/>}/>
                   <Route path="dashboard" element={user ? <Dashboard/> : <Navigate to="/"/>}/>
                   <Route path="my-book" element={user ? <MyBook/> : <Navigate to="/"/>}/>
                   <Route
@@ -41,7 +40,7 @@ function App() {
                 </Route>
             </Routes>
           </AnimatePresence>
-        </NavigationContextProvider>
+       
       </div>
     </div>
   );
