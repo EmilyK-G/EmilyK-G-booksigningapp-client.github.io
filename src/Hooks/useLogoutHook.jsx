@@ -1,6 +1,6 @@
 import { UserContext } from "../contexts/UserContext"
 import { useContext } from "react";
-import { useSignatureContext } from "./SignatureContextHook"
+import { useSignatureContext } from "./useSignatureContextHook"
 export const useLogout = ()=>{
     const { dispatch } = useContext(UserContext);
     const { dispatch: signatureDispatch } = useSignatureContext()

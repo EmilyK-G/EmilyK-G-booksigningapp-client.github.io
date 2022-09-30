@@ -4,7 +4,6 @@ import {
   useLocation,
   Navigate
 } from "react-router-dom";
-import { SignatureContextProvider } from './contexts/SignatureContext';
 import { NavigationContextProvider } from "./contexts/NavigationContext";
 import { useUserContext } from "./Hooks/useUserContextHook";
 import Users from './components/Users/Users';
@@ -22,7 +21,6 @@ function App() {
   return (
     <div className="App">
       <div className='content content_bgr'>
-      <SignatureContextProvider>
         <NavigationContextProvider>
           <AnimatePresence mode="wait">
             <Routes key={location.pathname} location={location}>
@@ -44,7 +42,6 @@ function App() {
             </Routes>
           </AnimatePresence>
         </NavigationContextProvider>
-      </SignatureContextProvider>
       </div>
     </div>
   );

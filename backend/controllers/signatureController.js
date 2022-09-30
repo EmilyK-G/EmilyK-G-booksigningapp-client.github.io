@@ -75,6 +75,8 @@ const deleteSignature = async (req, res)=>{
     if(!signature) {
         return res.status(404).json({error: 'No such signature'})
     }
+
+    res.status(200).json(signature)
 }
 
 //update a signature

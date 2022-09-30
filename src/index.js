@@ -6,15 +6,18 @@ import App from './App';
 import {Parallax} from 'react-parallax';
 import signingBackground from './images/signingBackground2.png'
 import { UserContextProvider } from './contexts/UserContext';
+import { SignatureContextProvider } from './contexts/SignatureContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <UserContextProvider>
-    <BrowserRouter>
-      <Parallax strength={-600} bgImage={signingBackground} style={ {backgroundSize: 'cover'} }>
-        <App />
-      </Parallax>
-    </BrowserRouter>
+    <SignatureContextProvider>
+      <BrowserRouter>
+        <Parallax strength={-600} bgImage={signingBackground} style={ {backgroundSize: 'cover'} }>
+          <App />
+        </Parallax>
+      </BrowserRouter>
+    </SignatureContextProvider>
   </UserContextProvider>
 );
 

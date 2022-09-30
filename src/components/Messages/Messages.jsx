@@ -1,20 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import PrevMessages from './PrevMessages/PrevMessages';
-import { useSignatureContext } from "../../Hooks/SignatureContextHook";
+import { useSignatureContext } from "../../Hooks/useSignatureContextHook";
 import { useUserContext } from "../../Hooks/useUserContextHook";
 import { motion } from 'framer-motion';
 import MessageForm from './MessageForm/MessageForm';
 import './Messages.css';
 
 function Messages() {
-  const {dispatch, signing} = useSignatureContext();
+  const {dispatch, signing, signatures} = useSignatureContext();
   const { user } = useUserContext()
 
-  const thisPalRef = useRef([]);
 
   useEffect(()=>{
 
     const fetchSignatures = async()=>{
+        
+        const thisPal= [];
+
         const response = await fetch('/api/signatures/sent', {
             method: 'GET',
             headers: {
@@ -26,10 +28,10 @@ function Messages() {
 
         if (response.ok) {
             json.forEach((mes)=>{
-                mes.recipient_id === signing._id && thisPalRef.current.push(mes)
+                mes.recipient_id === signing._id && thisPal.push(mes)
             })
         }
-        dispatch({type:'SET_SIGNATURES', payload: thisPalRef.current})
+        dispatch({type:'SET_SIGNATURES', payload: thisPal})
     }
         fetchSignatures()
 
@@ -49,7 +51,13 @@ function Messages() {
                   <h2>Previous Messages</h2>
                   <hr />
               </header>
-             <PrevMessages />
+              {
+                signatures ? signatures.map(mes => {
+                  console.log(signatures)
+                  return <PrevMessages key={mes._id} mes={mes}/>
+                }) : <small className="text-muted">No messages sent</small>
+              }
+             
           </div>
       </div>
     </motion.div>

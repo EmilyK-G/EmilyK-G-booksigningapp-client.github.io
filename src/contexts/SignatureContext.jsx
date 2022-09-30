@@ -18,7 +18,7 @@ const signaturesReducer = (mesState, action) => {
                 signatures: mesState.signatures.filter((s) => s._id !== action.payload._id)
             }
         default:
-            return mesState
+            return (mesState)
     }
 }
 
