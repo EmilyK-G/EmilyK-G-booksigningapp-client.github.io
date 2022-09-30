@@ -10,3 +10,14 @@
 .myBook_print_btn{
     height: 60px;
 }
+div.check_btn_div{
+    position: fixed;
+    margin: -85px 0 0 -30px;
+}
+.check_svg_color{
+    fill: #007185;
+    stroke: #007185;
+}
+.check_link_style {
+    font-size: 1.5rem;
+}

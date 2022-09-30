@@ -9,7 +9,7 @@ function MyButton(props) {
       className='nav_btn_style' >
         <Link  
           to={props.linkTo}
-          className='nav_link_style'>{props.sign}</Link>
+          className={props.className}>{props.sign}</Link>
     </Button>
     </>
   )

@@ -1,3 +1,15 @@
+div.check_btn_messages_div{
+    position: fixed;
+    z-index: 5;
+    margin: -73px 0 0 -10px;
+}
+.check_svg_color{
+    fill: #007185;
+    stroke: #007185;
+}
+.check_link_style {
+    font-size: 1.5rem;
+}
 .txtArea {
     height: 300px;
     text-align: -webkit-auto;

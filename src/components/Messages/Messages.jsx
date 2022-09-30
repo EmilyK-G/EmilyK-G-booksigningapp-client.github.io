@@ -4,7 +4,10 @@ import { useSignatureContext } from "../../Hooks/useSignatureContextHook";
 import { useUserContext } from "../../Hooks/useUserContextHook";
 import { motion } from 'framer-motion';
 import MessageForm from './MessageForm/MessageForm';
+import MyButton from '../NavBtn/MyButton';
 import './Messages.css';
+import { MdDone } from 'react-icons/md';
+import { IconContext } from "react-icons";
 
 function Messages() {
   const {dispatch, signing, signatures} = useSignatureContext();
@@ -45,6 +48,11 @@ function Messages() {
       exit= {{opacity:0, height:'10%',width:'85%', x:0}}
       transition={{ duration: 0.2 }}>
       <div className="d-flex flex-column align-items-start p-1 pt-4">
+          <div className='align-self-start check_btn_messages_div'>
+            <IconContext.Provider value={{ color: '#007185', className: 'check_svg_color' }}>
+              <MyButton linkTo={'/books'} sign={<MdDone/>} className={'check_link_style'}/>
+            </IconContext.Provider>
+          </div>
           <MessageForm />
           <div className='prevMsg_container d-flex flex-column align-items-end p-3 mb-5'>
               <header className='my-5 align-self-center'>

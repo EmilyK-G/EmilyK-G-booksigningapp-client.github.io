@@ -22,8 +22,8 @@ function NavBtn() {
           {pathname === '/' && <Welcome />}
           <LoginModal userSelected={userSelected}/>
           <div className='d-flex justify-content-between my_btn_div'>
-              <MyButton linkTo={!user ? '/' : 'dashboard'} sign={showPrev ? '<' : ''}/>
-              <MyButton linkTo={!user ? '/users' : '/books'} sign={showNext ? '>' : ''}/>
+              <MyButton linkTo={!user ? '/' : 'dashboard'} sign={showPrev ? '<' : ''} className={'nav_link_style'}/>
+              <MyButton linkTo={!user ? '/users' : '/books'} sign={showNext ? '>' : ''} className={'nav_link_style'}/>
           </div>
           <Outlet />
       </div>
