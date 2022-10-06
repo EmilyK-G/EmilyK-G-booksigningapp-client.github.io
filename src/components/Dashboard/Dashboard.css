@@ -1,7 +1,9 @@
-.logout_btn{
+.logout_icon{
     z-index: 10;
-    color: red;
     font-size: 2rem;
+    color: #f8f9fa;
+    fill: #f8f9fa;
+    text-shadow: 1px 1px 5px rgb(255, 255, 255);
 }
 .profile_pic_div{
     height: 200px;
@@ -11,11 +13,11 @@
 }
 .profile_name{
     margin-top: -20px;
-    color: black;
+    color: #493300;
     font-size: 2rem;
 }
 .profile_header{
-    background-color: #225691;
+    background-color: #006e5d;
     z-index: 1;
 }
 .profile_div_1{
@@ -29,7 +31,7 @@
     background-color: transparent;
 }
 .books_left_num{
-    color: #ecd7c8;
+    color: #f2fedc;
     margin: 20px;
     width: -webkit-fill-available;
     box-shadow: 2px 2px 15px grey;
@@ -37,7 +39,7 @@
     font-size: 12rem;
 }
 .books_left_txt{
-    color: #ecd7c8;
+    color: #f2fedc;
     margin: 20px;
     width: -webkit-fill-available;
     box-shadow: 2px 2px 15px grey;
@@ -46,13 +48,13 @@
 }
 .div_2_text_1{
     margin: 10px 30px;
-    color: whitesmoke;
-    text-shadow: 1px 1px 5px black;
+    color: #dbb440;
+    text-shadow: 1px 1px 5px #000000;
 }
 .div_2_text_2{
     margin: 10px 30px;
-    color: whitesmoke;
-    text-shadow: 1px 1px 5px black;
+    color: #f8f9fa;
+    text-shadow: 1px 1px 5px rgb(255, 255, 255);
 }
 .div_2_text_3{
     color: #f8f9fa;
@@ -67,12 +69,12 @@
 .div_3_text_1{
     font-size: 2rem;
     font-style: italic;
-    color: #084298;
+    color: #006e5d;
 }
 .div_3_text_signature{
     font-size: 1.4rem;
     font-style: italic;
-    color: #000000;
+    color: #493300;
 }
 svg {
     stroke: #ced4da;

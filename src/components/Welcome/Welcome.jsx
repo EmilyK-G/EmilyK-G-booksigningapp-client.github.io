@@ -14,7 +14,7 @@ function Welcome() {
         transition={{ duration: 0.2 }}>
           <div className='welcome_content'>
             <h2>Welcome class of 2022!</h2>
-            <button className="btn btn-secondary btn-small" onClick={()=>{setShowForm(true)}}>Sign up</button>
+            <button className="btn btn-small mt-3" onClick={()=>{setShowForm(true)}}>Sign up</button>
             <Signup showForm={showForm} setShowForm={setShowForm}/>
           </div>
     </motion.div>

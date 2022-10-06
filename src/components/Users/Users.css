@@ -15,10 +15,10 @@
 
   .users_title{
     font-size: 2.5rem;
-    color: white;
+    color: #f2fedc;
     padding: 20px;
     border-radius: 25px;
-    background: rgba(0, 113, 133, 0.621);
+    background: #dbb440bf;
     text-shadow: 2px 2px 2px grey;
     box-shadow: 2px 2px 2px #7e7d7d4a;
   }

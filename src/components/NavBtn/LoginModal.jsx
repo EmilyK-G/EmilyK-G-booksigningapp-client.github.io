@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
+
 const LoginModal = () => {
 
     const {userSelected, setUserSelected} = useUserContext();
@@ -22,9 +23,7 @@ const LoginModal = () => {
         setIsInvalid(false);
 
         await login(userSelected.email, e.target.value)
-        setTimeout(()=>{
-          setUserSelected([])
-        }, 1000)
+        setUserSelected([])
     }
 
     return (
@@ -48,7 +47,7 @@ const LoginModal = () => {
                 autoFocus
                 disabled={isLoading}
                 onChange={(e)=>e.target.value.length === 4 ? checkPIN(e) : setIsInvalid(true)} />
-            <Alert variant='danger' show={error} className='alert_text'>Wrong PIN!</Alert>
+            <Alert variant='danger' show={error && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>
           <Modal.Footer>
             <button disabled={isLoading} className='btn btn-secondary' onClick={()=>setUserSelected([])}>Close</button>

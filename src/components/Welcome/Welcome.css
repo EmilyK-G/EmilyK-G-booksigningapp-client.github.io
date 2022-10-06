@@ -2,8 +2,11 @@
     width: 300px;
     height: auto;
     padding: 20px;
-    background: #a29fabba;
-    text-shadow: 2px 2px 2px grey;
+    background: #006e5dc7;
+    text-shadow: 2px 2px 2px rgb(3, 42, 53);
     color: white;
     border-radius: 20px;
+}
+div.welcome_content > button.btn {
+    color: #493300
 }

@@ -1,3 +1,10 @@
+div.modal-content{
+    background-color: #ffc107a3;
+}
 .loginPage {
     height: 100vh;
+}
+button{
+    border: none;
+    background-color: transparent;
 }

@@ -6,6 +6,7 @@ import UserSignature from './UserSignature';
 import UpdateSignatureModal from './UpdateSignatureModal';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { motion } from 'framer-motion';
+import { IconContext } from "react-icons";
 import { IoIosLogOut } from 'react-icons/io';
 import './Dashboard.css';
 
@@ -42,14 +43,16 @@ function Dashboard() {
         <div className='d-flex flex-column' >
           <header className='profile_header d-flex justify-content-end'>
             <button 
-              className='btn d-flex align-items-center logout_btn' 
+              className='btn d-flex align-items-center' 
               onClick={handleLogoutClick}>
-              <IoIosLogOut />
+              <IconContext.Provider value={{ color: '#f8f9fa', className: "logout_icon" }}>
+                <IoIosLogOut />
+              </IconContext.Provider>
             </button>
           </header>
-          <ParallaxLayer speed={0.2} style={{backgroundColor:'#d0cccb'}}/>
-          <ParallaxLayer offset={1} speed={0.2} factor={1} style={{backgroundColor:'#225691'}}/>
-          <ParallaxLayer offset={2} speed={0.2} style={{backgroundColor:'#d0cccb'}}/>
+          <ParallaxLayer speed={0.2} style={{backgroundColor:'#f2fedcb1'}}/>
+          <ParallaxLayer offset={1} speed={0.2} factor={1} style={{backgroundColor:'#006e5d'}}/>
+          <ParallaxLayer offset={2} speed={0.2} style={{backgroundColor:'#f2fedcb1'}}/>
           <ParallaxLayer
               offset={0}
               speed={1}
