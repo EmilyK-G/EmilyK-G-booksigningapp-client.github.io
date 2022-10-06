@@ -1,5 +1,6 @@
 .welcome_content{
     width: 300px;
+    height: auto;
     padding: 20px;
     background: #a29fabba;
     text-shadow: 2px 2px 2px grey;

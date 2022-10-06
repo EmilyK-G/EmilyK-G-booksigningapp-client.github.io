@@ -1,19 +1,21 @@
-import React from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Signup from '../Signup/Signup';
 import './Welcome.css';
 
-function Welcome() {
 
+function Welcome() {
+  const [showForm, setShowForm] = useState(false);
   return (
     <motion.div 
         initial= {{opacity: 0, x:-100}}
         animate= {{opacity: 1, x: 0}}
         exit= {{opacity:0, x:-100}}
         transition={{ duration: 0.2 }}>
-          <div className='welcome_content mt-4'>
+          <div className='welcome_content'>
             <h2>Welcome class of 2022!</h2>
-            <Signup />
+            <button className="btn btn-secondary btn-small" onClick={()=>{setShowForm(true)}}>Sign up</button>
+            <Signup showForm={showForm} setShowForm={setShowForm}/>
           </div>
     </motion.div>
     

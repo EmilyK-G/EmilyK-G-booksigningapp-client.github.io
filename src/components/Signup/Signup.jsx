@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { useSignup } from '../../Hooks/useSignupHook';
+import Modal from 'react-bootstrap/Modal';
 import './Signup.css'
 
-function Signup() {
+function Signup({showForm, setShowForm}) {
     const [email, setEmail] = useState('');
     const [pin, setPin] = useState('');
     const [name, setName] = useState('');
@@ -20,40 +21,51 @@ function Signup() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="signup_form_container">
-            <div className="form-row">
-                <div className="form-group">
-                    <select className="form-control" onChange={(e)=>setClass_of(e.target.value)} value={class_of}>
-                        <option>Select your class</option>
-                        <option>June 2022</option>
-                        <option>July 2022</option>
-                        <option>August 2022</option>
-                    </select>
-                </div>
-                <div className="col">
-                    <input type="text" onChange={(e)=>setName(e.target.value)} value={name} className="form-control" placeholder="First name"/>
-                </div>
-                <div className="col">
-                    <input type="text" onChange={(e)=>setLast_name(e.target.value)} value={last_name} className="form-control" placeholder="Last name"/>
-                </div>
-            </div>
-            <div className="form-group">
-                <label>Email address</label>
-                <input type="email" onChange={(e)=>setEmail(e.target.value)} className="form-control" value={email} placeholder="Enter email"/>
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div className="form-group">
-                <label>PIN</label>
-                <input type="number" onChange={(e)=>setPin(e.target.value)} value={pin} className="form-control" placeholder="Password"/>
-            </div>
-            <div className="form-group">
-                <label>Upload your picture here...</label>
-                <input type="file" onChange={(e)=>setImg(e.target.value)} value={img} className="form-control-file"/>
-                <small className="form-text text-muted">This will be your face.</small>
-            </div>
-            <button disabled={isLoading} type="submit" className="btn btn-primary">Submit</button>
-            {error && <Alert variant="danger">{error}</Alert>}
-        </form>
+        <Modal
+          show={showForm}
+          size="lg"
+          centered
+        >
+            <Modal.Body>
+                <form onSubmit={handleSubmit} className={'signup_form_container mt-4'}>
+                    <div className="form-row">
+                        <div className="form-group">
+                            <select className="form-control" onChange={(e)=>setClass_of(e.target.value)} value={class_of}>
+                                <option>Select your class</option>
+                                <option>June 2022</option>
+                                <option>July 2022</option>
+                                <option>August 2022</option>
+                            </select>
+                        </div>
+                        <div className="col">
+                            <input type="text" onChange={(e)=>setName(e.target.value)} value={name} className="form-control" placeholder="First name"/>
+                        </div>
+                        <div className="col">
+                            <input type="text" onChange={(e)=>setLast_name(e.target.value)} value={last_name} className="form-control" placeholder="Last name"/>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label>Email address</label>
+                        <input type="email" onChange={(e)=>setEmail(e.target.value)} className="form-control" value={email} placeholder="Enter email"/>
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div className="form-group">
+                        <label>PIN</label>
+                        <input type="number" onChange={(e)=>setPin(e.target.value)} value={pin} className="form-control" placeholder="Password"/>
+                    </div>
+                    <div className="form-group">
+                        <label>Upload your picture here...</label>
+                        <input type="file" onChange={(e)=>setImg(e.target.value)} value={img} className="form-control-file"/>
+                        <small className="form-text text-muted">This will be your face.</small>
+                    </div>
+                    <button disabled={isLoading} type="submit" className="btn btn-primary">Submit</button>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                </form>
+            </Modal.Body>
+            <Modal.Footer>
+                <button className='btn btn-secondary' onClick={()=>setShowForm(false)}>Close</button>
+            </Modal.Footer>
+        </Modal>
     )
 }
 

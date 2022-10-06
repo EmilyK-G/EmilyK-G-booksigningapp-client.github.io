@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import { useLogin } from '../../Hooks/useLoginHook';
 import { useUserContext } from '../../Hooks/useUserContextHook'; 
 import Modal from 'react-bootstrap/Modal';

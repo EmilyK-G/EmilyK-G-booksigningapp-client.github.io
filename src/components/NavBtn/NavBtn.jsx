@@ -18,7 +18,7 @@ function NavBtn() {
 
   
   return (
-      <div className='d-flex flex-column align-items-center'>  
+      <div className='align-self-center d-flex flex-column align-items-center'>  
           {pathname === '/' && <Welcome />}
           <LoginModal userSelected={userSelected}/>
           <div className='d-flex justify-content-between my_btn_div'>
