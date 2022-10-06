@@ -30,16 +30,15 @@ const LoginModal = () => {
         <Modal
           show={userSelected.name}
           size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
           centered
         >
           <Modal.Header>
-            <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Title className='modal_text'>
               Hi {userSelected.name}!
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Please enter your PIN</h4>
+            <h4 className='modal_text'>Please enter your PIN</h4>
             <input 
                 className={"form-control form-control-lg " + (isInvalid ? "input_invalid" : !error ? "input_correct" : "input_incorrect")} 
                 type="number" 
