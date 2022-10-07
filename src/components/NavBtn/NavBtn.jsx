@@ -18,7 +18,7 @@ function NavBtn() {
 
   
   return (
-      <div className='d-flex flex-column align-items-center justify-content-center' style={{width: '-webkit-fill-available'}}>  
+      <>  
           {pathname === '/' && <Welcome />}
           <LoginModal userSelected={userSelected}/>
           <div className='d-flex justify-content-between my_btn_div'>
@@ -26,7 +26,7 @@ function NavBtn() {
               <MyButton linkTo={!user ? '/users' : '/books'} sign={showNext ? '>' : ''} className={'nav_link_style'}/>
           </div>
           <Outlet />
-      </div>
+      </>
   )
 }
 

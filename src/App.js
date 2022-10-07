@@ -20,7 +20,7 @@ function App() {
   const location = useLocation();
   return (
     <div className="App">
-      <div className='content d-flex justify-content-center align-items-center content_bgr'>
+      <div className='content d-flex justify-content-center align-items-start content_bgr'>
         
           <AnimatePresence mode="wait">
             <Routes key={location.pathname} location={location}>
