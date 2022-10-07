@@ -28,10 +28,10 @@ router.post('/', createSignature)
 
 //DELETE a signature
 
-router.delete('/:id', deleteSignature)
+router.delete('/sent/:id', deleteSignature)
 
 //UPDATE a signature
 
-router.patch('/:id', updateSignature)
+router.patch('/sent/:id', updateSignature)
 
 module.exports = router
