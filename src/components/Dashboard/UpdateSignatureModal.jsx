@@ -1,20 +1,40 @@
-import React from 'react';
+import { useState } from 'react';
+import { useUserContext } from "../../Hooks/useUserContextHook";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FcCheckmark } from 'react-icons/fc';
-import { useState } from 'react';
+
 
 function UpdateSignatureModal(props) {
     
+    const {user, dispatch} = useUserContext();
+
     const [newSignature, setNewSignature] = useState('');
 
-    function handleNewSignature(){
-
+    const handleNewSignature = async()=>{
+        console.log(user._id)
         //UPDATE/PUSH db logic here
+        if (!user) {
+            return
+        }
+
+        const response = await fetch('/api/user/update/' + user._id, {
+            method:'PATCH',
+            body: JSON.stringify({signature: newSignature}),
+            headers: {'Content-Type': 'application/json'}
+        })
+
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'UPDATE', payload: json})
+            console.log(json)
+        }
 
         setNewSignature('')
+        console.log(newSignature)
     }
 
   return (
@@ -25,13 +45,11 @@ function UpdateSignatureModal(props) {
         <Modal.Body>
             <InputGroup className="mb-3">
                 <Form.Control
-                placeholder={props.user.signature}
-                value={newSignature}
-                onChange={(e)=>setNewSignature(e.target.value)}
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
+                    placeholder={props.user.signature}
+                    value={newSignature}
+                    onChange={(e)=>setNewSignature(e.target.value)}
                 />
-                <Button variant="outline-success" id="button-addon2" onClick={()=>{handleNewSignature()}}>
+                <Button variant="outline-success" onClick={()=>{handleNewSignature()}}>
                     <FcCheckmark />
                 </Button>
             </InputGroup>

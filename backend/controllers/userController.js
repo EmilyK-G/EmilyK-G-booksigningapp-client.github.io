@@ -1,4 +1,5 @@
 const User = require('../models/userModel')
+const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const jwt = require ('jsonwebtoken');
@@ -69,4 +70,23 @@ const signupUser = async function(req, res) {
     }
 }
 
-module.exports = { signupUser, loginUser, getAllUsers }
+//update user
+const updateUser = async (req, res)=>{
+
+    const {id} = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    const user = await User.findOneAndUpdate({_id:id}, {
+        ...req.body
+    })
+
+    if(!user) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    res.status(200).json(user)
+}
+module.exports = { signupUser, loginUser, getAllUsers, updateUser }
