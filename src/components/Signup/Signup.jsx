@@ -17,7 +17,12 @@ function Signup({showForm, setShowForm}) {
     const handleSubmit = async (e)=>{
         e.preventDefault()
         const signature = name + ' ' + last_name;
-        await signup(name, last_name, email, pin, class_of, img, signature)
+
+        const formData = new FormData()
+
+        formData.append(img.name, img)
+
+        await signup(name, last_name, email, pin, class_of, formData, signature)
     }
 
     return (
@@ -53,9 +58,11 @@ function Signup({showForm, setShowForm}) {
                         <input type="number" onChange={(e)=>setPin(e.target.value)} value={pin} className="form-control" placeholder="Password"/>
                     </div>
                     <div className="form-group my-4 mx-2">
-                        <label>Upload your picture here...</label>
-                        <input type="file" onChange={(e)=>setImg(e.target.value)} value={img} className="form-control-file"/>
-                        <small className="form-text text-muted">This will be your face.</small>
+                        <small>Upload your picture here...</small>
+                        <label className='choose_file_input_label'>
+                            {img ? <img src={img} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small>your picture</small>}
+                            <input type="file" accept="image/*" onChange={(e)=>{setImg(URL.createObjectURL(e.target.files[0])); console.log(img)}} className='choose_file_input'/>
+                        </label>
                     </div>
                     <button disabled={isLoading} type="submit" className="btn btn-secondary m-2">Submit</button>
                     {error && <Alert variant="danger">{error}</Alert>}

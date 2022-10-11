@@ -1,3 +1,21 @@
 .signup_form_container {
     z-index: 5;
 }
+.choose_file_input_label{
+    background-color: rgba(66, 66, 66, 0.621);
+    cursor: pointer;
+    border-radius: 100px;
+    box-shadow: 2px 2px 2px 1px gray;
+    margin: 20px 0 20px 0;
+    width: 200px;
+    height: 200px;
+}
+.choose_file_input{
+    display: none;
+}
+.image_preview{
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    object-fit: cover;
+}
