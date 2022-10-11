@@ -19,3 +19,6 @@
     border-radius: inherit;
     object-fit: cover;
 }
+.picture_text{
+    opacity: 0.5;
+}

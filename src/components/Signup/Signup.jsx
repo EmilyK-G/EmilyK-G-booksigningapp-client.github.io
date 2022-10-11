@@ -57,10 +57,10 @@ function Signup({showForm, setShowForm}) {
                         <label>PIN</label>
                         <input type="number" onChange={(e)=>setPin(e.target.value)} value={pin} className="form-control" placeholder="Password"/>
                     </div>
-                    <div className="form-group my-4 mx-2">
+                    <div className="form-group my-4 mx-2 d-flex flex-column align-items-center justify-content-center">
                         <small>Upload your picture here...</small>
-                        <label className='choose_file_input_label'>
-                            {img ? <img src={img} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small>your picture</small>}
+                        <label className='choose_file_input_label d-flex align-items-center justify-content-center'>
+                            {img ? <img src={img} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
                             <input type="file" accept="image/*" onChange={(e)=>{setImg(URL.createObjectURL(e.target.files[0])); console.log(img)}} className='choose_file_input'/>
                         </label>
                     </div>
