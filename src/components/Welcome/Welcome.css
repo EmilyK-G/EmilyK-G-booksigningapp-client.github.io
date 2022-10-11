@@ -1,3 +1,10 @@
+.welcome_div_container{
+    position: fixed;
+    top: 45%;
+    left: 3%;
+    opacity: 0;
+    transition: opacity 1s;
+}
 .welcome_content{
     width: 300px;
     height: auto;

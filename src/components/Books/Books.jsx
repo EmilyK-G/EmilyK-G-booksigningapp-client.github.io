@@ -9,10 +9,7 @@ function Books() {
   const { setSigning } = useSignatureContext();
   
   function handleBookClick (mate) {
-    //The user they clicked becomes the 'signing' object from SignatureContext
-    setSigning(mate);
-
-    console.log(mate, user)
+    setSigning(mate) //The user they clicked becomes the 'signing' object from SignatureContext
   }
   return (
     <motion.div 

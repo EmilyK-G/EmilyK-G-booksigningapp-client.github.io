@@ -2,17 +2,26 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Signup from '../Signup/Signup';
 import './Welcome.css';
+import { useEffect } from 'react';
 
 
-function Welcome() {
+function Welcome({pathname}) {
   const [showForm, setShowForm] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  useEffect(()=>{
+    if(pathname === '/'){
+      setTimeout(()=>{
+        setShowWelcome(true)
+      }, 300)
+    } else {
+      setShowWelcome(false)
+    }
+  },[pathname])
   return (
-    <motion.div 
-        initial= {{opacity: 0, x:-100}}
-        animate= {{opacity: 1, x: 0}}
-        exit= {{opacity:0, x:-100}}
-        transition={{ duration: 0.2 }}
-        className='align-self-center'>
+    <motion.div
+        animate= {{opacity: 1, width:'100%', x:0}}
+        className={'welcome_div_container' + (showWelcome ? '' : ' invisible')}>
           <div className='welcome_content d-flex flex-column justify-content-center'>
             <h2>Welcome class of 2022!</h2>
             <button className="btn btn-small mt-3" onClick={()=>{setShowForm(true)}}>{'Sign up>'}</button>

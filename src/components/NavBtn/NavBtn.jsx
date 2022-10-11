@@ -19,7 +19,7 @@ function NavBtn() {
   
   return (
       <>  
-          {pathname === '/' && <Welcome />}
+          <Welcome pathname={pathname}/>
           <LoginModal userSelected={userSelected}/>
           <div className='d-flex justify-content-between my_btn_div'>
               <MyButton linkTo={!user ? '/' : 'dashboard'} sign={showPrev ? '<' : ''} className={'nav_link_style'}/>
