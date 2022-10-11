@@ -26,8 +26,10 @@ const userSchema = new Schema({
         required: true
     },
     img: {
-        data: Buffer,
-        contentType: String
+        type:String,
+        required:true,
+        default:
+            "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_960_720.png"
     },
     signature: {
         type: String,

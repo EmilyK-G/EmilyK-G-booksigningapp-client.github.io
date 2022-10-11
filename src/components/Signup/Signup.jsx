@@ -11,18 +11,40 @@ function Signup({showForm, setShowForm}) {
     const [last_name, setLast_name] = useState('');
     const [class_of, setClass_of] = useState('');
     const [img, setImg] = useState('');
+    const [picError, setPicError] = useState(null)
 
     const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
         const signature = name + ' ' + last_name;
+        await signup(name, last_name, email, pin, class_of, img, signature)
+    }
 
-        const formData = new FormData()
-
-        formData.append(img.name, img)
-
-        await signup(name, last_name, email, pin, class_of, formData, signature)
+    const postDetails = (pics)=>{
+        if (!pics) {
+            return setPicError('Please select an Image')
+        }
+        setPicError(null)
+        if (pics.type === 'image/jpeg' || pics.type === 'image/png' || pics.type === 'image/jpg') {
+            const data = new FormData();
+            data.append('file', pics);
+            data.append('upload_preset', 'notezipper');
+            data.append('cloud_name', 'dhfxuh3vq');
+            fetch("https://api.cloudinary.com/v1_1/dhfxuh3vq/image/upload", {
+                method:"POST",
+                body: data
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                setImg(data.url.toString())
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        } else {
+            return setPicError('Please Select an Image')
+        }
     }
 
     return (
@@ -59,9 +81,9 @@ function Signup({showForm, setShowForm}) {
                     </div>
                     <div className="form-group my-4 mx-2 d-flex flex-column align-items-center justify-content-center">
                         <small>Upload your picture here...</small>
-                        <label className='choose_file_input_label d-flex align-items-center justify-content-center'>
+                        <label className='choose_file_input_label d-flex align-items-center justify-content-center' onChange={(e)=> postDetails(e.target.files[0])}>
                             {img ? <img src={img} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
-                            <input type="file" accept="image/*" onChange={(e)=>{setImg(URL.createObjectURL(e.target.files[0])); console.log(img)}} className='choose_file_input'/>
+                            <input type="file" accept="image/*" onChange={(e)=>{setImg(URL.createObjectURL(e.target.files[0]))}} className='choose_file_input'/>
                         </label>
                     </div>
                     <button disabled={isLoading} type="submit" className="btn btn-secondary m-2">Submit</button>
