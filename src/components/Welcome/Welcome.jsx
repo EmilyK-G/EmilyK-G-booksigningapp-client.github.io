@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import Signup from '../Signup/Signup';
 import './Welcome.css';
 import { useEffect } from 'react';
+import Success from '../Success/Success';
 
 
 function Welcome({pathname}) {
   const [showForm, setShowForm] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(()=>{
@@ -25,7 +27,8 @@ function Welcome({pathname}) {
           <div className='welcome_content d-flex flex-column justify-content-center'>
             <h2>Welcome class of 2022!</h2>
             <button className="btn btn-small mt-3" onClick={()=>{setShowForm(true)}}>{'Sign up>'}</button>
-            <Signup showForm={showForm} setShowForm={setShowForm}/>
+            <Signup showForm={showForm} setShowForm={setShowForm} openSuccessModal={()=>setShowSuccessModal(true)}/>
+            <Success showModal={showSuccessModal} closeModal={()=>setShowSuccessModal(false)}/>
           </div>
     </motion.div>
     

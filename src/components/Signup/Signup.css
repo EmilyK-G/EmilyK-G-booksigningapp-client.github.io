@@ -25,3 +25,13 @@
 .picError_text{
     color: brown;
 }
+.loading_img_div{
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    position: absolute;
+    background-color: #ffc64297;
+    color: rgb(80, 80, 80);
+    transition: all 2s ease;
+    z-index: 10;
+}

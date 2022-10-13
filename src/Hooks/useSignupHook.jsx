@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useUserContext } from "./useUserContextHook";
 
 export const useSignup = ()=> {
     const[error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
-    const { dispatch } = useUserContext()
+    const [success, setSuccess] = useState(null);
 
     const signup = async(name, last_name, email, pin, class_of, img, signature) => {
         setIsLoading(true)
@@ -22,15 +21,10 @@ export const useSignup = ()=> {
             setError(json.error)
         }
         if (response.ok){
-            //save the user to local storage
-            localStorage.setItem('user', JSON.stringify(json))
-
-            //update UserContext
-            dispatch({type:'LOGIN', payload: json})
-
+            setSuccess(json.success)
             setIsLoading(false)
         }
     }
 
-    return {signup, isLoading, error}
+    return {signup, isLoading, error, success}
 }

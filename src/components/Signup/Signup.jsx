@@ -4,13 +4,14 @@ import { useSignup } from '../../Hooks/useSignupHook';
 import Modal from 'react-bootstrap/Modal';
 import './Signup.css'
 
-function Signup({showForm, setShowForm}) {
+function Signup({showForm, setShowForm, openSuccessModal}) {
     const [email, setEmail] = useState('');
     const [pin, setPin] = useState('');
     const [name, setName] = useState('');
     const [last_name, setLast_name] = useState('');
     const [class_of, setClass_of] = useState('');
     const [img, setImg] = useState('');
+    const [imgLoading, setImgLoading] = useState(false)
 
     const {signup, error, isLoading} = useSignup()
 
@@ -18,6 +19,7 @@ function Signup({showForm, setShowForm}) {
         e.preventDefault()
         const signature = name + ' ' + last_name;
         await signup(name, last_name, email, pin, class_of, img, signature)
+        openSuccessModal()
     }
 
     const postDetails = (pics)=>{
@@ -44,6 +46,12 @@ function Signup({showForm, setShowForm}) {
         } else {
             return
         }
+    }
+
+    const handleImgChange = async(file)=>{
+        
+        setImg(URL.createObjectURL(file))
+        
     }
 
     return (
@@ -81,8 +89,11 @@ function Signup({showForm, setShowForm}) {
                     <div className="form-group my-4 mx-2 d-flex flex-column align-items-center justify-content-center">
                         <small>Upload your picture here...</small>
                         <label className='choose_file_input_label d-flex align-items-center justify-content-center' onChange={(e)=>postDetails(e.target.files[0])}>
-                            {img ? <img src={img} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
-                            <input type="file" accept="image/*" onChange={(e)=>{setImg(URL.createObjectURL(e.target.files[0]))}} className='choose_file_input'/>
+                            {img ? <img src={img} onLoadStart={()=>setImgLoading(true)} onLoad={()=>setImgLoading(false)} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
+                            {imgLoading && <div className='loading_img_div d-flex justify-content-center align-items-center'>
+                                <div className="spinner-grow text-light" role="status"></div>
+                            </div>}
+                            <input type="file" accept="image/*" onChange={(e)=>handleImgChange(e.target.files[0])} className='choose_file_input'/>
                         </label>
                     </div>
                     <button disabled={isLoading} type="submit" className="btn btn-secondary m-2">Submit</button>

@@ -64,7 +64,7 @@ const signupUser = async function(req, res) {
         //create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token})
+        res.status(200).json({success: `Congratulations ${name}, you have succesfully created your account`})
     } catch(error) {
         res.status(400).json({error: error.message})
     }
