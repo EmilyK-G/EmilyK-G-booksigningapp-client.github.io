@@ -40,7 +40,7 @@ const signupUser = async function(req, res) {
     const {name, last_name, email, pin, class_of, img, signature} = req.body
 
     try{
-        if(!email || !pin) {
+        if(!email || !pin || !name || !last_name || !img || !class_of) {
             throw Error('All required fields must be filled')
            }
            if (!validator.isEmail(email)){

@@ -22,3 +22,6 @@
 .picture_text{
     opacity: 0.5;
 }
+.picError_text{
+    color: brown;
+}

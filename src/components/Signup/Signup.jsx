@@ -11,7 +11,6 @@ function Signup({showForm, setShowForm}) {
     const [last_name, setLast_name] = useState('');
     const [class_of, setClass_of] = useState('');
     const [img, setImg] = useState('');
-    const [picError, setPicError] = useState(null)
 
     const {signup, error, isLoading} = useSignup()
 
@@ -23,9 +22,9 @@ function Signup({showForm, setShowForm}) {
 
     const postDetails = (pics)=>{
         if (!pics) {
-            return setPicError('Please select an Image')
+            return 
         }
-        setPicError(null)
+        
         if (pics.type === 'image/jpeg' || pics.type === 'image/png' || pics.type === 'image/jpg') {
             const data = new FormData();
             data.append('file', pics);
@@ -43,7 +42,7 @@ function Signup({showForm, setShowForm}) {
                 console.log(err)
             })
         } else {
-            return setPicError('Please Select an Image')
+            return
         }
     }
 
@@ -81,7 +80,7 @@ function Signup({showForm, setShowForm}) {
                     </div>
                     <div className="form-group my-4 mx-2 d-flex flex-column align-items-center justify-content-center">
                         <small>Upload your picture here...</small>
-                        <label className='choose_file_input_label d-flex align-items-center justify-content-center' onChange={(e)=> postDetails(e.target.files[0])}>
+                        <label className='choose_file_input_label d-flex align-items-center justify-content-center' onChange={(e)=>postDetails(e.target.files[0])}>
                             {img ? <img src={img} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
                             <input type="file" accept="image/*" onChange={(e)=>{setImg(URL.createObjectURL(e.target.files[0]))}} className='choose_file_input'/>
                         </label>
