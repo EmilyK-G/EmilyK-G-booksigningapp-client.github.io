@@ -4,12 +4,15 @@ import Signup from '../Signup/Signup';
 import './Welcome.css';
 import { useEffect } from 'react';
 import Success from '../Success/Success';
+import { useSignup } from '../../Hooks/useSignupHook';
 
 
 function Welcome({pathname}) {
   const [showForm, setShowForm] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
+
+  const {success} = useSignup()
 
   useEffect(()=>{
     if(pathname === '/'){
@@ -27,8 +30,8 @@ function Welcome({pathname}) {
           <div className='welcome_content d-flex flex-column justify-content-center'>
             <h2>Welcome class of 2022!</h2>
             <button className="btn btn-small mt-3" onClick={()=>{setShowForm(true)}}>{'Sign up>'}</button>
-            <Signup showForm={showForm} setShowForm={setShowForm} openSuccessModal={()=>setShowSuccessModal(true)}/>
-            <Success showModal={showSuccessModal} closeModal={()=>setShowSuccessModal(false)}/>
+            <Signup showForm={showForm} closeForm={()=>setShowForm(false)} openSuccessModal={()=>setShowSuccessModal(true)}/>
+            <Success showModal={showSuccessModal} success={success} setShowSuccessModal={setShowSuccessModal}/>
           </div>
     </motion.div>
     

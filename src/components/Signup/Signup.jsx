@@ -3,8 +3,9 @@ import { Alert } from 'react-bootstrap';
 import { useSignup } from '../../Hooks/useSignupHook';
 import Modal from 'react-bootstrap/Modal';
 import './Signup.css'
+import { useEffect } from 'react';
 
-function Signup({showForm, setShowForm, openSuccessModal}) {
+function Signup({showForm, closeForm, openSuccessModal}) {
     const [email, setEmail] = useState('');
     const [pin, setPin] = useState('');
     const [name, setName] = useState('');
@@ -16,11 +17,17 @@ function Signup({showForm, setShowForm, openSuccessModal}) {
 
     const {signup, error, isLoading, success} = useSignup()
 
+    useEffect(()=>{
+        if(success){
+            closeForm() 
+            openSuccessModal()
+        }
+    }, [success, closeForm, openSuccessModal])
+
     const handleSubmit = async (e)=>{
         e.preventDefault()
         const signature = name + ' ' + last_name;
         await signup(name, last_name, email, pin, class_of, img, signature)
-        success && setShowForm(false) && openSuccessModal()
     }
 
     const postDetails = async(pics)=>{
@@ -107,7 +114,7 @@ function Signup({showForm, setShowForm, openSuccessModal}) {
                 </form>
             </Modal.Body>
             <Modal.Footer>
-                <button className='btn btn-secondary' onClick={()=>setShowForm(false)}>Close</button>
+                <button className='btn btn-secondary' onClick={closeForm}>Close</button>
             </Modal.Footer>
         </Modal>
     )
