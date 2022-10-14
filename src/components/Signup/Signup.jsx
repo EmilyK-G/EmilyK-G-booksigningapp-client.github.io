@@ -11,47 +11,52 @@ function Signup({showForm, setShowForm, openSuccessModal}) {
     const [last_name, setLast_name] = useState('');
     const [class_of, setClass_of] = useState('');
     const [img, setImg] = useState('');
-    const [imgLoading, setImgLoading] = useState(false)
+    const [imgLoading, setImgLoading] = useState(false);
+    const [imgError, setImgError] = useState(null)
 
-    const {signup, error, isLoading} = useSignup()
+    const {signup, error, isLoading, success} = useSignup()
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
         const signature = name + ' ' + last_name;
         await signup(name, last_name, email, pin, class_of, img, signature)
-        openSuccessModal()
+        success && setShowForm(false) && openSuccessModal()
     }
 
-    const postDetails = (pics)=>{
-        if (!pics) {
-            return 
+    const postDetails = async(pics)=>{
+        setImgError(null)
+        if(!pics){
+            return setImgError('no picture was selected')
         }
-        
         if (pics.type === 'image/jpeg' || pics.type === 'image/png' || pics.type === 'image/jpg') {
+
+            setImgLoading(true)
+
             const data = new FormData();
             data.append('file', pics);
             data.append('upload_preset', 'notezipper');
             data.append('cloud_name', 'dhfxuh3vq');
-            fetch("https://api.cloudinary.com/v1_1/dhfxuh3vq/image/upload", {
+
+            const response = await fetch("https://api.cloudinary.com/v1_1/dhfxuh3vq/image/upload", {
                 method:"POST",
                 body: data
             })
-            .then((res)=>res.json())
-            .then((data)=>{
-                setImg(data.url.toString())
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-        } else {
-            return
-        }
-    }
+            
+            const json = await response.json()
 
-    const handleImgChange = async(file)=>{
-        
-        setImg(URL.createObjectURL(file))
-        
+            if (response.ok){
+                setImgLoading(false)
+                setImg(json.url.toString())
+            }
+            if (!response.ok){
+                setImgLoading(false)
+                setImgError('Try another picture')
+            }
+
+        } else {
+            setImgError('.png, .jpg, .jpeg files only')
+        }
+        setImgLoading(false)
     }
 
     return (
@@ -89,11 +94,12 @@ function Signup({showForm, setShowForm, openSuccessModal}) {
                     <div className="form-group my-4 mx-2 d-flex flex-column align-items-center justify-content-center">
                         <small>Upload your picture here...</small>
                         <label className='choose_file_input_label d-flex align-items-center justify-content-center' onChange={(e)=>postDetails(e.target.files[0])}>
-                            {img ? <img src={img} onLoadStart={()=>setImgLoading(true)} onLoad={()=>setImgLoading(false)} alt={name + last_name + 'profilePicture'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
+                            {img ? <img src={img} alt={!imgError ? (name + last_name + 'profile picture') : '-'} className='image_preview'/> : <small className='picture_text'>your picture</small>}
                             {imgLoading && <div className='loading_img_div d-flex justify-content-center align-items-center'>
                                 <div className="spinner-grow text-light" role="status"></div>
                             </div>}
-                            <input type="file" accept="image/*" onChange={(e)=>handleImgChange(e.target.files[0])} className='choose_file_input'/>
+                            {imgError && <div className='img_error_div'><small>{imgError}</small></div>}
+                            <input type="file" accept="image/*" onChange={(e)=> setImg(URL.createObjectURL(e.target.files[0]))} className='choose_file_input'/>
                         </label>
                     </div>
                     <button disabled={isLoading} type="submit" className="btn btn-secondary m-2">Submit</button>

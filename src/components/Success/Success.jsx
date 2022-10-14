@@ -11,7 +11,7 @@ const Success = ({showModal, closeModal}) => {
       size="lg"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>
           Sign up completed
         </Modal.Title>

@@ -30,8 +30,20 @@
     width: inherit;
     border-radius: inherit;
     position: absolute;
-    background-color: #ffc64297;
-    color: rgb(80, 80, 80);
+    background-color: #dbb440d9;
     transition: all 2s ease;
     z-index: 10;
+}
+.img_error_div{
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4c4c4c;
+    color: #f2fedc;
+    z-index: 10;
+    transition: all 2s ease;
 }
