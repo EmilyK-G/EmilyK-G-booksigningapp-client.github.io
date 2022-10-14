@@ -25,6 +25,7 @@ export const useSignup = ()=> {
             setSuccess(json.success)
             setIsLoading(false)
         }
+        return success
     }
 
     return {signup, isLoading, error, success}

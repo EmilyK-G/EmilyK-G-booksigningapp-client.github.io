@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import './Signup.css'
 import { useEffect } from 'react';
 
-function Signup({showForm, closeForm, openSuccessModal}) {
+function Signup({showForm, closeForm, setModalInfo}) {
     const [email, setEmail] = useState('');
     const [pin, setPin] = useState('');
     const [name, setName] = useState('');
@@ -19,10 +19,10 @@ function Signup({showForm, closeForm, openSuccessModal}) {
 
     useEffect(()=>{
         if(success){
-            closeForm() 
-            openSuccessModal()
+            closeForm()
+            setModalInfo(success)
         }
-    }, [success, closeForm, openSuccessModal])
+    }, [success, closeForm, setModalInfo])
 
     const handleSubmit = async (e)=>{
         e.preventDefault()

@@ -1,13 +1,13 @@
-// import { useSignup } from '../../Hooks/useSignupHook';
+import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import './Success.css'
 
-const Success = ({showModal, setShowSuccessModal, success}) => {
-  // const {success} = useSignup()
-
+function Success({modalInfo}) {
+  const [show, setShow] = useState(true)
+  
   return (
     <Modal
-      show={showModal}
+      show={show}
       size="lg"
       centered
     >
@@ -17,10 +17,10 @@ const Success = ({showModal, setShowSuccessModal, success}) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className='text-light'>{success}</p>
+        <p className='text-light'>{modalInfo}</p>
       </Modal.Body>
       <Modal.Footer>
-        <button className='btn btn-secondary' onClick={()=>setShowSuccessModal(false)}>Close</button>
+        <button className='btn btn-secondary' onClick={()=>setShow(false)}>Close</button>
       </Modal.Footer>
     </Modal>
   )
