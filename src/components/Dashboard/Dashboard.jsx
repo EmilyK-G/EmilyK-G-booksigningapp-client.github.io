@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useUserContext } from '../../Hooks/useUserContextHook';
-import { useSignatureContext } from "../../Hooks/useSignatureContextHook";
 import { useLogout } from '../../Hooks/useLogoutHook';
 import UserSignature from './UserSignature';
 import UpdateSignatureModal from './UpdateSignatureModal';
@@ -13,7 +12,6 @@ import './Dashboard.css';
 function Dashboard() {
   const {user, usersArr} = useUserContext();
   const {logout} = useLogout();
-  const {signatures} = useSignatureContext();
   const [booksToSign, setBooksToSign] = useState(0);
   const [show, setShow] = useState(false)
   const parallaxRef = useRef();
@@ -21,14 +19,33 @@ function Dashboard() {
 
   useEffect(()=>{
     const usrs = usersArr.length -1;
-    if(signatures){
-      const toSign = usrs - signatures.length;
-      setBooksToSign(toSign)
-    } else{
-        setBooksToSign(usrs)
+
+    const fetchSignatures = async()=>{
+
+      const ids = []; 
+          
+      const response = await fetch('/api/signatures/sent', {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${user.token}`
+          }
+      })
+  
+      const json = await response.json();
+  
+      if (response.ok) {      
+        json.forEach(mes=>{
+          ids.push(mes.recipient_id)
+        })
+      }
+      const unique = Array.from(new Set(ids));
+      setBooksToSign(usrs - unique.length)    
+      console.log(unique)
     }
-    console.log(signatures)
-  }, [usersArr.length, signatures])
+    
+    fetchSignatures()
+    
+  }, [usersArr.length, user.token])
 
   const handleLogoutClick = () => {
     logout()
