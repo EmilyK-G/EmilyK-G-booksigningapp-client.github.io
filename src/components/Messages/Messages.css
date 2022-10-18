@@ -30,6 +30,7 @@ textarea.msg_txt_area{
 }
 textarea.msg_txt_area:focus{
     outline:0px;
+    appearance: none;
     -webkit-appearance:none;
     box-shadow: none;
     border: none;
