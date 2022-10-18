@@ -51,7 +51,7 @@ function Dashboard() {
     logout()
   }
   return (
-    <Parallax ref={parallaxRef} pages={3}>
+    <Parallax ref={parallaxRef} pages={3} className=' md_dashboard_container'>
       <motion.div 
         initial= {{opacity: 0, x:-100}}
         animate= {{opacity: 1, x: 0}}

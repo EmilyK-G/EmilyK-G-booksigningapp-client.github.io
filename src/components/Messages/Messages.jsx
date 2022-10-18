@@ -46,7 +46,8 @@ function Messages() {
       initial= {{opacity: 0, height:'10%',width:'85%', x:0}}
       animate= {{opacity: 1, height:'100%', width:'95%', x:0}}
       exit= {{opacity:0, height:'10%',width:'85%', x:0}}
-      transition={{ duration: 0.2 }}>
+      transition={{ duration: 0.2 }}
+      className='md_messages_container'>
       <div className="d-flex flex-column align-items-start p-1 pt-4">
           <div className='align-self-start check_btn_messages_div'>
             <IconContext.Provider value={{ color: '#007185', className: 'check_svg_color' }}>

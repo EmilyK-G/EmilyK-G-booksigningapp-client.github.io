@@ -21,3 +21,10 @@ div.check_btn_div{
 .check_link_style {
     font-size: 1.5rem;
 }
+
+@media (min-width: 768px){
+    .md_mybook_container{
+        max-width: 768px
+    }
+    
+}

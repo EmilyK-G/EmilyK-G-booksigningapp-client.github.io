@@ -24,3 +24,14 @@ a:hover {
   z-index: 10;
   pointer-events: auto;
 }
+
+@media (min-width: 768px){
+  .my_btn_div{
+    bottom: 45%;
+    /* background-color: maroon; */
+    z-index: 0;
+  }
+  .nav_btn_style {
+    font-size: 5rem;
+  }
+}

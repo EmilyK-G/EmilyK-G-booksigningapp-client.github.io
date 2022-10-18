@@ -39,7 +39,8 @@ function MyBook() {
       initial= {{opacity: 0, height:'10%', x:0, width:'-webkit-fill-available'}}
       animate= {{opacity: 1, height:'100%', x:0, width:'-webkit-fill-available'}}
       exit= {{opacity:0, height:'10%', x:0, width:'-webkit-fill-available'}}
-      transition={{ duration: 0.2 }}>
+      transition={{ duration: 0.2 }}
+      className='md_mybook_container'>
         <div className='d-flex flex-column mt-5 mb-3 myBook_container'>
           <div className='align-self-start check_btn_div'>
             <IconContext.Provider value={{ color: '#007185', className: 'check_svg_color' }}>

@@ -24,7 +24,7 @@ function Welcome({pathname}) {
     <motion.div
         animate= {{opacity: 1, width:'100%', x:0}}
         className={'welcome_div_container' + (showWelcome ? '' : ' invisible')}>
-          <div className='welcome_content d-flex flex-column justify-content-center'>
+          <div className='welcome_content d-flex flex-column justify-content-center d-md-inline-flex'>
             <h2>Welcome class of 2022!</h2>
             <button className="btn btn-small mt-3" onClick={()=>{setShowForm(true)}}>{'Sign up>'}</button>
             <Signup showForm={showForm} closeForm={()=>setShowForm(false)} setModalInfo={setModalInfo}/>

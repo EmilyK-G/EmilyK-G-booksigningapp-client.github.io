@@ -17,7 +17,7 @@ function Books() {
       animate= {{opacity: 1, x: 0}}
       exit= {{opacity:0, x:100}}
       transition={{ duration: 0.2 }}>
-    <div className='d-flex flex-column justify-content-center'>
+    <div className='d-flex flex-column justify-content-center md_books_container'>
       <header className='book_header align-self-center'>
         <h1 className='books_title mb-0'>Books</h1>
       </header>
@@ -31,13 +31,13 @@ function Books() {
                       <div 
                         className='span_img' 
                         style={{backgroundImage: `url(${book.img})`}}></div>
-                      <Link to={'/my-book'}>My Book</Link>
+                      <div><Link to={'/my-book'}>My Book</Link></div>
                     </li>
           } else {
               return <li key={book._id} 
               className='book_list_item d-flex align-items-center justify-content-between'>
                 <div className='span_img' style={{backgroundImage: `url(${book.img})`}}></div>
-                <Link to={`${book._id}`} onClick={()=>handleBookClick(book)}>{book.name}'s</Link></li>  
+                <div><Link to={`${book._id}`} onClick={()=>handleBookClick(book)}>{book.name}'s</Link></div></li>  
           }
         })}
       </ul>

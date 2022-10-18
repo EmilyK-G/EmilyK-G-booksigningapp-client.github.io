@@ -80,3 +80,9 @@ svg {
     stroke: #ced4da;
     fill: #ced4da;
 }
+
+@media (min-width: 768px){
+    .md_dashboard_container{
+        max-width: 768px;
+    }
+}

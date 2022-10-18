@@ -45,3 +45,20 @@ textarea.message_error{
     --bs-alert-bg: #f8d7da96;
     padding: 2px 20px;
 }
+
+@media (min-width: 768px){
+    .md_messages_container{
+        max-width: 768px;
+    }
+    .txtArea {
+        height: 500px
+    }
+    .check_svg_color{
+        font-size: 50px;
+        background-color: #ffffff9e;
+        border-radius: 30px;
+    }
+    .bk_owner_title{
+        margin-top: 60px;
+    }
+}

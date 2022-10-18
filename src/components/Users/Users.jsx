@@ -14,7 +14,7 @@ function Users() {
       animate= {{opacity: 1, x: 0}}
       exit= {{opacity:0, x:100}}
       transition={{ duration: 0.2 }}>
-        <div className="d-flex flex-column justify-content-center">
+        <div className="d-flex flex-column justify-content-center md_users_container">
           <header className='users_header align-self-center'>
             <h1 className='users_title'>Who Are You?</h1>
           </header>
