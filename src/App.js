@@ -17,7 +17,9 @@ import './App.css';
 
 function App() {
   const {user} = useUserContext();
+
   const location = useLocation();
+  
   return (
     <div className="App">
       <div className='content d-flex justify-content-center align-items-start content_bgr'>

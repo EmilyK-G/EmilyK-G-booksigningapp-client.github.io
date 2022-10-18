@@ -8,6 +8,7 @@ import MyButton from '../NavBtn/MyButton';
 import './Messages.css';
 import { MdDone } from 'react-icons/md';
 import { IconContext } from "react-icons";
+import { Navigate } from "react-router-dom";
 
 function Messages() {
   const {dispatch, signing, signatures} = useSignatureContext();
@@ -37,11 +38,11 @@ function Messages() {
         dispatch({type:'SET_SIGNATURES', payload: thisPal})
     }
         fetchSignatures()
-
   },[signing._id, user.token, dispatch])
 
 
   return (
+    signing._id ? 
     <motion.div 
       initial= {{opacity: 0, height:'10%',width:'85%', x:0}}
       animate= {{opacity: 1, height:'100%', width:'95%', x:0}}
@@ -70,6 +71,7 @@ function Messages() {
           </div>
       </div>
     </motion.div>
+      : <Navigate to="/books"/>
   )
 }
 
