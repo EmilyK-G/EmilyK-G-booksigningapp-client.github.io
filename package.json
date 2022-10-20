@@ -1,5 +1,5 @@
 {
-  "proxy": "https://booksigning.netlify.app",
+  "proxy": "http://localhost:4000",
   "name": "booksigning",
   "version": "0.1.0",
   "private": true,
