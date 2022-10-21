@@ -20,7 +20,7 @@ function UpdateSignatureModal(props) {
             return
         }
 
-        const response = await fetch('/api/user/update/' + user._id, {
+        const response = await fetch('https://booksigning.onrender.com/api/user/update/' + user._id, {
             method:'PATCH',
             body: JSON.stringify({signature: newSignature}),
             headers: {'Content-Type': 'application/json'}

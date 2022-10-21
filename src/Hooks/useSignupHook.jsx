@@ -10,7 +10,7 @@ export const useSignup = ()=> {
         setError(null)
         setSuccess(null)
 
-        const response = await fetch('/api/user/signup', {
+        const response = await fetch('https://booksigning.onrender.com/api/user/signup', {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({name, last_name, email, pin, class_of, img, signature})
