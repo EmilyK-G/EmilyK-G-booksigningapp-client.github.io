@@ -7,9 +7,9 @@ import {Parallax} from 'react-parallax';
 import signingBackground from './images/signingBackground2.png'
 import { UserContextProvider } from './contexts/UserContext';
 import { SignatureContextProvider } from './contexts/SignatureContext';
-import { disableReactDevtools } from '@fvilers/disable-react-devtools';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-if (ProcessingInstruction.env.NODE_ENV === 'production') disableReactDevtools()
+if (ProcessingInstruction.env.NODE_ENV === 'production') disableReactDevTools()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
