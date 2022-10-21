@@ -36,7 +36,7 @@ export const UserContextProvider = ({children}) => {
 
   useEffect(()=>{
     const fetchUsers = async() => {
-        const response = await fetch('/api/user')
+        const response = await fetch('https://booksigning.onrender.com/api/user')
         const json = await response.json()
 
         if (response.ok) {
