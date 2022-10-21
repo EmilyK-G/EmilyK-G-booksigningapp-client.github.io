@@ -1,0 +1,19 @@
+.prevMsg_container {
+    margin-top: 50px;
+}
+.prevMsg_text {
+    font-style: italic;
+    font-size: 1.2rem;
+}
+.delete_msg_btn{
+    font-weight: lighter;
+    font-style: italic;
+    color: rgb(132 84 0);
+    text-decoration: underline;
+}
+.delete_msg_btn:hover{
+    cursor: pointer;
+}
+.delete_icon {
+    fill: #ea1537;
+}

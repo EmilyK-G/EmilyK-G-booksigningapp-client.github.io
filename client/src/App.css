@@ -1,0 +1,36 @@
+.App{
+  display: grid;
+  /* background-color: #ce9b00; */
+}
+.content {
+  min-height: 100vh;
+}
+
+ol, ul {
+  padding-left: 0;
+}
+
+.content_bgr {
+  padding: 0;
+}
+
+.text_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 5px 15px;
+  transform: translate(-50%, -50%);
+  background: gray;
+  color: white;
+  border-radius: 20px;
+  font-size: 50px;
+}
+.users_btn {
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  padding: 5px 15px;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  font-size: 1rem;
+}

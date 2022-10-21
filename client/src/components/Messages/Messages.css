@@ -1,0 +1,65 @@
+div.check_btn_messages_div{
+    position: fixed;
+    z-index: 5;
+    margin: -73px 0 0 -10px;
+}
+.check_svg_color{
+    fill: #007185;
+    stroke: #007185;
+}
+.check_link_style {
+    font-size: 1.5rem;
+}
+.txtArea {
+    height: 300px;
+    text-align: -webkit-auto;
+}
+.message_footer {
+    font-size: .7rem;
+    font-style: italic;
+    color: #6c757d;
+}
+.bk_owner_title{
+    margin-bottom: -12px;
+    z-index: 5;
+    color: rgb(0, 113, 133);
+    font-size: 1.5 rem;
+}
+textarea.msg_txt_area{
+    font-style: italic;
+}
+textarea.msg_txt_area:focus{
+    outline:0px;
+    appearance: none;
+    -webkit-appearance:none;
+    box-shadow: none;
+    border: none;
+   }
+textarea.message_error{
+    border: 1px solid red
+}
+.prevMsg_container {
+    margin-top: 50px;
+    width: -webkit-fill-available;
+}
+.alert-danger.alert_message {
+    --bs-alert-bg: #f8d7da96;
+    padding: 2px 20px;
+}
+
+@media (min-width: 768px){
+    .md_messages_container{
+        max-width: 768px;
+    }
+    .txtArea {
+        height: 500px
+    }
+    .check_svg_color{
+        font-size: 50px;
+        background-color: #ffffff9e;
+        border-radius: 30px;
+    }
+    .bk_owner_title{
+        margin-top: 60px;
+    }
+}

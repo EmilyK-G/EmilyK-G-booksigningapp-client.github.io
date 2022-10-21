@@ -1,0 +1,21 @@
+.welcome_div_container{
+    position: fixed;
+    top: 45%;
+    left: 3%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.welcome_content{
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    background: #493300b5;
+    text-shadow: 2px 2px 2px rgb(3, 42, 53);
+    color: white;
+    border-radius: 20px;
+}
+div.welcome_content > button.btn {
+    color: #493300;
+    border: none;
+    margin: 0 -210px -60px 0;
+}

@@ -1,0 +1,53 @@
+.signup_form_container {
+    z-index: 5;
+}
+.choose_file_input_label{
+    background-color: rgba(66, 66, 66, 0.621);
+    cursor: pointer;
+    border-radius: 100px;
+    box-shadow: 2px 2px 2px 1px gray;
+    margin: 20px 0 20px 0;
+    width: 200px;
+    height: 200px;
+}
+.choose_file_input{
+    display: none;
+}
+.image_preview{
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    object-fit: cover;
+}
+.picture_text{
+    opacity: 0.5;
+}
+.picError_text{
+    color: brown;
+}
+.loading_img_div{
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    position: absolute;
+    background-color: #dbb440d9;
+    transition: all 2s ease;
+    z-index: 10;
+}
+.img_error_div{
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4c4c4c;
+    color: #f2fedc;
+    z-index: 10;
+    transition: all 2s ease;
+}
+input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        display: none;
+      }

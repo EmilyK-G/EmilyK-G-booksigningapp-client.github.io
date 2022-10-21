@@ -1,0 +1,37 @@
+.btn:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+a {
+  text-decoration: none;
+  color: #898194;
+  z-index: 10;
+}
+a:hover {
+  color: indigo;
+}
+.my_btn_div{
+  width: -webkit-fill-available;
+  position: fixed;
+  bottom: 1.2%;
+  z-index: 10;
+  pointer-events: none
+}
+.nav_btn_style {
+  background-color: transparent;
+  border: none;
+  font-size: 4rem;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+@media (min-width: 768px){
+  .my_btn_div{
+    bottom: 45%;
+    /* background-color: maroon; */
+    z-index: 0;
+  }
+  .nav_btn_style {
+    font-size: 5rem;
+  }
+}

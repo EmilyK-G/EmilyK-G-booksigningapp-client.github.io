@@ -1,0 +1,7 @@
+.btn.btn_edit_signature{
+    z-index: 10;
+    border:none
+}
+.btn_edit_signature:hover{
+    cursor: pointer;
+}
