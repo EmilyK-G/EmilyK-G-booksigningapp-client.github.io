@@ -9,7 +9,7 @@ import { UserContextProvider } from './contexts/UserContext';
 import { SignatureContextProvider } from './contexts/SignatureContext';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-if (ProcessingInstruction.env.NODE_ENV === 'production') disableReactDevTools()
+if (process.env.NODE_ENV === 'production') disableReactDevTools()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
