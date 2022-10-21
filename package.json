@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:4000",
+  "proxy": "https://booksigning.onrender.com",
   "name": "booksigning",
   "version": "0.1.0",
   "private": true,
