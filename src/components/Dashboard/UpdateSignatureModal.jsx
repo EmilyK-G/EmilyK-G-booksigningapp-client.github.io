@@ -9,12 +9,14 @@ import { FcCheckmark } from 'react-icons/fc';
 
 function UpdateSignatureModal(props) {
     
-    const {user, dispatch} = useUserContext();
+    const {user, dispatch, setLoadingUserData} = useUserContext();
 
     const [newSignature, setNewSignature] = useState('');
 
     const handleNewSignature = async()=>{
-        console.log(user._id)
+
+        setLoadingUserData(true);
+
         //UPDATE/PUSH db logic here
         if (!user) {
             return
@@ -32,7 +34,11 @@ function UpdateSignatureModal(props) {
         if (response.ok) {
             dispatch({type: 'UPDATE', payload: {...user, signature: newSignature}});
             localStorage.setItem('user', JSON.stringify({user:{...json, signature: newSignature}, token:user.token}));
-            console.log({user:{...json}, token:user.token})
+            setLoadingUserData(false)
+        }
+
+        if (!response.ok) {
+            setLoadingUserData(false)
         }
 
         setNewSignature('')

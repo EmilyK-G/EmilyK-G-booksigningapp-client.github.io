@@ -72,7 +72,7 @@ export const UserContextProvider = ({children}) => {
   console.log('UserContext state: ', state)
 
   return (
-    <UserContext.Provider value={{...state, dispatch, userSelected, setUserSelected, usersArr, setUsersArr, loadingUserData}}>
+    <UserContext.Provider value={{...state, dispatch, userSelected, setUserSelected, usersArr, setUsersArr, loadingUserData, setLoadingUserData}}>
        {children}
     </UserContext.Provider>
   )
