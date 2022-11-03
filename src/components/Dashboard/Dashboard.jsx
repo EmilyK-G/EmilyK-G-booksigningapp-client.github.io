@@ -26,6 +26,7 @@ function Dashboard() {
           
       const response = await fetch('/api/signatures/sent', {
           method: 'GET',
+          mode: 'cors',
           headers: {
               'Authorization': `Bearer ${user.token}`
           }

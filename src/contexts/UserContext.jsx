@@ -36,7 +36,11 @@ export const UserContextProvider = ({children}) => {
 
   useEffect(()=>{
     const fetchUsers = async() => {
-        const response = await fetch('/api/user')
+        const response = await fetch('/api/user', {
+          method: 'GET',
+          mode: 'cors',
+          headers: {'Content-Type': 'application/json'}
+      })
         const json = await response.json()
 
         if (response.ok) {

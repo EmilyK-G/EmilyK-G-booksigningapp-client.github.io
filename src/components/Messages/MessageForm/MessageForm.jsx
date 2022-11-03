@@ -32,6 +32,7 @@ function MessageForm() {
   
       const response = await fetch('/api/signatures', {
         method: 'POST',
+        mode: 'cors',
         body: JSON.stringify(mssg),
         headers: {
           'Content-Type': 'application/json',

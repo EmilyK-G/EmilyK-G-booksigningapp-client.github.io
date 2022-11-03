@@ -22,6 +22,7 @@ function UpdateSignatureModal(props) {
 
         const response = await fetch('/api/user/update/' + user._id, {
             method:'PATCH',
+            mode: 'cors',
             body: JSON.stringify({signature: newSignature}),
             headers: {'Content-Type': 'application/json'}
         })

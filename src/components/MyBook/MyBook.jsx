@@ -17,6 +17,7 @@ function MyBook() {
     useEffect(()=>{
       const fetchSignatures = async() => {
           const response = await fetch('/api/signatures', {
+              mode: 'cors',
               headers: {
                   'Authorization': `Bearer ${user.token}`
               }

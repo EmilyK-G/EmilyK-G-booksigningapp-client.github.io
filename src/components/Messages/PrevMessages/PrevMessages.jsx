@@ -24,6 +24,7 @@ function PrevMessages({mes}) {
 
         const response = await fetch('/api/signatures/sent/' + mes._id, {
             method:'DELETE',
+            mode: 'cors',
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

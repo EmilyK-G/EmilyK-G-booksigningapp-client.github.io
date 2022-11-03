@@ -12,6 +12,7 @@ export const useSignup = ()=> {
 
         const response = await fetch('/api/user/signup', {
             method:'POST',
+            mode: 'cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({name, last_name, email, pin, class_of, img, signature})
         })
