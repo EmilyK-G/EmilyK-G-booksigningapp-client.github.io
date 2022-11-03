@@ -39,12 +39,15 @@ export const UserContextProvider = ({children}) => {
         const response = await fetch('/api/user', {
           method: 'GET',
           mode: 'cors'
-      })
+        })
+
         const json = await response.json()
 
         if (response.ok) {
             setUsersArr(json)
+            console.log('SUCCESS')
         }
+        console.log(response)
     }
 
     fetchUsers()
