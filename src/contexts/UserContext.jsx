@@ -20,6 +20,7 @@ export const UserContextProvider = ({children}) => {
   const [userSelected, setUserSelected] = useState([]);
   
   const [usersArr, setUsersArr] = useState([]);
+  const[loadingUserData, setLoadingUserData] = useState(false);
 
   const [state, dispatch] = useReducer(authReducer, {
     user: null
@@ -36,6 +37,10 @@ export const UserContextProvider = ({children}) => {
 
   useEffect(()=>{
     const fetchUsers = async() => {
+      
+      setLoadingUserData(true);
+
+      try {
         const response = await fetch('https://booksigning.onrender.com/api/user', {
           method: 'GET',
           mode: 'cors'
@@ -45,9 +50,19 @@ export const UserContextProvider = ({children}) => {
 
         if (response.ok) {
             setUsersArr(json)
+            setLoadingUserData(false);
             console.log('SUCCESS')
         }
-        console.log(response)
+        
+        if(!response.ok) {
+          setLoadingUserData(false);
+        }
+      } catch (error) {
+        setLoadingUserData(false)
+        console.log(error)
+      }
+      
+      
     }
 
     fetchUsers()
@@ -57,7 +72,7 @@ export const UserContextProvider = ({children}) => {
   console.log('UserContext state: ', state)
 
   return (
-    <UserContext.Provider value={{...state, dispatch, userSelected, setUserSelected, usersArr, setUsersArr}}>
+    <UserContext.Provider value={{...state, dispatch, userSelected, setUserSelected, usersArr, setUsersArr, loadingUserData}}>
        {children}
     </UserContext.Provider>
   )
