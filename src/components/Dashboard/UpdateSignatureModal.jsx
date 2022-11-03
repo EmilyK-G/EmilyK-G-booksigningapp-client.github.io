@@ -15,12 +15,12 @@ function UpdateSignatureModal(props) {
 
     const handleNewSignature = async()=>{
 
-        setLoadingUserData(true);
-
         //UPDATE/PUSH db logic here
         if (!user) {
             return
         }
+
+        setLoadingUserData(true);
 
         const response = await fetch('/api/user/update/' + user._id, {
             method:'PATCH',

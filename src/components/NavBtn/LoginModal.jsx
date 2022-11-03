@@ -4,6 +4,7 @@ import { useUserContext } from '../../Hooks/useUserContextHook';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
 const LoginModal = () => {
@@ -27,7 +28,9 @@ const LoginModal = () => {
     }
 
     return (
-        <Modal
+        isLoading 
+        ? <LoadingSpinner loadingPage={'new user'}/> 
+        : <Modal
           show={userSelected.name}
           size="lg"
           centered
