@@ -24,7 +24,7 @@ function Dashboard() {
 
       const ids = []; 
           
-      const response = await fetch('/api/signatures/sent', {
+      const response = await fetch('https://booksigning.onrender.com/api/signatures/sent', {
           method: 'GET',
           mode: 'cors',
           headers: {

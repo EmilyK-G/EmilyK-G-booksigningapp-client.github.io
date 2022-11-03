@@ -30,7 +30,7 @@ function MessageForm() {
         sender_signature: user.signature
       }
   
-      const response = await fetch('/api/signatures', {
+      const response = await fetch('https://booksigning.onrender.com/api/signatures', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify(mssg),
