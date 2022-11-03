@@ -38,8 +38,7 @@ export const UserContextProvider = ({children}) => {
     const fetchUsers = async() => {
         const response = await fetch('/api/user', {
           method: 'GET',
-          mode: 'cors',
-          headers: {'Content-Type': 'application/json'}
+          mode: 'cors'
       })
         const json = await response.json()
 
