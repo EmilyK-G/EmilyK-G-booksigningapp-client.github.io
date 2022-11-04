@@ -27,9 +27,7 @@ const LoginModal = () => {
     }
 
     return (
-        isLoading 
-        ? <LoadingSpinner loadingPage={'new user'}/> 
-        : <Modal
+        <Modal
           show={userSelected.name}
           size="lg"
           centered

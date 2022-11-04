@@ -2,9 +2,11 @@ import { useUserContext } from '../../Hooks/useUserContextHook';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import './Users.css';
+import { useLogin } from '../../Hooks/useLoginHook';
 
 function Users() {
   const { setUserSelected, usersArr, loadingUserData } = useUserContext();
+  const {isLoading} = useLogin;
 
   function handleListItemClick(user) {
     setUserSelected(user)
@@ -15,8 +17,8 @@ function Users() {
       animate= {{opacity: 1, x: 0}}
       exit= {{opacity:0, x:100}}
       transition={{ duration: 0.2 }}>
-        {loadingUserData 
-          ? <LoadingSpinner loadingPage={'users'}/>
+        {loadingUserData || isLoading
+          ? <LoadingSpinner loadingPage={loadingUserData ? 'users' : ''}/>
           : <div className="d-flex flex-column justify-content-center md_users_container">
           <header className='users_header align-self-center'>
             <h1 className='users_title'>Who Are You?</h1>
