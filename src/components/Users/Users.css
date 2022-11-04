@@ -49,6 +49,7 @@ div.d-flex > ul.users_list > li.users_list_item {
   .users_header {
     top: 0;
     max-width: 768px;
+    width: 768px;
   }
   .users_title{
     height: 200px;
