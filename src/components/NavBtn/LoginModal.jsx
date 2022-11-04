@@ -4,7 +4,6 @@ import { useUserContext } from '../../Hooks/useUserContextHook';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
 const LoginModal = () => {
