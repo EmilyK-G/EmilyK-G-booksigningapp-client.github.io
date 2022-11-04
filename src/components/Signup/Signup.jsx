@@ -15,7 +15,7 @@ function Signup({showForm, closeForm, setModalInfo}) {
     const [class_of, setClass_of] = useState('');
     const [img, setImg] = useState('');
     const [imgLoading, setImgLoading] = useState(false);
-    const [imgError, setImgError] = useState(null)
+    const [imgError, setImgError] = useState(null);
 
     const {signup, error, isLoading, success} = useSignup();
     const {loadingUserData} = useUserContext();
@@ -69,6 +69,11 @@ function Signup({showForm, closeForm, setModalInfo}) {
         setImgLoading(false)
     }
 
+    const handlePinChange = (e)=>{
+        const numeric = e.target.value.replace(/\D/g, '')
+        setPin(numeric)
+    }
+
     return (
         <Modal
           show={showForm}
@@ -102,7 +107,8 @@ function Signup({showForm, closeForm, setModalInfo}) {
                             </div>
                             <div className="form-group m-2">
                                 <label>PIN</label>
-                                <input type="number" onChange={(e)=>setPin(e.target.value)} value={pin} className="form-control" placeholder="Password"/>
+                                <input type="text" minLength={4} maxLength={4} onChange={(e)=>handlePinChange(e)} value={pin} className="form-control" placeholder="Password"/>
+                                <p><small className='text-muted'>{`(must be four numeric characters)`}</small></p>
                             </div>
                             <div className="form-group my-4 mx-2 d-flex flex-column align-items-center justify-content-center">
                                 <small>Upload your picture here...</small>
