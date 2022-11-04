@@ -20,7 +20,7 @@ const LoginModal = () => {
     }, [userSelected])
 
     const checkPIN = async(e) => {
-        e.preventDefault();
+        
         setIsInvalid(false);
 
         await login(userSelected.email, e.target.value)
@@ -43,12 +43,13 @@ const LoginModal = () => {
           <Modal.Body>
             <h4 className='modal_text'>Please enter your PIN</h4>
             <input 
-                className={"form-control form-control-lg " + (isInvalid ? "input_invalid" : !error ? "input_correct" : "input_incorrect")} 
-                type="number" 
+                className={"form-control form-control-lg input_invalid " + !error ? "input_correct" : "input_incorrect"} 
+                type="text" 
+                maxLength={4}
                 placeholder="****" 
                 autoFocus
                 disabled={isLoading}
-                onChange={(e)=>e.target.value.length === 4 ? checkPIN(e) : setIsInvalid(true)} />
+                onChange={(e)=>e.target.value.length === 4 && checkPIN(e)} />
             <Alert variant='danger' show={error && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>
           <Modal.Footer>
