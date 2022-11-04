@@ -30,7 +30,7 @@ const LoginModal = () => {
 
     return (
         <Modal
-          show={userSelected.name || !closeModal}
+          show={userSelected.name && !closeModal}
           size="lg"
           centered
         >
