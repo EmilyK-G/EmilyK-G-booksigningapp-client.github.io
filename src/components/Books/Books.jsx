@@ -25,7 +25,7 @@ function Books() {
         <h1 className='books_title mb-0'>Books</h1>
       </header>
       <hr className="mb-4 books_separator"></hr>
-      <ul className='book_list d-flex flex-wrap justify-content-between p-1'>
+      <ul className='book_list d-flex flex-wrap justify-content-evenly p-1'>
         {usersArr.map((book)=>{
           if(book._id === user._id){
             return <li key={user._id} 
