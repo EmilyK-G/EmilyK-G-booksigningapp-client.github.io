@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
 
-const LoginModal = (props) => {
+function LoginModal(props) {
 
     const {userSelected, setUserSelected} = useUserContext();
     const {login, error, isLoading} = useLogin();
