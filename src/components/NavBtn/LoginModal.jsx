@@ -19,7 +19,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
     }, [userSelected])
 
     const checkPIN = async(e) => {
-      setCloseModal();
+      setCloseModal(true);
 
       setIsInvalid(false);
 
