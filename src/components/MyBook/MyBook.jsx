@@ -16,7 +16,7 @@ function MyBook() {
 
     useEffect(()=>{
       const fetchSignatures = async() => {
-          const response = await fetch('/api/signatures', {
+          const response = await fetch('https://booksigning.onrender.com/api/signatures', {
               mode: 'cors',
               headers: {
                   'Authorization': `Bearer ${user.token}`

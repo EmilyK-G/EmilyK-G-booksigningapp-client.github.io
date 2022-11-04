@@ -22,7 +22,7 @@ function PrevMessages({mes}) {
             return
         }
 
-        const response = await fetch('/api/signatures/sent/' + mes._id, {
+        const response = await fetch('https://booksigning.onrender.com/api/signatures/sent/' + mes._id, {
             method:'DELETE',
             mode: 'cors',
             headers: {
