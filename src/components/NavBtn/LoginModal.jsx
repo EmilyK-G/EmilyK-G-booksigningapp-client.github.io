@@ -15,16 +15,15 @@ const LoginModal = ({closeModal, setCloseModal}) => {
     
 
     useEffect(()=>{
-      setIsInvalid(true);
+      setIsInvalid(true)
     }, [userSelected])
 
     const checkPIN = async(e) => {
-        
+      setCloseModal();
+
       setIsInvalid(false);
 
       await login(userSelected.email, e.target.value);
-
-      !error && setCloseModal()
     }
 
     return (
@@ -51,7 +50,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
             <Alert variant='danger' show={error && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>
           <Modal.Footer>
-            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>{setUserSelected([]); setCloseModal()}}>Close</button>
+            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>{setUserSelected([])}}>Close</button>
           </Modal.Footer>
         </Modal>
       );
