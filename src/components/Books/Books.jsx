@@ -2,17 +2,20 @@ import { Outlet, Link } from "react-router-dom";
 import { useUserContext } from '../../Hooks/useUserContextHook';
 import { useSignatureContext } from "../../Hooks/useSignatureContextHook";
 import { motion } from 'framer-motion';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import './Books.css';
 
 function Books() {
-  const { usersArr, user } = useUserContext();
+  const { usersArr, user, loadingUserData } = useUserContext();
   const { setSigning } = useSignatureContext();
   
   function handleBookClick (mate) {
     setSigning(mate) //The user they clicked becomes the 'signing' object from SignatureContext
   }
   return (
-    <motion.div 
+    loadingUserData 
+    ? <LoadingSpinner loadingPage={'books'}/> 
+    : <motion.div 
       initial= {{opacity: 0, x:100}}
       animate= {{opacity: 1, x: 0}}
       exit= {{opacity:0, x:100}}
