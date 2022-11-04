@@ -15,7 +15,9 @@ function UserSignature(props) {
     }
 
   return (
-    loadingUserData ? <LoadingSpinner loadingPage={'signature'}/> : <>
+    loadingUserData 
+    ? <LoadingSpinner loadingPage={'signature'}/> 
+    : <>
         <p className="div_3_text_1 d-flex align-content-start mx-4">Signing as: </p>
         <div className="div_3_signature_container mx-4 mb-0 d-flex align-items-end justify-content-end">
             <div className="div_3_text_signature d-flex justify-content-end">{props.currentSignature}</div>
