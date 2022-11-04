@@ -20,7 +20,7 @@ export const UserContextProvider = ({children}) => {
   const [userSelected, setUserSelected] = useState([]);
   
   const [usersArr, setUsersArr] = useState([]);
-  const[loadingUserData, setLoadingUserData] = useState(false);
+  const [loadingUserData, setLoadingUserData] = useState(false);
 
   const [state, dispatch] = useReducer(authReducer, {
     user: null
@@ -68,8 +68,6 @@ export const UserContextProvider = ({children}) => {
     fetchUsers()
     
   }, [])
-
-  console.log('UserContext state: ', state)
 
   return (
     <UserContext.Provider value={{...state, dispatch, userSelected, setUserSelected, usersArr, setUsersArr, loadingUserData, setLoadingUserData}}>

@@ -6,7 +6,7 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import './Books.css';
 
 function Books() {
-  const { usersArr, user, loadingUserData} = useUserContext();
+  const { usersArr, user, loadingUserData } = useUserContext();
   const { setSigning } = useSignatureContext();
   
   function handleBookClick (mate) {
