@@ -25,6 +25,10 @@ function NavBtn() {
     setTimeout(() => {
         setCloseModal(false);
     }, 1000);
+
+    user && setTimeout(() => {
+                setCloseModal(true)
+            }, 1000);
   }, [closeModal])
   
   return (
