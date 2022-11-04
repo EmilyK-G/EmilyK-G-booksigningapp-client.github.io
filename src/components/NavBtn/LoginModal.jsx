@@ -16,7 +16,6 @@ const LoginModal = () => {
     
 
     useEffect(()=>{
-      setCloseModal(true);
       setIsInvalid(true);
     }, [userSelected])
 
