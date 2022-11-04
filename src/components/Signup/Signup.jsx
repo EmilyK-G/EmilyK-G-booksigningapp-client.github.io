@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import './Signup.css'
 import { useEffect } from 'react';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { useUserContext } from '../../Hooks/useUserContextHook';
 
 function Signup({showForm, closeForm, setModalInfo}) {
     const [email, setEmail] = useState('');
@@ -16,7 +17,8 @@ function Signup({showForm, closeForm, setModalInfo}) {
     const [imgLoading, setImgLoading] = useState(false);
     const [imgError, setImgError] = useState(null)
 
-    const {signup, error, isLoading, success} = useSignup()
+    const {signup, error, isLoading, success} = useSignup();
+    const {loadingUserData} = useUserContext();
 
     useEffect(()=>{
         if(success){
@@ -73,8 +75,8 @@ function Signup({showForm, closeForm, setModalInfo}) {
           size="lg"
           centered
         >
-            {isLoading 
-                ? <LoadingSpinner loadingPage={'new user'}/>
+            {isLoading || loadingUserData
+                ? <LoadingSpinner loadingPage={loadingUserData ? 'signup form' : 'new user'}/>
                 : <>
                     <Modal.Body>
                         <form onSubmit={handleSubmit} className={'signup_form_container mt-4'}>
