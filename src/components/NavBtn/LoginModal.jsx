@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
 
-const LoginModal = ({closeModal, setCloseModal}) => {
+const LoginModal = (props) => {
 
     const {userSelected, setUserSelected} = useUserContext();
     const {login, error, isLoading} = useLogin();
@@ -19,7 +19,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
     }, [userSelected])
 
     const checkPIN = async(e) => {
-      setCloseModal(true);
+      props.setCloseModal(true);
 
       setIsInvalid(false);
 
@@ -28,7 +28,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
 
     return (
         <Modal
-          show={userSelected.name && !closeModal}
+          show={userSelected.name && !props.closeModal}
           size="lg"
           centered
         >
