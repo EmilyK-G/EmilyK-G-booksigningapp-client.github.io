@@ -19,12 +19,12 @@ const LoginModal = ({closeModal, setCloseModal}) => {
     }, [userSelected])
 
     const checkPIN = async(e) => {
+
+      setCloseModal(true);
         
-        setIsInvalid(false);
+      setIsInvalid(false);
 
-        await login(userSelected.email, e.target.value)
-
-        setCloseModal(true)
+      await login(userSelected.email, e.target.value)
     }
 
     return (

@@ -5,7 +5,7 @@ import { useUserContext } from "./useUserContextHook";
 export const useLogin = ()=>{
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
-    const { dispatch, setUserSelected } = useUserContext()
+    const { dispatch } = useUserContext()
 
     const login = async (email, pin)=>{
         setIsLoading(true);
@@ -31,7 +31,6 @@ export const useLogin = ()=>{
 
             setIsLoading(false);
         }
-        setUserSelected([])
     }
 
     return {login, isLoading, error}
