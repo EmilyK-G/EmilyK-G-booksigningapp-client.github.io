@@ -2,7 +2,8 @@ import React from 'react';
 import './MyBookPage.css';
 export class MyBookPage extends React.PureComponent {
     render() {
-      return ( <div className='myBook_page px-2 py-4'>
+      return ( 
+        <div className='myBook_page px-2 py-4'>
           { this.props.messages ? this.props.messages.map((mes)=>{
           return <figure key={mes._id} className="text-end">
                     <blockquote className="blockquote">

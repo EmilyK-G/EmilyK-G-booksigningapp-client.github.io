@@ -48,7 +48,7 @@ function MyBook() {
               <MyButton linkTo={'/books'} sign={<MdDone/>} className={'check_link_style'}/>
             </IconContext.Provider>
           </div>
-          <h1 className='myBook_title'>My Book <small className="text-muted">-signatures</small></h1>
+          <h1 className='myBook_title mt-5'>My Book <small className="text-muted">-signatures</small></h1>
           <MyBookPage ref={componentRef} messages={messages ? messages.length > 0 ? messages : null : null}/>
           <ReactToPrint
             trigger={() => {

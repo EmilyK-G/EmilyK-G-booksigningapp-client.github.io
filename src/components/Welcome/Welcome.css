@@ -1,7 +1,6 @@
 .welcome_div_container{
     position: fixed;
     top: 45%;
-    left: 3%;
     opacity: 0;
     transition: opacity 1s;
 }
@@ -17,5 +16,7 @@
 div.welcome_content > button.btn {
     color: #493300;
     border: none;
-    margin: 0 -210px -60px 0;
+}
+.separator{
+    color: #493300;
 }
