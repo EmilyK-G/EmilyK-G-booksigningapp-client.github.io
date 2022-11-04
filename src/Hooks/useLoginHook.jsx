@@ -31,6 +31,7 @@ export const useLogin = ()=>{
 
             setIsLoading(false);
         }
+        setUserSelected([])
     }
 
     return {login, isLoading, error}
