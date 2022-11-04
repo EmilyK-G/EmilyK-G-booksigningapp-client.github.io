@@ -24,7 +24,6 @@ const LoginModal = () => {
         setIsInvalid(false);
 
         await login(userSelected.email, e.target.value)
-        setUserSelected([])
     }
 
     return (
