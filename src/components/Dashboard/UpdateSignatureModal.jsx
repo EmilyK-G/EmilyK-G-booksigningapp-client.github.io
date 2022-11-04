@@ -34,7 +34,8 @@ function UpdateSignatureModal(props) {
         if (response.ok) {
             dispatch({type: 'UPDATE', payload: {...user, signature: newSignature}});
             localStorage.setItem('user', JSON.stringify({user:{...json, signature: newSignature}, token:user.token}));
-            setLoadingUserData(false)
+            setLoadingUserData(false);
+            props.setShow(false)
         }
 
         if (!response.ok) {
