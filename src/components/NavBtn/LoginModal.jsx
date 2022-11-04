@@ -6,13 +6,12 @@ import Alert from 'react-bootstrap/Alert';
 import './LoginModal.css';
 
 
-const LoginModal = () => {
+const LoginModal = ({closeModal, setCloseModal}) => {
 
     const {userSelected, setUserSelected} = useUserContext();
     const {login, error, isLoading} = useLogin();
 
     const [isInvalid, setIsInvalid] = useState(true);
-    const [closeModal, setCloseModal] = useState(false);
     
 
     useEffect(()=>{

@@ -7,11 +7,13 @@ import { useLocation } from "react-router-dom";
 import './NavBtn.css';
 import { useLogin } from '../../Hooks/useLoginHook';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { useEffect, useState } from 'react';
 
 
 function NavBtn() {
   const { userSelected, user } = useUserContext();
-  const {isLoading} = useLogin()
+  const {isLoading} = useLogin();
+  const [closeModal, setCloseModal] = useState(false);
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -19,12 +21,17 @@ function NavBtn() {
   const showPrev = pathname === '/users' || pathname === '/books';
   const showNext = pathname === '/' || pathname === '/dashboard';
 
+  useEffect(()=>{
+    setTimeout(() => {
+        setCloseModal(false);
+    }, 1000);
+  }, [closeModal])
   
   return (
       <>  
           <Welcome pathname={pathname}/>
           {isLoading 
-            ? <LoadingSpinner loadingPage={'your info...'}/>
+            ? <LoadingSpinner loadingPage={'your info...'} closeModal={closeModal} setCloseModal={setCloseModal}/>
             : <>
                 <LoginModal userSelected={userSelected}/>
                 <div className='d-flex justify-content-between my_btn_div'>
