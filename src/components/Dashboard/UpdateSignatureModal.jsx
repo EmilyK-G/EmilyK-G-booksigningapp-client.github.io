@@ -28,19 +28,17 @@ function UpdateSignatureModal(props) {
             body: JSON.stringify({signature: newSignature}),
             headers: {'Content-Type': 'application/json'}
         })
-        console.log('this is your response:', response,  ' and now converted to json:',  response.json())
+        
         const json = await response.json();
 
         if (response.ok) {
             dispatch({type: 'UPDATE', payload: {...user, signature: newSignature}});
             localStorage.setItem('user', JSON.stringify({user:{...json, signature: newSignature}, token:user.token}));
             setLoadingUserData(false)
-            console.log('SUCCESS')
         }
 
         if (!response.ok) {
             setLoadingUserData(false)
-            console.log('ERROR')
         }
 
         setNewSignature('')
