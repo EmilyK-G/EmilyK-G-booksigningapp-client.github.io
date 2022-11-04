@@ -12,6 +12,7 @@ const LoginModal = () => {
     const {login, error, isLoading} = useLogin();
 
     const [isInvalid, setIsInvalid] = useState(true);
+    const [closeModal, setCloseModal] = useState(false);
     
 
     useEffect(()=>{
@@ -23,11 +24,13 @@ const LoginModal = () => {
         setIsInvalid(false);
 
         await login(userSelected.email, e.target.value)
+
+        setCloseModal(true)
     }
 
     return (
         <Modal
-          show={userSelected.name}
+          show={userSelected.name || !closeModal}
           size="lg"
           centered
         >
@@ -49,7 +52,7 @@ const LoginModal = () => {
             <Alert variant='danger' show={error && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>
           <Modal.Footer>
-            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>setUserSelected([])}>Close</button>
+            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>{setUserSelected([]); setCloseModal(true)}}>Close</button>
           </Modal.Footer>
         </Modal>
       );
