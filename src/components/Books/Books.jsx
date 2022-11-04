@@ -5,16 +5,14 @@ import { motion } from 'framer-motion';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import './Books.css';
 import { useEffect } from "react";
-import { useRef } from "react";
 
 function Books() {
   const { usersArr, user, loadingUserData, setUserSelected } = useUserContext();
   const { setSigning } = useSignatureContext();
-  const setUserSelectedRef = useRef(setUserSelected); 
 
   useEffect(()=>{
-    setUserSelectedRef([])
-  }, [])
+    setUserSelected([])
+  }, [setUserSelected])
   
   function handleBookClick (mate) {
     setSigning(mate) //The user they clicked becomes the 'signing' object from SignatureContext
