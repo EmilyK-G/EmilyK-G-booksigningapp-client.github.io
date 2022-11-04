@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 
 
 function NavBtn() {
-  const { userSelected, user } = useUserContext();
+  const { userSelected, setUserSelected, user } = useUserContext();
   const {isLoading} = useLogin();
   const [closeModal, setCloseModal] = useState(false);
 
@@ -26,10 +26,8 @@ function NavBtn() {
         setCloseModal(false);
     }, 1000);
 
-    user && setTimeout(() => {
-                setCloseModal(true)
-            }, 1000);
-  }, [closeModal])
+    user && setUserSelected([])
+  }, [closeModal, setUserSelected, user])
   
   return (
       <>  

@@ -19,7 +19,7 @@ function LoginModal(props) {
     }, [userSelected])
 
     const checkPIN = async(e) => {
-      
+
       setIsInvalid(false);
 
       await login(userSelected.email, e.target.value);
@@ -27,7 +27,7 @@ function LoginModal(props) {
 
     return (
         <Modal
-          show={userSelected.name && !props.closeModal}
+          show={userSelected.name}
           size="lg"
           centered
         >
