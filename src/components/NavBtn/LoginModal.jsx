@@ -24,7 +24,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
 
       await login(userSelected.email, e.target.value);
 
-      setCloseModal()
+      !error && setCloseModal()
     }
 
     return (
