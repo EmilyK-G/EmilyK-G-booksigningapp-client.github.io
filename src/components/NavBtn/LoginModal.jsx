@@ -19,8 +19,7 @@ function LoginModal(props) {
     }, [userSelected])
 
     const checkPIN = async(e) => {
-      props.setCloseModal(true);
-
+      
       setIsInvalid(false);
 
       await login(userSelected.email, e.target.value);
