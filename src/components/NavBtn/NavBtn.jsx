@@ -31,7 +31,7 @@ function NavBtn() {
       <>  
           <Welcome pathname={pathname}/>
           {isLoading 
-            ? <LoadingSpinner loadingPage={'your info...'} closeModal={closeModal} setCloseModal={setCloseModal}/>
+            ? <LoadingSpinner loadingPage={'your info...'} closeModal={closeModal} setCloseModal={()=>setCloseModal(true)}/>
             : <>
                 <LoginModal userSelected={userSelected}/>
                 <div className='d-flex justify-content-between my_btn_div'>

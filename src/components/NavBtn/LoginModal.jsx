@@ -20,7 +20,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
 
     const checkPIN = async(e) => {
 
-      setCloseModal(true);
+      setCloseModal;
         
       setIsInvalid(false);
 
@@ -51,7 +51,7 @@ const LoginModal = ({closeModal, setCloseModal}) => {
             <Alert variant='danger' show={error && !isInvalid} className='alert_text'>Wrong PIN!</Alert>
           </Modal.Body>
           <Modal.Footer>
-            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>{setUserSelected([]); setCloseModal(true)}}>Close</button>
+            <button disabled={isLoading} className='btn btn-secondary' onClick={()=>{setUserSelected([]); setCloseModal}}>Close</button>
           </Modal.Footer>
         </Modal>
       );
