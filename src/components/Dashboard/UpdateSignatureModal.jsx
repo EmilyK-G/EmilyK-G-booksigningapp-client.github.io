@@ -22,14 +22,14 @@ function UpdateSignatureModal(props) {
 
         setLoadingUserData(true);
 
-        const response = await fetch('/api/user/update/' + user._id, {
+        const response = await fetch('https://booksigning.onrender.com/api/user/update/' + user._id, {
             method:'PATCH',
             mode: 'cors',
             body: JSON.stringify({signature: newSignature}),
             headers: {'Content-Type': 'application/json'}
         })
         console.log('this is your response:', response,  ' and now converted to json:',  response.json())
-        const json = await response.json()
+        const json = await response.json();
 
         if (response.ok) {
             dispatch({type: 'UPDATE', payload: {...user, signature: newSignature}});
